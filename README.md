@@ -7,7 +7,7 @@
 
 ## Демо
 
-Проект на Netlify: https://example-messenger.netlify.app
+Проект на Netlify: https://wonderful-pasca-c952b9.netlify.app
 
 ## Установка
 
