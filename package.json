@@ -3,7 +3,11 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
+    "engines": {
+        "node": "22.x"
+    },
     "scripts": {
+        "start": "dotenv -- vite",
         "dev": "dotenv -- vite",
         "build": "tsc && vite build",
         "preview": "vite preview"
