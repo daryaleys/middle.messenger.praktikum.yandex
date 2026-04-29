@@ -21,6 +21,7 @@ import profileDetailsTemplate from "./components/profile-details/profile-details
 import profileEditFormTemplate from "./components/profile-edit-form/profile-edit-form.hbs?raw";
 import servicePageTemplate from "./components/service-page/service-page.hbs?raw";
 import profileFormFieldTemplate from "./components/profile-form-field/profile-form-field.hbs?raw";
+import demoNavigationTemplate from "./components/demo-navigation/demo-navigation.hbs?raw";
 
 // fields list
 import { profileData } from "./data/profile";
@@ -44,24 +45,31 @@ Handlebars.registerPartial("profile-details", profileDetailsTemplate);
 Handlebars.registerPartial("profile-edit-form", profileEditFormTemplate);
 Handlebars.registerPartial("service-page", servicePageTemplate);
 Handlebars.registerPartial("profile-form-field", profileFormFieldTemplate);
+Handlebars.registerPartial("demo-navigation", demoNavigationTemplate);
 
 const pageTemplateByPath: Record<string, string> = {
     "/": messengerTemplate,
-    "/settings": profileTemplate,
-    "/settings/edit": profileTemplate,
-    "/settings/password": profileTemplate,
+    "/profile": profileTemplate,
+    "/profile/edit": profileTemplate,
+    "/profile/password": profileTemplate,
     "/login": loginTemplate,
     "/signin": signInTemplate,
     "/404": notFoundTemplate,
     "/500": serverErrorTemplate,
 };
 
+const demoNavigationLinks = ["/", "/login", "/signin", "/profile", "/404", "/500"].map((href) => ({
+    href,
+    label: href,
+    isActive: window.location.pathname === href,
+}));
+
 // Временные маркеры для возможности посмотреть верстку
-const isDataEditMode = window.location.pathname === "/settings/edit";
-const isPasswordEditMode = window.location.pathname === "/settings/password";
+const isDataEditMode = window.location.pathname === "/profile/edit";
+const isPasswordEditMode = window.location.pathname === "/profile/password";
 
 const currentPageTemplate = pageTemplateByPath[window.location.pathname] ?? notFoundTemplate;
-const compiledTemplate = Handlebars.compile(currentPageTemplate)({
+const compiledPageTemplate = Handlebars.compile(currentPageTemplate)({
     chats,
     activeChat,
     isDataEditMode,
@@ -69,6 +77,15 @@ const compiledTemplate = Handlebars.compile(currentPageTemplate)({
     loginPageData,
     signInPageData,
     profileData,
+});
+const compiledTemplate = Handlebars.compile(`
+    {{> demo-navigation demoNavigationLinks}}
+    <div class="app-content">
+        {{{pageContent}}}
+    </div>
+`)({
+    demoNavigationLinks,
+    pageContent: compiledPageTemplate,
 });
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = compiledTemplate;

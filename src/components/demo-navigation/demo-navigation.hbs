@@ -1,0 +1,15 @@
+<nav class="demo-navigation" aria-label="Навигация по страницам для демонстрации верстки">
+    <ul class="demo-navigation__list">
+        {{#each this}}
+            <li class="demo-navigation__item">
+                <a
+                    class="demo-navigation__link{{#if isActive}} demo-navigation__link--active{{/if}}"
+                    href="{{href}}"
+                    {{#if isActive}}aria-current="page"{{/if}}
+                >
+                    {{label}}
+                </a>
+            </li>
+        {{/each}}
+    </ul>
+</nav>
