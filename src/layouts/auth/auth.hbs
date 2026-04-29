@@ -1,0 +1,19 @@
+<main class="auth-page">
+    <section class="auth-card {{cardModifier}}" aria-labelledby="{{titleId}}">
+        <h1 class="auth-card__title" id="{{titleId}}">{{title}}</h1>
+
+        <form class="auth-form" action="/" method="post">
+            <div class="auth-form__fields {{fieldsModifier}}">
+                {{#each fields}}
+                    {{> auth-field}}
+                {{/each}}
+            </div>
+
+            <div class="auth-form__footer">
+                {{!-- Заменить на кнопку с типом submit --}}
+                <a class="auth-form__submit" href="{{submitHref}}">{{submitText}}</a>
+                <a class="auth-form__link" href="{{linkHref}}">{{linkText}}</a>
+            </div>
+        </form>
+    </section>
+</main>

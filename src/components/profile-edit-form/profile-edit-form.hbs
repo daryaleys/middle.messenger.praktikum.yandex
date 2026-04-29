@@ -1,0 +1,8 @@
+<form class="profile-form">
+    {{#each fields}}
+        {{> profile-form-field}}
+    {{/each}}
+
+    {{!-- Заменить на кнопку с типом submit --}}
+    <a class="profile-form__submit" href="/settings">Сохранить</a>
+</form>

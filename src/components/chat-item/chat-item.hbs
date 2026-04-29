@@ -1,37 +1,21 @@
-<div class="chat-item" data-id="{{id}}">
-  <div class="chat-item__block {{#if unreadCount}}chat-item__block--unread{{/if}}">
-    <div class="chat-item__avatar">
-      <img src="{{avatarUrl}}" alt="avatar" />
-    </div>
-    <div class="chat-item__name">
-      {{title}}
+<li class="chat-item {{#if isActive}}chat-item--active{{/if}}" data-id="{{id}}">
+  <button class="chat-item__button" type="button">
+    <span class="chat-item__avatar" aria-hidden="true"></span>
+
+    <span class="chat-item__content">
+      <span class="chat-item__title">{{title}}</span>
       {{#with lastMessage}}
-        <time class="chat-item__date">
-          {{time}}
-        </time>
+        <span class="chat-item__message">{{text}}</span>
       {{/with}}
-    </div>
-    {{#with lastMessage}}
-      <div class="chat-item__message">
-        {{{text}}}
-      </div>
-    {{/with}}
-    <div class="chat-item__members">
-      {{#each members}}
-        {{#if (lt @index 3)}}
-          <div class="chat-item__members-avatar">
-            <img src="{{avatarUrl}}" alt="avatar" />
-          </div>
-        {{/if}}
-      {{/each}}
-      {{#if (gt members.length 3)}}
-        <div class="chat-item__members-rest-count">
-          +{{subtract members.length 3}}
-        </div> 
+    </span>
+
+    <span class="chat-item__meta">
+      {{#with lastMessage}}
+        <time class="chat-item__time">{{time}}</time>
+      {{/with}}
+      {{#if unreadCount}}
+        <span class="chat-item__counter">{{unreadCount}}</span>
       {{/if}}
-    </div>
-    {{#if unreadCount}}
-      <span class="chat-item__badge">{{unreadCount}}</span>
-    {{/if}}
-  </div>
-</div>
+    </span>
+  </button>
+</li>

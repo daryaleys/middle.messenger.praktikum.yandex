@@ -1,9 +1,28 @@
-<aside class="sidebar">
-  <nav class="chat-list">
-    {{#each chats}}
-      {{> chat-item}}
-    {{/each}}
-  </nav>
+<aside class="messenger__sidebar">
+  <header class="sidebar-header">
+    <a class="profile-link" href="/settings">
+      Профиль
+      <span class="profile-link__arrow" aria-hidden="true"></span>
+    </a>
 
-  {{> new-chat-button}}
+    <form class="search-form" action="#" method="get">
+      <label class="search-form__label" for="chat-search">Поиск</label>
+      <input
+        class="search-form__input"
+        id="chat-search"
+        type="search"
+        name="search"
+        placeholder=" "
+      />
+      <span class="search-form__placeholder" aria-hidden="true">Поиск</span>
+    </form>
+  </header>
+
+  <nav class="chat-navigation" aria-label="Список чатов">
+    <ul class="chat-list">
+      {{#each chats}}
+        {{> chat-item}}
+      {{/each}}
+    </ul>
+  </nav>
 </aside>
