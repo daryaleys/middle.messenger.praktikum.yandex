@@ -1,0 +1,36 @@
+.profile__action-list {
+    margin: 0;
+    padding: 0;
+}
+
+.profile__action-item {
+    min-height: 34px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.profile__action-item:last-child {
+    border-bottom: 0;
+}
+
+.profile__action {
+    display: inline-block;
+    padding: 0;
+    background: transparent;
+    color: #3369f3;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+}
+
+.profile__action:hover {
+    color: #2859d8;
+}
+
+.profile__action--danger {
+    color: #ff0000;
+}
+
+.profile__action--danger:hover {
+    color: #d90000;
+}
