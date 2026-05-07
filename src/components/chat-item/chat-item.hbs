@@ -1,0 +1,21 @@
+<li class="chat-item {{#if isActive}}chat-item--active{{/if}}" data-id="{{id}}">
+  <button class="chat-item__button" type="button">
+    <span class="chat-item__avatar" aria-hidden="true"></span>
+
+    <span class="chat-item__content">
+      <span class="chat-item__title">{{title}}</span>
+      {{#with lastMessage}}
+        <span class="chat-item__message">{{text}}</span>
+      {{/with}}
+    </span>
+
+    <span class="chat-item__meta">
+      {{#with lastMessage}}
+        <time class="chat-item__time">{{time}}</time>
+      {{/with}}
+      {{#if unreadCount}}
+        <span class="chat-item__counter">{{unreadCount}}</span>
+      {{/if}}
+    </span>
+  </button>
+</li>

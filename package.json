@@ -1,0 +1,32 @@
+{
+    "name": "messenger",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "engines": {
+        "node": "22.x"
+    },
+    "scripts": {
+        "start": "dotenv -- vite",
+        "dev": "dotenv -- vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview"
+    },
+    "devDependencies": {
+        "@types/node": "^25.6.0",
+        "autoprefixer": "^10.5.0",
+        "dotenv-cli": "^11.0.0",
+        "jiti": "^2.6.1",
+        "postcss": "^8.5.12",
+        "typescript": "~6.0.2",
+        "vite": "^8.0.9"
+    },
+    "dependencies": {
+        "handlebars": "^4.7.9"
+    },
+    "browserslist": [
+        "> 0.5%",
+        "last 2 versions",
+        "not dead"
+    ]
+}

@@ -1,0 +1,45 @@
+.demo-navigation {
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    border-bottom: 1px solid #eaeaea;
+    background: #fff;
+}
+
+.demo-navigation__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    min-height: 48px;
+    padding: 8px 16px;
+}
+
+.demo-navigation__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 10px;
+    border: 1px solid #eaeaea;
+    border-radius: 6px;
+    color: #3369f3;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.demo-navigation__link:hover {
+    border-color: #3369f3;
+}
+
+.demo-navigation__link--active {
+    border-color: #3369f3;
+    background: #e4edfd;
+    color: #1e1e1e;
+}
+
+.app-content > .messenger,
+.app-content > .auth-page,
+.app-content > .profile-page,
+.app-content > .service-page {
+    min-height: calc(100vh - 49px);
+}
