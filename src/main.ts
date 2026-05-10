@@ -33,6 +33,11 @@ import { activeChat, chats } from "./mock/chats";
 // styles
 import "./style.css";
 
+// ИМПОРТЫ ДЛЯ ПРИМЕРА ИСПОЛЬЗОВАНИЯ КОМПОНЕНТА
+import { Example } from "./components/example-component";
+import Block from "./core/Block";
+import { registerComponent } from "./helpers/registerComponent";
+
 Handlebars.registerPartial("auth-page", authPageTemplate);
 Handlebars.registerPartial("profile-page", profilePageTemplate);
 Handlebars.registerPartial("sidebar", sidebarTemplate);
@@ -47,36 +52,73 @@ Handlebars.registerPartial("service-page", servicePageTemplate);
 Handlebars.registerPartial("profile-form-field", profileFormFieldTemplate);
 Handlebars.registerPartial("demo-navigation", demoNavigationTemplate);
 
+// ПРИМЕР ИСПОЛЬЗОВАНИЯ КОМПОНЕНТА
+class Button extends Block {
+	static componentName = "Button";
+
+	protected template = `
+    <button>{{label}}</button>
+  `;
+}
+
+class Input extends Block {
+	static componentName = "Input";
+
+	protected template = `
+    <input type="{{type}}" placeholder="{{placeholder}}" ref="{{ref}}">
+  `;
+}
+
+registerComponent(Button);
+registerComponent(Input);
+
+const example = new Example();
+example.setProps({ buttonName: "Клик!" });
+const ExampleElement = example.element();
+
+if (ExampleElement) {
+	document.body.appendChild(ExampleElement);
+}
+// КОНЕЦ ПРИМЕРА
+
 const pageTemplateByPath: Record<string, string> = {
-    "/": messengerTemplate,
-    "/profile": profileTemplate,
-    "/profile/edit": profileTemplate,
-    "/profile/password": profileTemplate,
-    "/login": loginTemplate,
-    "/signin": signInTemplate,
-    "/404": notFoundTemplate,
-    "/500": serverErrorTemplate,
+	"/": messengerTemplate,
+	"/profile": profileTemplate,
+	"/profile/edit": profileTemplate,
+	"/profile/password": profileTemplate,
+	"/login": loginTemplate,
+	"/signin": signInTemplate,
+	"/404": notFoundTemplate,
+	"/500": serverErrorTemplate,
 };
 
-const demoNavigationLinks = ["/", "/login", "/signin", "/profile", "/404", "/500"].map((href) => ({
-    href,
-    label: href,
-    isActive: window.location.pathname === href,
+const demoNavigationLinks = [
+	"/",
+	"/login",
+	"/signin",
+	"/profile",
+	"/404",
+	"/500",
+].map((href) => ({
+	href,
+	label: href,
+	isActive: window.location.pathname === href,
 }));
 
 // Временные маркеры для возможности посмотреть верстку
 const isDataEditMode = window.location.pathname === "/profile/edit";
 const isPasswordEditMode = window.location.pathname === "/profile/password";
 
-const currentPageTemplate = pageTemplateByPath[window.location.pathname] ?? notFoundTemplate;
+const currentPageTemplate =
+	pageTemplateByPath[window.location.pathname] ?? notFoundTemplate;
 const compiledPageTemplate = Handlebars.compile(currentPageTemplate)({
-    chats,
-    activeChat,
-    isDataEditMode,
-    isPasswordEditMode,
-    loginPageData,
-    signInPageData,
-    profileData,
+	chats,
+	activeChat,
+	isDataEditMode,
+	isPasswordEditMode,
+	loginPageData,
+	signInPageData,
+	profileData,
 });
 const compiledTemplate = Handlebars.compile(`
     {{> demo-navigation demoNavigationLinks}}
@@ -84,8 +126,8 @@ const compiledTemplate = Handlebars.compile(`
         {{{pageContent}}}
     </div>
 `)({
-    demoNavigationLinks,
-    pageContent: compiledPageTemplate,
+	demoNavigationLinks,
+	pageContent: compiledPageTemplate,
 });
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = compiledTemplate;
