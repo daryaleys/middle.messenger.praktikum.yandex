@@ -14,7 +14,7 @@
 
 .dialog-empty__text {
     margin: 0;
-    color: #999;
+    color: var(--color-text-secondary);
     font-weight: 500;
 }
 
@@ -22,7 +22,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid var(--color-border);
 }
 
 .dialog-header__avatar {
@@ -30,7 +30,7 @@
     height: 34px;
     flex: 0 0 auto;
     border-radius: 50%;
-    background: #efefef;
+    background: var(--color-control-background);
 }
 
 .dialog-header__title {
@@ -51,12 +51,12 @@
     place-items: center;
     border-radius: 50%;
     background: transparent;
-    color: #1e1e1e;
+    color: var(--color-text-primary);
     cursor: pointer;
 }
 
 .dialog-header__menu:hover {
-    background: #f5f5f5;
+    background: var(--color-surface-muted);
 }
 
 .dialog-header__menu-icon {
@@ -77,7 +77,7 @@
 .dialog-date {
     align-self: center;
     margin-bottom: 20px;
-    color: #999;
+    color: var(--color-text-secondary);
     font-size: 12px;
     font-weight: 500;
 }
@@ -88,15 +88,15 @@
     max-width: min(402px, 72%);
     padding: 11px 11px 20px;
     border-radius: 0 12px 12px;
-    background: #f8f8f8;
-    color: #1e1e1e;
+    background: var(--color-message-background);
+    color: var(--color-text-primary);
 }
 
 .message--own {
     align-self: flex-end;
     min-width: 89px;
     border-radius: 12px 12px 0;
-    background: #e4edfd;
+    background: var(--color-primary-soft);
 }
 
 .message__text {
@@ -106,7 +106,7 @@
 
 .message__image {
     width: min(316px, 100%);
-    border: 1px solid #eaeaea;
+    border: 1px solid var(--color-border);
     border-radius: 12px;
 }
 
@@ -114,13 +114,13 @@
     position: absolute;
     right: 11px;
     bottom: 6px;
-    color: #999;
+    color: var(--color-text-secondary);
     font-size: 9px;
     line-height: 9px;
 }
 
 .message--own .message__time {
-    color: #3369f3;
+    color: var(--color-primary);
 }
 
 .message-form {
@@ -129,7 +129,7 @@
     grid-template-columns: 32px minmax(0, 1fr) 28px;
     align-items: center;
     gap: 10px;
-    border-top: 1px solid #eaeaea;
+    border-top: 1px solid var(--color-border);
 }
 
 .message-form__attach,
@@ -145,7 +145,7 @@
 }
 
 .message-form__attach {
-    color: #999;
+    color: var(--color-text-secondary);
 }
 
 .message-form__icon {
@@ -172,32 +172,32 @@
     padding: 0 20px;
     border: 0;
     border-radius: 30px;
-    background: #efefef;
-    color: #1e1e1e;
+    background: var(--color-control-background);
+    color: var(--color-text-primary);
     outline: none;
 }
 
 .message-form__input::placeholder {
-    color: #999;
+    color: var(--color-text-secondary);
 }
 
 .message-form--error .message-form__input {
-    outline: 1px solid #ff2f2f;
+    outline: 1px solid var(--color-error);
 }
 
 .message-form__error {
     position: absolute;
     left: 42px;
     bottom: 1px;
-    color: #ff2f2f;
+    color: var(--color-error);
     font-size: 8px;
     line-height: 1;
 }
 
 .message-form__send {
     border-radius: 50%;
-    background: #3369f3;
-    color: #fff;
+    background: var(--color-primary);
+    color: var(--color-background);
 }
 
 .message-form__send .message-form__icon {

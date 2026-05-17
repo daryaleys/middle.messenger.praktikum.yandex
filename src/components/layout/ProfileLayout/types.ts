@@ -1,5 +1,5 @@
 import type { ProfileDetailsProps } from "@src/components/profile-details/types";
-import type { ProfileFormFieldProps } from "@src/components/ui/profile-form-field/types";
+import type { ProfileFormFieldProps } from "@src/components/UI/profile-form-field/types";
 
 export type ProfileLayoutProps = {
 	profileData: ProfileDetailsProps["profileData"] & {

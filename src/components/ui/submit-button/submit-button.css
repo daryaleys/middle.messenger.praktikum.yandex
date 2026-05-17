@@ -3,12 +3,12 @@
     height: 37px;
     place-items: center;
     border-radius: 8px;
-    background: #3369f3;
-    color: #fff;
+    background: var(--color-primary);
+    color: var(--color-background);
     font-weight: 500;
     cursor: pointer;
 }
 
 .submit-button:hover {
-    background: #2859d8;
+    background: var(--color-primary-hover);
 }

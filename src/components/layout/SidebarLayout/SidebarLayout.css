@@ -1,8 +1,8 @@
 .chats__sidebar {
     display: flex;
     flex-direction: column;
-    border-right: 1px solid #eaeaea;
-    background: #fbfbfb;
+    border-right: 1px solid var(--color-border);
+    background: var(--color-background-muted);
 }
 
 .sidebar-header {
@@ -15,7 +15,7 @@
     justify-content: flex-end;
     gap: 8px;
     margin-bottom: 23px;
-    color: #999;
+    color: var(--color-text-secondary);
     font-weight: 500;
 }
 
@@ -49,8 +49,8 @@
     padding: 0 12px;
     border: 0;
     border-radius: 5px;
-    background: #efefef;
-    color: #1e1e1e;
+    background: var(--color-control-background);
+    color: var(--color-text-primary);
     text-align: left;
     outline: none;
 }
@@ -59,7 +59,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    color: #999;
+    color: var(--color-text-secondary);
     pointer-events: none;
     transform: translate(-50%, -50%);
     transition:
@@ -78,10 +78,16 @@
 }
 
 .search-form__input::placeholder {
-    color: #999;
+    color: var(--color-text-secondary);
 }
 
 .chat-navigation {
     overflow-y: auto;
-    border-top: 1px solid #eaeaea;
+    border-top: 1px solid var(--color-border);
+}
+
+.chat-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }

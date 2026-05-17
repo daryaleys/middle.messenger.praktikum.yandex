@@ -3,7 +3,7 @@
     min-height: 100vh;
     padding: 24px;
     place-items: center;
-    background: #fff;
+    background: var(--color-background);
 }
 
 .auth-card {
@@ -13,8 +13,8 @@
     min-height: 450px;
     padding: 50px 30px 30px;
     border-radius: 12px;
-    background: #fff;
-    box-shadow: 0 0 6px rgb(0 0 0 / 14%);
+    background: var(--color-background);
+    box-shadow: 0 0 6px var(--color-card-shadow);
 }
 
 .auth-card--signup {
@@ -24,48 +24,9 @@
 
 .auth-card__title {
     margin: 0 0 40px;
-    color: #1e1e1e;
+    color: var(--color-text-primary);
     font-size: 20px;
     font-weight: 500;
     line-height: 1;
     text-align: center;
-}
-
-.auth-form {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-}
-
-.auth-form__fields {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.auth-form__fields--login {
-    gap: 10px;
-}
-
-.auth-form__footer {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-top: auto;
-}
-
-.auth-form__submit {
-    width: 100%;
-}
-
-.auth-form__link {
-    color: #3369f3;
-    font-size: 11px;
-    font-weight: 500;
-    line-height: 1;
-    text-align: center;
-}
-
-.auth-form__link:hover {
-    color: #2859d8;
 }

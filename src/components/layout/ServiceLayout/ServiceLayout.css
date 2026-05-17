@@ -3,7 +3,7 @@
     min-height: 100vh;
     place-items: center;
     padding: 24px;
-    background: #fff;
+    background: var(--color-background);
 }
 
 .service-page__content {
@@ -12,7 +12,7 @@
 
 .service-page__code {
     margin: 0 0 20px;
-    color: #1e1e1e;
+    color: var(--color-text-primary);
     font-size: 40px;
     font-weight: 500;
     line-height: 1;
@@ -20,13 +20,13 @@
 
 .service-page__message {
     margin: 0 0 69px;
-    color: #1e1e1e;
+    color: var(--color-text-primary);
     font-size: 20px;
     font-weight: 500;
     line-height: 1;
 }
 
 .service-page__link {
-    color: #3369f3;
+    color: var(--color-primary);
     font-weight: 500;
 }

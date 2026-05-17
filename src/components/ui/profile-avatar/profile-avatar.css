@@ -1,3 +1,7 @@
+.profile__avatar-form {
+    margin: 0;
+}
+
 .profile__avatar {
     position: relative;
     display: grid;
@@ -7,8 +11,8 @@
     overflow: hidden;
     place-items: center;
     border-radius: 50%;
-    background: #efefef;
-    color: #cdcdcd;
+    background: var(--color-control-background);
+    color: var(--color-icon-muted);
     cursor: pointer;
 }
 
@@ -36,8 +40,8 @@
     display: grid;
     padding: 0 24px;
     place-items: center;
-    background: rgb(0 0 0 / 50%);
-    color: #fff;
+    background: var(--color-overlay);
+    color: var(--color-background);
     font-size: 13px;
     font-weight: 500;
     line-height: 14px;

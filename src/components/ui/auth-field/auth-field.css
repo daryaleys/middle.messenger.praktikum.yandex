@@ -7,7 +7,7 @@
     position: absolute;
     top: 18px;
     left: 0;
-    color: #999;
+    color: var(--color-text-secondary);
     font-size: 13px;
     font-weight: 500;
     line-height: 1;
@@ -24,9 +24,9 @@
     height: 37px;
     padding: 14px 0 6px;
     border: 0;
-    border-bottom: 1px solid #3369f3;
+    border-bottom: 1px solid var(--color-primary);
     background: transparent;
-    color: #1e1e1e;
+    color: var(--color-text-primary);
     font-size: 13px;
     font-weight: 500;
     outline: none;
@@ -40,13 +40,13 @@
 }
 
 .auth-form__field--error .auth-form__input {
-    border-bottom-color: #ff2f2f;
-    color: #ff2f2f;
+    border-bottom-color: var(--color-error);
+    color: var(--color-error);
 }
 
 .auth-form__field--error .auth-form__label,
 .auth-form__error {
-    color: #ff2f2f;
+    color: var(--color-error);
 }
 
 .auth-form__error {

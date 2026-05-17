@@ -1,5 +1,5 @@
 .chat-item {
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid var(--color-border);
 }
 
 .chat-item__button {
@@ -16,19 +16,19 @@
 }
 
 .chat-item__button:hover {
-    background: #f5f5f5;
+    background: var(--color-surface-muted);
 }
 
 .chat-item--active .chat-item__button,
 .chat-item--active .chat-item__button:hover {
-    background: #e4edfd;
+    background: var(--color-primary-soft);
 }
 
 .chat-item__avatar {
     width: 47px;
     height: 47px;
     border-radius: 50%;
-    background: #efefef;
+    background: var(--color-control-background);
 }
 
 .chat-item__content {
@@ -47,7 +47,7 @@
 .chat-item__message {
     display: -webkit-box;
     overflow: hidden;
-    color: #999;
+    color: var(--color-text-secondary);
     font-weight: 500;
     line-height: 15px;
     -webkit-box-orient: vertical;
@@ -55,7 +55,7 @@
 }
 
 .chat-item__message b {
-    color: #1e1e1e;
+    color: var(--color-text-primary);
 }
 
 .chat-item__meta {
@@ -67,7 +67,7 @@
 }
 
 .chat-item__time {
-    color: #999;
+    color: var(--color-text-secondary);
     font-size: 9px;
     line-height: 13px;
 }
@@ -79,8 +79,8 @@
     padding: 0 6px;
     place-items: center;
     border-radius: 10px;
-    background: #3369f3;
-    color: #fff;
+    background: var(--color-primary);
+    color: var(--color-background);
     font-size: 11px;
     font-weight: 500;
 }
