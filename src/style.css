@@ -1,5 +1,5 @@
 @import url("./base.css");
-@import url("./pages/messenger/messenger.css");
+@import url("./pages/chats/chats.css");
 @import url("./layouts/sidebar/sidebar.css");
 @import url("./components/chat-item/chat-item.css");
 @import url("./components/service-page/service-page.css");

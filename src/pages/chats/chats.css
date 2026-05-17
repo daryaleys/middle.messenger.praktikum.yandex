@@ -1,4 +1,4 @@
-.messenger {
+.chats {
     display: grid;
     grid-template-columns: 310px minmax(0, 1fr);
     min-height: 100vh;
@@ -6,7 +6,7 @@
 }
 
 @media (max-width: 720px) {
-    .messenger {
+    .chats {
         grid-template-columns: 1fr;
     }
 }
