@@ -1,19 +1,6 @@
-type AuthFieldData = {
-	label: string;
-	name: string;
-	type: string;
-};
+import type { AuthLayoutProps } from "@src/components/layout/AuthLayout/types";
 
-export type SigninPageData = {
-	cardModifier: string;
-	fieldsModifier: string;
-	linkHref: string;
-	linkText: string;
-	submitText: string;
-	title: string;
-	titleId: string;
-	fields: AuthFieldData[];
-};
+export type SigninPageData = AuthLayoutProps;
 
 export type SigninPageProps = {
 	signInPageData: SigninPageData;

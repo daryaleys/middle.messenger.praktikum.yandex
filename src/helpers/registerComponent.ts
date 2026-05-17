@@ -4,7 +4,7 @@ import type { BlockComponent } from "@src/core/Block";
 
 let uniqueId = 0;
 
-function registerComponent(Component: BlockComponent) {
+export function registerComponent(Component: BlockComponent) {
 	const dataAttribute = `data-component-hbs-id="${++uniqueId}"`;
 
 	Handlebars.registerHelper(
@@ -20,9 +20,8 @@ function registerComponent(Component: BlockComponent) {
 			(data.root.__children = data.root.__children || []).push({
 				component,
 				embed(node: DocumentFragment) {
-					const placeholder = node.querySelector(
-						`[${dataAttribute}]`,
-					);
+					const placeholder = node.querySelector(`[${dataAttribute}]`);
+
 					if (!placeholder) {
 						throw new Error(
 							`Can't find data-id for component ${Component.componentName}`,
@@ -30,6 +29,7 @@ function registerComponent(Component: BlockComponent) {
 					}
 
 					const element = component.element();
+
 					if (!element) {
 						throw new Error("Component element is not created");
 					}
@@ -42,5 +42,3 @@ function registerComponent(Component: BlockComponent) {
 		},
 	);
 }
-
-export { registerComponent };

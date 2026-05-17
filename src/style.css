@@ -1,14 +1,22 @@
 @import url("./base.css");
+
+/* pages */
 @import url("./pages/chats/chats.css");
-@import url("./layouts/sidebar/sidebar.css");
+
+/* temporary file for navigation demo */
+@import url("./components/demo-navigation/demo-navigation.css");
+
+/* layout */
+@import url("./components/layout/SidebarLayout/SidebarLayout.css");
+@import url("./components/layout/DialogLayout/DialogLayout.css");
+@import url("./components/layout/AuthLayout/AuthLayout.css");
+@import url("./components/layout/ProfileLayout/ProfileLayout.css");
+@import url("./components/layout/ServiceLayout/ServiceLayout.css");
+
+/* components */
 @import url("./components/chat-item/chat-item.css");
-@import url("./components/service-page/service-page.css");
-@import url("./layouts/auth/auth.css");
 @import url("./components/auth-field/auth-field.css");
-@import url("./layouts/profile/profile.css");
 @import url("./components/profile-avatar/profile-avatar.css");
 @import url("./components/profile-details/profile-details.css");
 @import url("./components/profile-actions/profile-actions.css");
 @import url("./components/profile-edit-form/profile-edit-form.css");
-@import url("./layouts/dialog/dialog.css");
-@import url("./components/demo-navigation/demo-navigation.css");

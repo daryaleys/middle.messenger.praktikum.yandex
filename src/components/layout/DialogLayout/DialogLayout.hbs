@@ -1,4 +1,4 @@
-{{#if this}}
+{{#with activeChat}}
   <section class="dialog" aria-label="Открытый диалог">
     <header class="dialog-header">
       <span class="dialog-header__avatar" aria-hidden="true"></span>
@@ -55,4 +55,4 @@
   <section class="dialog-empty" aria-label="Диалог">
     <p class="dialog-empty__text">Выберите чат, чтобы отправить сообщение</p>
   </section>
-{{/if}}
+{{/with}}
