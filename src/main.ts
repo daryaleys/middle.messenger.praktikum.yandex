@@ -1,6 +1,8 @@
 import "./style.css";
-import { registerPartials } from "@src/app/registerPartials";
-import { router } from "@src/app/router";
+import { registerComponents } from "@src/app/registerComponents";
+import { registerHelpers } from "@src/app/registerHelpers";
+import { router } from "@src/router/router";
 
-registerPartials();
+registerHelpers();
+registerComponents();
 router.start();

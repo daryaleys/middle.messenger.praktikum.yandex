@@ -1,7 +1,15 @@
-<form class="profile-form">
+<form class="profile-form" action="#" method="post" novalidate>
     {{#each fields}}
-        {{> profile-form-field}}
+        {{{ProfileFormField
+            label=label
+            name=name
+            type=type
+            value=value
+            validationRule=validationRule
+            formErrors=../formErrors
+            formValues=../formValues
+        }}}
     {{/each}}
 
-    <button class="profile-form__submit" type="submit">Сохранить</a>
+    {{{SubmitButton text=submitText className="profile-form__submit"}}}
 </form>

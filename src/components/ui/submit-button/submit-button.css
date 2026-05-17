@@ -1,0 +1,14 @@
+.submit-button {
+    display: grid;
+    height: 37px;
+    place-items: center;
+    border-radius: 8px;
+    background: #3369f3;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background: #2859d8;
+}

@@ -1,3 +1,8 @@
+import type {
+	FormValues,
+	ValidationErrors,
+} from "@src/utils/validation";
+
 export type DialogMessage = {
 	id: number;
 	author: string;
@@ -16,4 +21,6 @@ export type DialogData = {
 
 export type DialogLayoutProps = {
 	activeChat: DialogData | null;
+	formErrors?: ValidationErrors;
+	formValues?: FormValues;
 };

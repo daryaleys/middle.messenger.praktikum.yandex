@@ -19,7 +19,7 @@ export interface BlockOwnProps {
 
 export type BlockComponent<Props extends object = object> = {
 	componentName: string;
-	new (props?: Props): Block<Props>;
+	new (props: Props): Block<Props>;
 };
 
 export default abstract class Block<Props extends object = object> {

@@ -1,4 +1,4 @@
 <main class="chats">
-    {{> sidebar-layout}}
-    {{> dialog-layout activeChat=activeChat}}
+    {{{SidebarLayout chats=chats}}}
+    {{{DialogLayout activeChat=activeChat formErrors=formErrors formValues=formValues}}}
 </main>

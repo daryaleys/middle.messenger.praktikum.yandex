@@ -124,6 +124,7 @@
 }
 
 .message-form {
+    position: relative;
     display: grid;
     grid-template-columns: 32px minmax(0, 1fr) 28px;
     align-items: center;
@@ -178,6 +179,19 @@
 
 .message-form__input::placeholder {
     color: #999;
+}
+
+.message-form--error .message-form__input {
+    outline: 1px solid #ff2f2f;
+}
+
+.message-form__error {
+    position: absolute;
+    left: 42px;
+    bottom: 1px;
+    color: #ff2f2f;
+    font-size: 8px;
+    line-height: 1;
 }
 
 .message-form__send {

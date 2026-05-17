@@ -37,22 +37,25 @@
     color: #1e1e1e;
 }
 
-.profile-form__submit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 280px;
-    height: 37px;
-    margin: 60px auto 0;
-    border-radius: 8px;
-    background: #3369f3;
-    color: #fff;
-    font-weight: 500;
-    cursor: pointer;
+.profile-form__field--error {
+    flex-wrap: wrap;
 }
 
-.profile-form__submit:hover {
-    background: #2859d8;
+.profile-form__field--error .profile-form__input {
+    color: #ff2f2f;
+}
+
+.profile-form__error {
+    flex: 0 0 100%;
+    color: #ff2f2f;
+    font-size: 8px;
+    line-height: 1.2;
+    text-align: right;
+}
+
+.profile-form__submit {
+    width: 280px;
+    margin: 60px auto 0;
 }
 
 @media (max-width: 720px) {

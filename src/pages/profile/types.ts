@@ -1,3 +1,5 @@
+import type { ValidationRuleName } from "@src/utils/validation";
+
 export type ProfileMode = "view" | "edit" | "password";
 
 export type ProfileField = {
@@ -5,6 +7,7 @@ export type ProfileField = {
 	name: string;
 	type: string;
 	value?: string;
+	validationRule?: ValidationRuleName;
 };
 
 export type ProfileData = {

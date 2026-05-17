@@ -1,11 +1,13 @@
 import Block from "@src/core/Block";
 
-import template from "./SidebarLayout.hbs?raw";
+import template from "./sidebar-layout.hbs?raw";
 import { SidebarLayoutController } from "./SidebarLayoutController";
 import { SidebarLayoutModel } from "./SidebarLayoutModel";
 import type { SidebarLayoutProps } from "./types";
 
 export class SidebarLayout extends Block<SidebarLayoutProps> {
+	static componentName = "SidebarLayout";
+
 	protected template = template;
 
 	constructor(

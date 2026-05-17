@@ -39,7 +39,7 @@ export class ProfileModel {
 					label: "Телефон",
 					name: "phone",
 					type: "tel",
-					value: "+7 (909) 967 30 30",
+					value: "+79099673030",
 				},
 			],
 			passwordFields: [
@@ -47,16 +47,19 @@ export class ProfileModel {
 					label: "Старый пароль",
 					name: "old_password",
 					type: "password",
+					validationRule: "password",
 				},
 				{
 					label: "Новый пароль",
 					name: "new_password",
 					type: "password",
+					validationRule: "password",
 				},
 				{
 					label: "Повторите новый пароль",
 					name: "new_password_repeat",
 					type: "password",
+					validationRule: "password_repeat",
 				},
 			],
 		};

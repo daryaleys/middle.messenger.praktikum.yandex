@@ -1,10 +1,5 @@
-{{#> profile-layout}}
-    {{#if isDataEditMode}}
-        {{> profile-edit-form fields=profileData.mainFields}}
-    {{else if isPasswordEditMode}}
-        {{> profile-edit-form fields=profileData.passwordFields}}
-    {{else}}
-        {{> profile-details}}
-        {{> profile-actions}}
-    {{/if}}
-{{/profile-layout}}
+{{{ProfileLayout
+    profileData=profileData
+    isDataEditMode=isDataEditMode
+    isPasswordEditMode=isPasswordEditMode
+}}}

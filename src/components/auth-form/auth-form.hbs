@@ -1,0 +1,19 @@
+<form class="auth-form" action="#" method="post" novalidate>
+    <div class="auth-form__fields {{fieldsModifier}}">
+        {{#each fields}}
+            {{{AuthField
+                label=label
+                name=name
+                type=type
+                validationRule=validationRule
+                formErrors=../formErrors
+                formValues=../formValues
+            }}}
+        {{/each}}
+    </div>
+
+    <div class="auth-form__footer">
+        {{{SubmitButton text=submitText className="auth-form__submit"}}}
+        <a class="auth-form__link" href="{{linkHref}}">{{linkText}}</a>
+    </div>
+</form>

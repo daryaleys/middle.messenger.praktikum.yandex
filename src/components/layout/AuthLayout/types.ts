@@ -1,16 +1,7 @@
-export type AuthFieldData = {
-	label: string;
-	name: string;
-	type: string;
-};
+import type { AuthFormProps } from "@src/components/auth-form/types";
 
-export type AuthLayoutProps = {
+export type AuthLayoutProps = AuthFormProps & {
 	cardModifier: string;
-	fieldsModifier: string;
-	linkHref: string;
-	linkText: string;
-	submitText: string;
 	title: string;
 	titleId: string;
-	fields: AuthFieldData[];
 };

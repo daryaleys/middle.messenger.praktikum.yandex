@@ -1,0 +1,16 @@
+<div class="auth-form__field {{#if (fieldError formErrors name)}}auth-form__field--error{{/if}}">
+    <input
+        class="auth-form__input"
+        id="auth-{{name}}"
+        type="{{type}}"
+        name="{{name}}"
+        value="{{fieldValue formValues name}}"
+        placeholder=" "
+        {{#if validationRule}}data-validation-rule="{{validationRule}}"{{/if}}
+        {{#if (fieldError formErrors name)}}aria-invalid="true" aria-describedby="auth-{{name}}-error"{{/if}}
+    />
+    <label class="auth-form__label" for="auth-{{name}}">{{label}}</label>
+    {{#if (fieldError formErrors name)}}
+        <span class="auth-form__error" id="auth-{{name}}-error">{{fieldError formErrors name}}</span>
+    {{/if}}
+</div>
