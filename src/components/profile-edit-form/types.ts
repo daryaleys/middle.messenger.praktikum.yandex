@@ -1,4 +1,4 @@
-import type { ProfileFormFieldProps } from "@src/components/UI/profile-form-field/types";
+import type { ProfileFormFieldProps } from "@src/components/ui/profile-form-field/types";
 import type { FormValues, ValidationErrors } from "@src/utils/validation";
 
 export type ProfileEditFormProps = {

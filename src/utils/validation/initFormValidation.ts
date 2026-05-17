@@ -4,10 +4,7 @@ import {
 	hasValidationRule,
 	validateInputValue,
 } from "./fieldValidation";
-import type {
-	FormValidationOptions,
-	ValidationErrors,
-} from "./types";
+import type { FormValidationOptions, ValidationErrors } from "./types";
 
 export function initFormValidation(
 	form: HTMLFormElement,
@@ -46,7 +43,8 @@ export function initFormValidation(
 
 		const inputs = Array.from(form.elements).filter(
 			(element): element is HTMLInputElement =>
-				element instanceof HTMLInputElement && hasValidationRule(element),
+				element instanceof HTMLInputElement &&
+				hasValidationRule(element),
 		);
 
 		formErrors = inputs.reduce<ValidationErrors>((errors, input) => {

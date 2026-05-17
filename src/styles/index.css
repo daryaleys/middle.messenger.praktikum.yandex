@@ -15,6 +15,7 @@
 
 /* components */
 @import url("../components/auth-form/auth-form.css");
+@import url("../components/message-form/message-form.css");
 @import url("../components/profile-details/profile-details.css");
 @import url("../components/profile-actions/profile-actions.css");
 @import url("../components/profile-edit-form/profile-edit-form.css");
@@ -22,6 +23,7 @@
 /* ui */
 @import url("../components/ui/auth-field/auth-field.css");
 @import url("../components/ui/chat-item/chat-item.css");
+@import url("../components/ui/chat-message/chat-message.css");
 @import url("../components/ui/profile-avatar/profile-avatar.css");
 @import url("../components/ui/profile-form-field/profile-form-field.css");
 @import url("../components/ui/submit-button/submit-button.css");

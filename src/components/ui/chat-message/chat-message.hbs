@@ -1,0 +1,11 @@
+<article class="message {{#if isOwn}}message--own{{/if}}" data-id="{{id}}" aria-label="Сообщение от {{author}}">
+    {{#if text}}
+        <p class="message__text">{{text}}</p>
+    {{/if}}
+
+    {{#if imageUrl}}
+        <img class="message__image" src="{{imageUrl}}" alt="{{imageAlt}}" />
+    {{/if}}
+
+    <time class="message__time">{{time}}</time>
+</article>

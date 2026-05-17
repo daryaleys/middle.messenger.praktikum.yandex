@@ -1,4 +1,4 @@
-import type { AuthFieldProps } from "@src/components/UI/auth-field/types";
+import type { AuthFieldProps } from "@src/components/ui/auth-field/types";
 import type { FormValues, ValidationErrors } from "@src/utils/validation";
 
 export type AuthFormProps = {
