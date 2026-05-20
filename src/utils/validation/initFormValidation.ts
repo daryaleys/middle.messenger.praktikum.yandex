@@ -19,6 +19,14 @@ export function initFormValidation(
 				return;
 			}
 
+			// Если с блюра фокус уходит на кнопку сабмита, не выполняем валидацию, так как она будет выполнена при сабмите
+			if (
+				event.relatedTarget instanceof HTMLButtonElement &&
+				event.relatedTarget.type === "submit"
+			) {
+				return;
+			}
+
 			const errorName = getErrorName(event.target);
 			const errorMessage = validateInputValue(event.target, form);
 			formErrors = {
