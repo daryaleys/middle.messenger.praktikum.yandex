@@ -14,3 +14,11 @@ export type ProfileFormFieldProps = {
 	formErrors?: ValidationErrors;
 	formValues?: FormValues;
 };
+
+export type ProfileFormFieldViewProps = ProfileFormFieldProps & {
+	errorId: string;
+	errorMessage: string;
+	inputId: string;
+	inputValue: string;
+	isInvalid: boolean;
+};

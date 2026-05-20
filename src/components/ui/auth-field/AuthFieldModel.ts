@@ -1,4 +1,4 @@
-import type { AuthFieldProps } from "./types";
+import type { AuthFieldProps, AuthFieldViewProps } from "./types";
 
 export class AuthFieldModel {
 	private readonly props: AuthFieldProps;
@@ -7,7 +7,17 @@ export class AuthFieldModel {
 		this.props = props;
 	}
 
-	getFieldData(): AuthFieldProps {
-		return this.props;
+	getFieldData(): AuthFieldViewProps {
+		const inputId = `auth-${this.props.name}`;
+		const errorMessage =
+			this.props.error ?? this.props.formErrors?.[this.props.name] ?? "";
+
+		return {
+			...this.props,
+			errorId: `${inputId}-error`,
+			errorMessage,
+			inputId,
+			isInvalid: Boolean(errorMessage),
+		};
 	}
 }

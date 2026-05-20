@@ -1,5 +1,5 @@
 import { ProfileFormFieldModel } from "./ProfileFormFieldModel";
-import type { ProfileFormFieldProps } from "./types";
+import type { ProfileFormFieldViewProps } from "./types";
 
 export class ProfileFormFieldController {
 	private readonly model: ProfileFormFieldModel;
@@ -8,7 +8,7 @@ export class ProfileFormFieldController {
 		this.model = model;
 	}
 
-	getViewModel(): ProfileFormFieldProps {
+	getViewModel(): ProfileFormFieldViewProps {
 		return this.model.getFieldData();
 	}
 }

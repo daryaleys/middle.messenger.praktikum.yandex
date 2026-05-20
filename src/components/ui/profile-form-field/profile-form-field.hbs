@@ -1,15 +1,16 @@
-<div class="profile-form__field {{#if (fieldError formErrors name)}}profile-form__field--error{{/if}}">
-    <label class="profile-form__label" for="profile-{{name}}">{{label}}</label>
-    <input
-        class="profile-form__input"
-        id="profile-{{name}}"
-        type="{{type}}"
-        name="{{name}}"
-        value="{{fieldValue formValues name value}}"
-        {{#if validationRule}}data-validation-rule="{{validationRule}}"{{/if}}
-        {{#if (fieldError formErrors name)}}aria-invalid="true" aria-describedby="profile-{{name}}-error"{{/if}}
-    />
-    {{#if (fieldError formErrors name)}}
-        <span class="profile-form__error" id="profile-{{name}}-error">{{fieldError formErrors name}}</span>
+<div class="profile-form__field {{#if isInvalid}}profile-form__field--error{{/if}}">
+    <label class="profile-form__label" for="{{inputId}}">{{label}}</label>
+    {{{Input
+        className="profile-form__input"
+        id=inputId
+        type=type
+        name=name
+        value=inputValue
+        validationRule=validationRule
+        isInvalid=isInvalid
+        describedBy=errorId
+    }}}
+    {{#if errorMessage}}
+        <span class="profile-form__error" id="{{errorId}}">{{errorMessage}}</span>
     {{/if}}
 </div>

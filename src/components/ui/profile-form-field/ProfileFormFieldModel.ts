@@ -1,4 +1,7 @@
-import type { ProfileFormFieldProps } from "./types";
+import type {
+	ProfileFormFieldProps,
+	ProfileFormFieldViewProps,
+} from "./types";
 
 export class ProfileFormFieldModel {
 	private readonly props: ProfileFormFieldProps;
@@ -7,7 +10,19 @@ export class ProfileFormFieldModel {
 		this.props = props;
 	}
 
-	getFieldData(): ProfileFormFieldProps {
-		return this.props;
+	getFieldData(): ProfileFormFieldViewProps {
+		const inputId = `profile-${this.props.name}`;
+		const errorMessage =
+			this.props.error ?? this.props.formErrors?.[this.props.name] ?? "";
+
+		return {
+			...this.props,
+			errorId: `${inputId}-error`,
+			errorMessage,
+			inputId,
+			inputValue:
+				this.props.formValues?.[this.props.name] ?? this.props.value ?? "",
+			isInvalid: Boolean(errorMessage),
+		};
 	}
 }

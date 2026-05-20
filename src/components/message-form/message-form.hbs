@@ -6,15 +6,16 @@
     </button>
 
     <label class="message-form__label" for="message-text">Сообщение</label>
-    <input
-        class="message-form__input"
+    {{{Input
+        className="message-form__input"
         id="message-text"
         type="text"
         name="message"
-        value="{{fieldValue formValues "message"}}"
+        value=(fieldValue formValues "message")
         placeholder="Сообщение"
-        {{#if (fieldError formErrors "message")}}aria-invalid="true" aria-describedby="message-text-error"{{/if}}
-    />
+        isInvalid=(fieldError formErrors "message")
+        describedBy="message-text-error"
+    }}}
     {{#if (fieldError formErrors "message")}}
         <span class="message-form__error" id="message-text-error">{{fieldError formErrors "message"}}</span>
     {{/if}}

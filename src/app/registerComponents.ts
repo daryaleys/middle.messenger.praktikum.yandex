@@ -13,6 +13,7 @@ import { ProfileEditForm } from "@src/components/profile-edit-form/ProfileEditFo
 import { AuthField } from "@src/components/ui/auth-field/AuthField";
 import { ChatItem } from "@src/components/ui/chat-item/ChatItem";
 import { ChatMessage } from "@src/components/ui/chat-message/ChatMessage";
+import { Input } from "@src/components/ui/input/Input";
 import { ProfileAvatar } from "@src/components/ui/profile-avatar/ProfileAvatar";
 import { ProfileFormField } from "@src/components/ui/profile-form-field/ProfileFormField";
 import { SubmitButton } from "@src/components/ui/submit-button/SubmitButton";
@@ -25,6 +26,7 @@ export function registerComponents() {
 	registerComponent(ChatMessage);
 	registerComponent(DemoNavigation);
 	registerComponent(DialogLayout);
+	registerComponent(Input);
 	registerComponent(MessageForm);
 	registerComponent(ProfileActions);
 	registerComponent(ProfileAvatar);

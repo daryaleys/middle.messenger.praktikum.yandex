@@ -1,5 +1,5 @@
 import { AuthFieldModel } from "./AuthFieldModel";
-import type { AuthFieldProps } from "./types";
+import type { AuthFieldViewProps } from "./types";
 
 export class AuthFieldController {
 	private readonly model: AuthFieldModel;
@@ -8,7 +8,7 @@ export class AuthFieldController {
 		this.model = model;
 	}
 
-	getViewModel(): AuthFieldProps {
+	getViewModel(): AuthFieldViewProps {
 		return this.model.getFieldData();
 	}
 }
