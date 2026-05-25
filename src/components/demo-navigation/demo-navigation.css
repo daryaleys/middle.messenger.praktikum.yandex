@@ -2,8 +2,8 @@
     position: sticky;
     z-index: 10;
     top: 0;
-    border-bottom: 1px solid #eaeaea;
-    background: #fff;
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-background);
 }
 
 .demo-navigation__list {
@@ -15,29 +15,33 @@
     padding: 8px 16px;
 }
 
+.demo-navigation__item {
+    flex: 0 0 auto;
+}
+
 .demo-navigation__link {
     display: inline-flex;
     align-items: center;
     min-height: 28px;
     padding: 0 10px;
-    border: 1px solid #eaeaea;
+    border: 1px solid var(--color-border);
     border-radius: 6px;
-    color: #3369f3;
+    color: var(--color-primary);
     font-size: 12px;
     font-weight: 500;
 }
 
 .demo-navigation__link:hover {
-    border-color: #3369f3;
+    border-color: var(--color-primary);
 }
 
 .demo-navigation__link--active {
-    border-color: #3369f3;
-    background: #e4edfd;
-    color: #1e1e1e;
+    border-color: var(--color-primary);
+    background: var(--color-primary-soft);
+    color: var(--color-text-primary);
 }
 
-.app-content > .messenger,
+.app-content > .chats,
 .app-content > .auth-page,
 .app-content > .profile-page,
 .app-content > .service-page {

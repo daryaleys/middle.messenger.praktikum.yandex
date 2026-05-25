@@ -8,7 +8,7 @@
     gap: 24px;
     min-height: 34px;
     padding: 10px 0;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid var(--color-border);
 }
 
 .profile__detail:last-child {
@@ -16,13 +16,13 @@
 }
 
 .profile__label {
-    color: #1e1e1e;
+    color: var(--color-text-primary);
     font-weight: 500;
 }
 
 .profile__value {
     margin: 0;
-    color: #999;
+    color: var(--color-text-secondary);
     font-weight: 500;
     text-align: right;
 }

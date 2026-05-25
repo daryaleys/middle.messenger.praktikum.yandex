@@ -1,0 +1,32 @@
+.service-page {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: 24px;
+    background: var(--color-background);
+}
+
+.service-page__content {
+    text-align: center;
+}
+
+.service-page__code {
+    margin: 0 0 20px;
+    color: var(--color-text-primary);
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.service-page__message {
+    margin: 0 0 69px;
+    color: var(--color-text-primary);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.service-page__link {
+    color: var(--color-primary);
+    font-weight: 500;
+}

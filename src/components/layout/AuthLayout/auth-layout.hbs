@@ -1,0 +1,15 @@
+<main class="auth-page">
+    <section class="auth-card {{cardModifier}}" aria-labelledby="{{titleId}}">
+        <h1 class="auth-card__title" id="{{titleId}}">{{title}}</h1>
+
+        {{{AuthForm
+            fieldsModifier=fieldsModifier
+            linkHref=linkHref
+            linkText=linkText
+            submitText=submitText
+            fields=fields
+            formErrors=formErrors
+            formValues=formValues
+        }}}
+    </section>
+</main>

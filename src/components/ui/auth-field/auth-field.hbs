@@ -1,0 +1,17 @@
+<div class="auth-form__field {{#if isInvalid}}auth-form__field--error{{/if}}">
+    {{{Input
+        className="auth-form__input"
+        id=inputId
+        type=type
+        name=name
+        value=(fieldValue formValues name)
+        placeholder=" "
+        validationRule=validationRule
+        isInvalid=isInvalid
+        describedBy=errorId
+    }}}
+    <label class="auth-form__label" for="{{inputId}}">{{label}}</label>
+    {{#if errorMessage}}
+        <span class="auth-form__error" id="{{errorId}}">{{errorMessage}}</span>
+    {{/if}}
+</div>

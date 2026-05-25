@@ -1,0 +1,35 @@
+{{#with activeChat}}
+  <section class="dialog" aria-label="Открытый диалог">
+    <header class="dialog-header">
+      <span class="dialog-header__avatar" aria-hidden="true"></span>
+      <h1 class="dialog-header__title">{{title}}</h1>
+      <button class="dialog-header__menu" type="button" aria-label="Открыть меню диалога">
+        <svg class="dialog-header__menu-icon" viewBox="0 0 128 512" aria-hidden="true">
+          <path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" />
+        </svg>
+      </button>
+    </header>
+
+    <div class="dialog-messages">
+      <time class="dialog-date">{{date}}</time>
+
+      {{#each messages}}
+        {{{ChatMessage
+          id=id
+          author=author
+          time=time
+          isOwn=isOwn
+          text=text
+          imageUrl=imageUrl
+          imageAlt=imageAlt
+        }}}
+      {{/each}}
+    </div>
+
+    {{{MessageForm formErrors=../formErrors formValues=../formValues}}}
+  </section>
+{{else}}
+  <section class="dialog-empty" aria-label="Диалог">
+    <p class="dialog-empty__text">Выберите чат, чтобы отправить сообщение</p>
+  </section>
+{{/with}}

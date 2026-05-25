@@ -1,0 +1,16 @@
+<div class="profile-form__field {{#if isInvalid}}profile-form__field--error{{/if}}">
+    <label class="profile-form__label" for="{{inputId}}">{{label}}</label>
+    {{{Input
+        className="profile-form__input"
+        id=inputId
+        type=type
+        name=name
+        value=inputValue
+        validationRule=validationRule
+        isInvalid=isInvalid
+        describedBy=errorId
+    }}}
+    {{#if errorMessage}}
+        <span class="profile-form__error" id="{{errorId}}">{{errorMessage}}</span>
+    {{/if}}
+</div>
