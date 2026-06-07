@@ -44,6 +44,30 @@
       formErrors=../formErrors
       formValues=../formValues
     }}}
+
+    {{#Modal
+      id="add-user-modal"
+      label="Добавить пользователя"
+      triggerSelector="[data-dropdown-action='add-user']"
+    }}
+      {{{ChatUserForm
+        title=../addUserForm.title
+        submitText=../addUserForm.submitText
+        action=../addUserForm.action
+      }}}
+    {{/Modal}}
+
+    {{#Modal
+      id="remove-user-modal"
+      label="Удалить пользователя"
+      triggerSelector="[data-dropdown-action='remove-user']"
+    }}
+      {{{ChatUserForm
+        title=../removeUserForm.title
+        submitText=../removeUserForm.submitText
+        action=../removeUserForm.action
+      }}}
+    {{/Modal}}
   </section>
 {{else}}
   <section class="dialog-empty" aria-label="Диалог">

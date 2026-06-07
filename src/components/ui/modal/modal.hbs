@@ -1,0 +1,11 @@
+<div class="modal" id="{{id}}" {{#unless isOpen}}hidden{{/unless}}>
+    <div class="modal__overlay" data-modal-close></div>
+    <section
+        class="modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-label="{{label}}"
+    >
+        {{{children}}}
+    </section>
+</div>

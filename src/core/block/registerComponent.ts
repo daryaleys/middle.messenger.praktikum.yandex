@@ -1,6 +1,6 @@
 import Handlebars from "handlebars";
 import type { HelperOptions } from "handlebars";
-import type { BlockComponent } from "./block";
+import type { BlockComponent, BlockOwnProps } from "./block";
 
 let uniqueId = 0;
 
@@ -11,8 +11,26 @@ export function registerComponent<Props extends object>(
 
 	Handlebars.registerHelper(
 		Component.componentName,
-		function (this: unknown, { hash, data }: HelperOptions) {
-			const component = new Component(hash as Props);
+		function (this: unknown, options: HelperOptions) {
+			const { hash, data } = options;
+			const slotProps: BlockOwnProps = {
+				__children: [],
+				__refs: {},
+			};
+			const children =
+				typeof options.fn === "function"
+					? options.fn(this, {
+							data: {
+								...data,
+								root: slotProps,
+							},
+						})
+					: undefined;
+			const component = new Component({
+				...hash,
+				children,
+				...slotProps,
+			} as Props);
 
 			if ("ref" in hash) {
 				(data.root.__refs = data.root.__refs || {})[hash.ref] =
@@ -42,7 +60,7 @@ export function registerComponent<Props extends object>(
 				},
 			});
 
-			return `<div ${dataAttribute}></div>`;
+			return new Handlebars.SafeString(`<div ${dataAttribute}></div>`);
 		},
 	);
 }

@@ -2,6 +2,7 @@ export type ValidationRuleName =
 	| "first_name"
 	| "second_name"
 	| "login"
+	| "chat_title"
 	| "email"
 	| "password"
 	| "password_repeat"

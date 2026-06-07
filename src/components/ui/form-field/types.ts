@@ -4,7 +4,7 @@ import type {
 	ValidationRuleName,
 } from "@src/utils/validation";
 
-export type AuthFieldProps = {
+export type FormFieldProps = {
 	label: string;
 	name: string;
 	type: string;
@@ -14,7 +14,7 @@ export type AuthFieldProps = {
 	formValues?: FormValues;
 };
 
-export type AuthFieldViewProps = AuthFieldProps & {
+export type FormFieldViewProps = FormFieldProps & {
 	errorId: string;
 	errorMessage: string;
 	inputId: string;

@@ -36,9 +36,11 @@ export abstract class Block<Props extends object = object> {
 	protected events: EventListType = {};
 
 	constructor(props?: Props) {
+		const ownProps = props as Props & BlockOwnProps;
+
 		this.props = Object.assign({}, props, {
-			__children: [],
-			__refs: {},
+			__children: ownProps?.__children ?? [],
+			__refs: ownProps?.__refs ?? {},
 		});
 	}
 

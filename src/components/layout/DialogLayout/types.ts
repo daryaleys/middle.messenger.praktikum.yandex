@@ -2,6 +2,7 @@ import type {
 	FormValues,
 	ValidationErrors,
 } from "@src/utils/validation";
+import type { ChatUserFormProps } from "@src/components/chat-user-form/types";
 import type { DropdownConfig } from "@src/components/ui/dropdown/types";
 
 export type DialogMessage = {
@@ -27,5 +28,7 @@ export type DialogLayoutProps = {
 };
 
 export type DialogLayoutViewModel = DialogLayoutProps & {
+	addUserForm: ChatUserFormProps;
 	chatActionsDropdown: DropdownConfig;
+	removeUserForm: ChatUserFormProps;
 };

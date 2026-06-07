@@ -1,3 +1,5 @@
+import type { CreateChatFormProps } from "@src/components/create-chat-form/types";
+
 export type Chat = {
 	id: number;
 	title: string;
@@ -17,5 +19,6 @@ export type Chat = {
 
 export type SidebarLayoutProps = {
 	chats: Chat[];
+	createChatForm?: CreateChatFormProps;
 	profileHref?: string;
 };

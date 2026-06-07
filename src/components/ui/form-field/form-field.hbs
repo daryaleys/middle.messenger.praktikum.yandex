@@ -1,10 +1,10 @@
 <div
-    class="auth-form__field"
+    class="form-field"
     data-validation-field
     data-validation-state="{{#if isInvalid}}invalid{{else}}valid{{/if}}"
 >
     {{{Input
-        className="auth-form__input"
+        className="form-field__input"
         id=inputId
         type=type
         name=name
@@ -14,9 +14,9 @@
         isInvalid=isInvalid
         describedBy=errorId
     }}}
-    <label class="auth-form__label" for="{{inputId}}">{{label}}</label>
+    <label class="form-field__label" for="{{inputId}}">{{label}}</label>
     <span
-        class="auth-form__error"
+        class="form-field__error"
         id="{{errorId}}"
         data-validation-error
         {{#unless errorMessage}}hidden{{/unless}}

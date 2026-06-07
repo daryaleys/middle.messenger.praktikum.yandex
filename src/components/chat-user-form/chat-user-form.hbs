@@ -1,0 +1,15 @@
+<form class="chat-user-form" action="#" method="post" novalidate>
+    <h2 class="chat-user-form__title">{{title}}</h2>
+
+    {{{FormField
+        label="Логин"
+        name="login"
+        type="text"
+        validationRule="login"
+    }}}
+
+    {{{SubmitButton
+        text=submitText
+        className="chat-user-form__submit"
+    }}}
+</form>

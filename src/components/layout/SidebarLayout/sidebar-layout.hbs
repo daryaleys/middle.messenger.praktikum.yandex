@@ -1,9 +1,24 @@
 <aside class="chats__sidebar">
   <header class="sidebar-header">
-    <a class="profile-link" href="{{profileHref}}">
-      Профиль
-      <span class="profile-link__arrow" aria-hidden="true"></span>
-    </a>
+    <div class="sidebar-header__top">
+      <button
+        class="create-chat-button"
+        type="button"
+        aria-label="Создать чат"
+        aria-controls="create-chat-modal"
+        aria-expanded="false"
+        data-create-chat-trigger
+      >
+        <svg class="create-chat-button__icon" viewBox="0 0 448 512" aria-hidden="true">
+          <path d="M256 80c0-17.7-14.3-32-32-32s-32 14.3-32 32v144H48c-17.7 0-32 14.3-32 32s14.3 32 32 32h144v144c0 17.7 14.3 32 32 32s32-14.3 32-32V288h144c17.7 0 32-14.3 32-32s-14.3-32-32-32H256V80z" />
+        </svg>
+      </button>
+
+      <a class="profile-link" href="{{profileHref}}">
+        Профиль
+        <span class="profile-link__arrow" aria-hidden="true"></span>
+      </a>
+    </div>
 
     <form class="search-form" action="#" method="get">
       <label class="search-form__label" for="chat-search">Поиск</label>
@@ -16,6 +31,17 @@
       }}}
       <span class="search-form__placeholder" aria-hidden="true">Поиск</span>
     </form>
+
+    {{#Modal
+      id="create-chat-modal"
+      label="Создать чат"
+      triggerSelector="[data-create-chat-trigger]"
+    }}
+      {{{CreateChatForm
+        title=createChatForm.title
+        submitText=createChatForm.submitText
+      }}}
+    {{/Modal}}
   </header>
 
   <nav class="chat-navigation" aria-label="Список чатов">

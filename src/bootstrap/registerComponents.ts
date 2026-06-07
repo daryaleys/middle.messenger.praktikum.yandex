@@ -1,5 +1,7 @@
 import { registerComponent } from "@src/core";
 import { AuthForm } from "@src/components/auth-form/AuthForm";
+import { ChatUserForm } from "@src/components/chat-user-form/ChatUserForm";
+import { CreateChatForm } from "@src/components/create-chat-form/CreateChatForm";
 import { DemoNavigation } from "@src/components/demo-navigation/DemoNavigation";
 import { AuthLayout } from "@src/components/layout/AuthLayout/AuthLayout";
 import { DialogLayout } from "@src/components/layout/DialogLayout/DialogLayout";
@@ -10,25 +12,29 @@ import { SidebarLayout } from "@src/components/layout/SidebarLayout/SidebarLayou
 import { ProfileActions } from "@src/components/profile-actions/ProfileActions";
 import { ProfileDetails } from "@src/components/profile-details/ProfileDetails";
 import { ProfileEditForm } from "@src/components/profile-edit-form/ProfileEditForm";
-import { AuthField } from "@src/components/ui/auth-field/AuthField";
 import { ChatItem } from "@src/components/ui/chat-item/ChatItem";
 import { ChatMessage } from "@src/components/ui/chat-message/ChatMessage";
 import { Dropdown } from "@src/components/ui/dropdown/Dropdown";
+import { FormField } from "@src/components/ui/form-field/FormField";
 import { Input } from "@src/components/ui/input/Input";
+import { Modal } from "@src/components/ui/modal/Modal";
 import { ProfileAvatar } from "@src/components/ui/profile-avatar/ProfileAvatar";
 import { ProfileFormField } from "@src/components/ui/profile-form-field/ProfileFormField";
 import { SubmitButton } from "@src/components/ui/submit-button/SubmitButton";
 
 export function registerComponents() {
-	registerComponent(AuthField);
 	registerComponent(AuthForm);
 	registerComponent(AuthLayout);
 	registerComponent(ChatItem);
 	registerComponent(ChatMessage);
+	registerComponent(ChatUserForm);
+	registerComponent(CreateChatForm);
 	registerComponent(DemoNavigation);
 	registerComponent(DialogLayout);
 	registerComponent(Dropdown);
+	registerComponent(FormField);
 	registerComponent(Input);
+	registerComponent(Modal);
 	registerComponent(MessageForm);
 	registerComponent(ProfileActions);
 	registerComponent(ProfileAvatar);
