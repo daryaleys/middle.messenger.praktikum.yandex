@@ -39,12 +39,12 @@
     transform: translateY(0);
 }
 
-.auth-form__field--error .auth-form__input {
+.auth-form__field[data-validation-state="invalid"] .auth-form__input {
     border-bottom-color: var(--color-error);
     color: var(--color-error);
 }
 
-.auth-form__field--error .auth-form__label,
+.auth-form__field[data-validation-state="invalid"] .auth-form__label,
 .auth-form__error {
     color: var(--color-error);
 }

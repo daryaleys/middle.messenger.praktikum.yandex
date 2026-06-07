@@ -1,4 +1,8 @@
-<div class="auth-form__field {{#if isInvalid}}auth-form__field--error{{/if}}">
+<div
+    class="auth-form__field"
+    data-validation-field
+    data-validation-state="{{#if isInvalid}}invalid{{else}}valid{{/if}}"
+>
     {{{Input
         className="auth-form__input"
         id=inputId
@@ -11,7 +15,10 @@
         describedBy=errorId
     }}}
     <label class="auth-form__label" for="{{inputId}}">{{label}}</label>
-    {{#if errorMessage}}
-        <span class="auth-form__error" id="{{errorId}}">{{errorMessage}}</span>
-    {{/if}}
+    <span
+        class="auth-form__error"
+        id="{{errorId}}"
+        data-validation-error
+        {{#unless errorMessage}}hidden{{/unless}}
+    >{{errorMessage}}</span>
 </div>

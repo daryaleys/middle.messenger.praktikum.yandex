@@ -34,7 +34,7 @@
 	color: var(--color-text-primary);
 }
 
-.profile-form__field--error .profile-form__input {
+.profile-form__field[data-validation-state="invalid"] .profile-form__input {
 	color: var(--color-error);
 }
 

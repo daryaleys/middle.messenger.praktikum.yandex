@@ -1,3 +1,4 @@
+import { ROUTES } from "@src/router/routes";
 import type { ProfileAvatarProps } from "./types";
 
 export class ProfileAvatarModel {
@@ -9,7 +10,7 @@ export class ProfileAvatarModel {
 
 	getAvatarData(): Required<ProfileAvatarProps> {
 		return {
-			action: this.props.action ?? "/settings",
+			action: this.props.action ?? ROUTES.settings,
 			inputId: this.props.inputId ?? "profile-avatar",
 			text: this.props.text ?? "Поменять аватар",
 		};

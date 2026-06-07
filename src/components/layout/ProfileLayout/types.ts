@@ -6,6 +6,7 @@ export type ProfileLayoutProps = {
 		firstName: string;
 		passwordFields: ProfileFormFieldProps[];
 	};
+	backHref?: string;
 	isDataEditMode?: boolean;
 	isPasswordEditMode?: boolean;
 };

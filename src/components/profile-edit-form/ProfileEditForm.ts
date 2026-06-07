@@ -1,8 +1,5 @@
 import { Block } from "@src/core";
-import {
-	initFormValidation,
-	type FormValidationState,
-} from "@src/utils/validation";
+import { initFormValidation } from "@src/utils/validation";
 
 import template from "./profile-edit-form.hbs?raw";
 import { ProfileEditFormController } from "./ProfileEditFormController";
@@ -29,17 +26,9 @@ export class ProfileEditForm extends Block<Required<ProfileEditFormProps>> {
 
 		if (form) {
 			initFormValidation(form, {
-				onValidate: (state) => this.updateFormState(state),
 				onSubmit: (values) => this.handleSubmit(values),
 			});
 		}
-	}
-
-	private updateFormState({ formErrors, formValues }: FormValidationState) {
-		this.setProps({
-			formErrors,
-			formValues,
-		});
 	}
 
 	private handleSubmit(values: Record<string, string>) {

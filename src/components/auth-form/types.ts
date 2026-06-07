@@ -9,4 +9,6 @@ export type AuthFormProps = {
 	fields: AuthFieldProps[];
 	formErrors?: ValidationErrors;
 	formValues?: FormValues;
+	isLoading?: boolean;
+	submitError?: string;
 };

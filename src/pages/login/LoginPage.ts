@@ -1,8 +1,5 @@
 import { Block } from "@src/core";
-import {
-	initFormValidation,
-	type FormValidationState,
-} from "@src/utils/validation";
+import { initFormValidation } from "@src/utils/validation";
 
 import template from "./login.hbs?raw";
 import { LoginController } from "./LoginController";
@@ -11,8 +8,11 @@ import type { LoginPageProps } from "./types";
 export class LoginPage extends Block<LoginPageProps> {
 	protected template = template;
 
+	private readonly controller: LoginController;
+
 	constructor(controller = new LoginController()) {
 		super(controller.getViewModel());
+		this.controller = controller;
 	}
 
 	protected componentDidMount() {
@@ -21,23 +21,51 @@ export class LoginPage extends Block<LoginPageProps> {
 
 		if (form) {
 			initFormValidation(form, {
-				onValidate: (state) => this.updateFormState(state),
 				onSubmit: (values) => this.handleSubmit(values),
 			});
 		}
 	}
 
-	private updateFormState({ formErrors, formValues }: FormValidationState) {
+	private async handleSubmit(values: Record<string, string>) {
+		if (this.props.loginPageData.isLoading) {
+			return;
+		}
+
 		this.setProps({
 			loginPageData: {
 				...this.props.loginPageData,
-				formErrors,
-				formValues,
+				formValues: values,
+				isLoading: true,
+				submitError: "",
+			},
+		});
+
+		try {
+			const submitError = await this.controller.login(values);
+
+			if (submitError) {
+				this.setSubmitError(submitError);
+			}
+		} finally {
+			this.setLoading(false);
+		}
+	}
+
+	private setSubmitError(submitError: string) {
+		this.setProps({
+			loginPageData: {
+				...this.props.loginPageData,
+				submitError,
 			},
 		});
 	}
 
-	private handleSubmit(values: Record<string, string>) {
-		console.log(values);
+	private setLoading(isLoading: boolean) {
+		this.setProps({
+			loginPageData: {
+				...this.props.loginPageData,
+				isLoading,
+			},
+		});
 	}
 }

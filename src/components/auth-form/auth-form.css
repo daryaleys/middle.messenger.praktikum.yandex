@@ -25,6 +25,14 @@
     width: 100%;
 }
 
+.auth-form__submit-error {
+    color: var(--color-danger);
+    font-size: 11px;
+    line-height: 1.4;
+    margin: 0;
+    text-align: center;
+}
+
 .auth-form__link {
     color: var(--color-primary);
     font-size: 11px;

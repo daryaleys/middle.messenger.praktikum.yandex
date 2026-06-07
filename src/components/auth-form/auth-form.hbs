@@ -13,7 +13,15 @@
     </div>
 
     <div class="auth-form__footer">
-        {{{SubmitButton text=submitText className="auth-form__submit"}}}
+        {{#if submitError}}
+            <p class="auth-form__submit-error">{{submitError}}</p>
+        {{/if}}
+        {{{SubmitButton
+            text=submitText
+            className="auth-form__submit"
+            disabled=isLoading
+            isLoading=isLoading
+        }}}
         <a class="auth-form__link" href="{{linkHref}}">{{linkText}}</a>
     </div>
 </form>

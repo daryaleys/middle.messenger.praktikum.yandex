@@ -1,8 +1,5 @@
 import { Block } from "@src/core";
-import {
-	initFormValidation,
-	type FormValidationState,
-} from "@src/utils/validation";
+import { initFormValidation } from "@src/utils/validation";
 
 import template from "./message-form.hbs?raw";
 import { MessageFormController } from "./MessageFormController";
@@ -27,17 +24,9 @@ export class MessageForm extends Block<MessageFormProps> {
 
 		if (form) {
 			initFormValidation(form, {
-				onValidate: (state) => this.updateFormState(state),
 				onSubmit: (values) => this.handleSubmit(values),
 			});
 		}
-	}
-
-	private updateFormState({ formErrors, formValues }: FormValidationState) {
-		this.setProps({
-			formErrors,
-			formValues,
-		});
 	}
 
 	private handleSubmit(values: Record<string, string>) {

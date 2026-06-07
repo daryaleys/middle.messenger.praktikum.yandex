@@ -1,3 +1,4 @@
+import { ROUTES } from "@src/router/routes";
 import type { ServiceLayoutProps } from "./types";
 
 export class ServiceLayoutModel {
@@ -8,6 +9,9 @@ export class ServiceLayoutModel {
 	}
 
 	getLayoutData(): ServiceLayoutProps {
-		return this.props;
+		return {
+			...this.props,
+			backHref: this.props.backHref ?? ROUTES.messenger,
+		};
 	}
 }

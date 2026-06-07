@@ -2,7 +2,12 @@ import type Block from "../block/block";
 
 type BlockFactory = () => Block<object>;
 
-type RouteProps = {
+export type RouteOptions = {
+	isProtected?: boolean;
+	isPublicOnly?: boolean;
+};
+
+type RouteProps = RouteOptions & {
 	rootQuery: string;
 };
 
@@ -33,6 +38,18 @@ export class Route {
 
 	match(pathname: string) {
 		return pathname === this._pathname;
+	}
+
+	isProtected() {
+		return Boolean(this._props.isProtected);
+	}
+
+	isPublicOnly() {
+		return Boolean(this._props.isPublicOnly);
+	}
+
+	requiresAuthCheck() {
+		return this.isProtected() || this.isPublicOnly();
 	}
 
 	render() {

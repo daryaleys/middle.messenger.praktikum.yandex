@@ -9,7 +9,6 @@
 
 .profile__action-item {
     min-height: 34px;
-    padding: 10px 0;
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -18,8 +17,11 @@
 }
 
 .profile__action {
-    display: inline-block;
-    padding: 0;
+    display: block;
+    width: 100%;
+    min-height: 34px;
+    padding: 10px 0;
+    appearance: none;
     background: transparent;
     color: var(--color-primary);
     font-weight: 500;
@@ -31,10 +33,30 @@
     color: var(--color-primary-hover);
 }
 
+.profile__action:disabled {
+    cursor: wait;
+    opacity: 0.65;
+}
+
+.profile__action:disabled:hover {
+    color: var(--color-primary);
+}
+
 .profile__action--danger {
     color: var(--color-danger);
 }
 
 .profile__action--danger:hover {
     color: var(--color-danger-hover);
+}
+
+.profile__action--danger:disabled:hover {
+    color: var(--color-danger);
+}
+
+.profile__actions-error {
+    color: var(--color-danger);
+    font-size: 11px;
+    line-height: 1.4;
+    margin: 8px 0 0;
 }

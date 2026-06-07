@@ -17,4 +17,5 @@ export type Chat = {
 
 export type SidebarLayoutProps = {
 	chats: Chat[];
+	profileHref?: string;
 };

@@ -1,4 +1,8 @@
-<div class="profile-form__field {{#if isInvalid}}profile-form__field--error{{/if}}">
+<div
+    class="profile-form__field"
+    data-validation-field
+    data-validation-state="{{#if isInvalid}}invalid{{else}}valid{{/if}}"
+>
     <label class="profile-form__label" for="{{inputId}}">{{label}}</label>
     {{{Input
         className="profile-form__input"
@@ -10,7 +14,10 @@
         isInvalid=isInvalid
         describedBy=errorId
     }}}
-    {{#if errorMessage}}
-        <span class="profile-form__error" id="{{errorId}}">{{errorMessage}}</span>
-    {{/if}}
+    <span
+        class="profile-form__error"
+        id="{{errorId}}"
+        data-validation-error
+        {{#unless errorMessage}}hidden{{/unless}}
+    >{{errorMessage}}</span>
 </div>

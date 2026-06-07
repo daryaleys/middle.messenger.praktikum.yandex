@@ -1,4 +1,4 @@
-import { merge, set } from "@src/utils/object";
+import { merge } from "@src/utils/object";
 
 type Indexed = {
 	[key in string]: unknown;
@@ -15,8 +15,8 @@ export class Store {
 		return this.state;
 	}
 
-	public setState(path: string, value: unknown) {
-		this.state = merge(this.state, set({}, path, value));
+	public setState(nextState: Indexed) {
+		this.state = merge(this.state, nextState);
 		this.emit();
 	}
 
@@ -34,7 +34,4 @@ export class Store {
 		});
 	}
 }
-
-export const store = new Store();
-
-export default store;
+export default Store;

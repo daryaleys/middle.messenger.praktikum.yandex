@@ -1,3 +1,4 @@
+import { ROUTES } from "@src/router/routes";
 import type { SigninPageProps } from "./types";
 
 export class SigninModel {
@@ -6,7 +7,7 @@ export class SigninModel {
 			signInPageData: {
 				cardModifier: "auth-card--signup",
 				fieldsModifier: "",
-				linkHref: "/",
+				linkHref: ROUTES.login,
 				linkText: "Войти",
 				submitText: "Зарегистрироваться",
 				title: "Регистрация",

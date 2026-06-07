@@ -1,3 +1,4 @@
+import { ROUTES } from "@src/router/routes";
 import type { SidebarLayoutProps } from "./types";
 
 export class SidebarLayoutModel {
@@ -8,6 +9,9 @@ export class SidebarLayoutModel {
 	}
 
 	getLayoutData(): SidebarLayoutProps {
-		return this.props;
+		return {
+			...this.props,
+			profileHref: this.props.profileHref ?? ROUTES.settings,
+		};
 	}
 }

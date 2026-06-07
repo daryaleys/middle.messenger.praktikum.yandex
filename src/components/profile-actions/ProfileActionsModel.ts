@@ -1,16 +1,17 @@
+import { ROUTES } from "@src/router/routes";
 import type { ProfileActionsProps } from "./types";
 
 const defaultActions: Required<ProfileActionsProps>["actions"] = [
 	{
-		href: "/settings/edit",
+		href: ROUTES.settingsEdit,
 		label: "Изменить данные",
 	},
 	{
-		href: "/settings/password",
+		href: ROUTES.settingsPassword,
 		label: "Изменить пароль",
 	},
 	{
-		href: "/",
+		href: ROUTES.login,
 		label: "Выйти",
 		isDanger: true,
 	},
@@ -26,6 +27,8 @@ export class ProfileActionsModel {
 	getActionsData(): Required<ProfileActionsProps> {
 		return {
 			actions: this.props.actions ?? defaultActions,
+			errorMessage: this.props.errorMessage ?? "",
+			isLoading: this.props.isLoading ?? false,
 		};
 	}
 }

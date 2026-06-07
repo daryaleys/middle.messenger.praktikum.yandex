@@ -51,6 +51,11 @@ button {
     border: 0;
 }
 
+button:not(:disabled),
+a[href] {
+    cursor: pointer;
+}
+
 img,
 picture,
 svg,

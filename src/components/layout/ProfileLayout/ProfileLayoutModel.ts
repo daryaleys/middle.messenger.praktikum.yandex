@@ -1,3 +1,4 @@
+import { ROUTES } from "@src/router/routes";
 import type { ProfileLayoutProps } from "./types";
 
 export class ProfileLayoutModel {
@@ -8,6 +9,9 @@ export class ProfileLayoutModel {
 	}
 
 	getLayoutData(): ProfileLayoutProps {
-		return this.props;
+		return {
+			...this.props,
+			backHref: this.props.backHref ?? ROUTES.messenger,
+		};
 	}
 }
