@@ -1,0 +1,12 @@
+<div class="dropdown dropdown--{{position}}">
+    <ul class="dropdown__menu" id="{{id}}" data-dropdown-menu {{#unless isOpen}}hidden{{/unless}}>
+        {{#each items}}
+            <li class="dropdown__item">
+                <button class="dropdown__item-button" type="button" data-dropdown-action="{{id}}">
+                    {{{icon}}}
+                    <span class="dropdown__item-label">{{label}}</span>
+                </button>
+            </li>
+        {{/each}}
+    </ul>
+</div>

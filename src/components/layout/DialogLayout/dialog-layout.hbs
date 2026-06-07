@@ -3,11 +3,25 @@
     <header class="dialog-header">
       <span class="dialog-header__avatar" aria-hidden="true"></span>
       <h1 class="dialog-header__title">{{title}}</h1>
-      <button class="dialog-header__menu" type="button" aria-label="Открыть меню диалога">
-        <svg class="dialog-header__menu-icon" viewBox="0 0 128 512" aria-hidden="true">
-          <path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" />
-        </svg>
-      </button>
+      <div class="dialog-header__actions">
+        <button
+          class="dialog-header__menu"
+          type="button"
+          aria-label="Открыть меню диалога"
+          aria-expanded="false"
+          aria-controls="{{../chatActionsDropdown.id}}"
+          data-chat-actions-trigger
+        >
+          <svg class="dialog-header__menu-icon" viewBox="0 0 128 512" aria-hidden="true">
+            <path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" />
+          </svg>
+        </button>
+
+        {{{Dropdown
+          config=../chatActionsDropdown
+          triggerSelector="[data-chat-actions-trigger]"
+        }}}
+      </div>
     </header>
 
     <div class="dialog-messages">
@@ -26,7 +40,10 @@
       {{/each}}
     </div>
 
-    {{{MessageForm formErrors=../formErrors formValues=../formValues}}}
+    {{{MessageForm
+      formErrors=../formErrors
+      formValues=../formValues
+    }}}
   </section>
 {{else}}
   <section class="dialog-empty" aria-label="Диалог">

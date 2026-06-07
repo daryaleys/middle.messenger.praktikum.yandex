@@ -43,6 +43,11 @@
     white-space: nowrap;
 }
 
+.dialog-header__actions {
+    position: relative;
+    flex: 0 0 auto;
+}
+
 .dialog-header__menu {
     display: grid;
     width: 25px;

@@ -15,11 +15,14 @@
 	height: 28px;
 	padding: 0;
 	flex: 0 0 auto;
-	background: transparent;
+	border-radius: 50%;
+	background: var(--color-primary);
+	color: var(--color-background);
 	cursor: pointer;
 }
 
 .message-form__attach {
+	background: transparent;
 	color: var(--color-text-secondary);
 }
 
@@ -27,6 +30,12 @@
 	width: 18px;
 	height: 18px;
 	fill: currentColor;
+}
+
+.message-form__attachments {
+	position: relative;
+	display: grid;
+	place-items: center;
 }
 
 .message-form__label {
@@ -67,12 +76,6 @@
 	color: var(--color-error);
 	font-size: 8px;
 	line-height: 1;
-}
-
-.message-form__send {
-	border-radius: 50%;
-	background: var(--color-primary);
-	color: var(--color-background);
 }
 
 .message-form__send .message-form__icon {
