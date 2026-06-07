@@ -1,4 +1,4 @@
-import { ROUTES } from "@src/router/routes";
+import { ROUTES } from "@src/router";
 import type { LoginPageProps } from "./types";
 
 export class LoginModel {

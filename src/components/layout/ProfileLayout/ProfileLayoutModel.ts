@@ -1,5 +1,5 @@
 import { PROFILE_EDIT_FORM_MODE } from "@src/components/profile-edit-form/types";
-import { ROUTES } from "@src/router/routes";
+import { ROUTES } from "@src/router";
 import type { ProfileLayoutProps } from "./types";
 
 export class ProfileLayoutModel {

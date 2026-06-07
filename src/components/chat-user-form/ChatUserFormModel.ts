@@ -8,6 +8,10 @@ export class ChatUserFormModel {
 	}
 
 	getFormData(): ChatUserFormProps {
-		return this.props;
+		return {
+			...this.props,
+			error: this.props.error ?? null,
+			isLoading: this.props.isLoading ?? false,
+		};
 	}
 }

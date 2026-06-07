@@ -1,8 +1,12 @@
 import type { Chat } from "@src/components/layout/SidebarLayout/types";
+import type { ChatUser } from "@src/api";
 
 import { store } from "../store";
 
 type ChatsState = {
+	chatUsers?: Record<number, ChatUser[]>;
+	chatUsersError?: Record<number, string | null>;
+	chatUsersLoading?: Record<number, boolean>;
 	chats?: Chat[];
 	error?: string | null;
 	isLoading?: boolean;
@@ -34,6 +38,18 @@ export function getSelectedChat(): Chat | null {
 	const selectedChatId = getSelectedChatId();
 
 	return getChats().find((chat) => chat.id === selectedChatId) ?? null;
+}
+
+export function getChatUsers(chatId: number): ChatUser[] {
+	return getChatsState().chatUsers?.[chatId] ?? [];
+}
+
+export function getChatUsersError(chatId: number): string | null {
+	return getChatsState().chatUsersError?.[chatId] ?? null;
+}
+
+export function isChatUsersLoading(chatId: number): boolean {
+	return Boolean(getChatsState().chatUsersLoading?.[chatId]);
 }
 
 export function isChatsLoading(): boolean {
@@ -75,6 +91,61 @@ export function selectChat(chatId: number | null) {
 	store.setState({
 		chats: {
 			selectedChatId: chatId,
+		},
+	});
+}
+
+export function setChatUsers(chatId: number, users: ChatUser[]) {
+	const state = getChatsState();
+
+	store.setState({
+		chats: {
+			chatUsers: {
+				...(state.chatUsers ?? {}),
+				[chatId]: users,
+			},
+			chatUsersError: {
+				...(state.chatUsersError ?? {}),
+				[chatId]: null,
+			},
+			chatUsersLoading: {
+				...(state.chatUsersLoading ?? {}),
+				[chatId]: false,
+			},
+		},
+	});
+}
+
+export function setChatUsersError(chatId: number, error: string | null) {
+	const state = getChatsState();
+
+	store.setState({
+		chats: {
+			chatUsersError: {
+				...(state.chatUsersError ?? {}),
+				[chatId]: error,
+			},
+			chatUsersLoading: {
+				...(state.chatUsersLoading ?? {}),
+				[chatId]: false,
+			},
+		},
+	});
+}
+
+export function setChatUsersLoading(chatId: number, isLoading: boolean) {
+	const state = getChatsState();
+
+	store.setState({
+		chats: {
+			chatUsersError: {
+				...(state.chatUsersError ?? {}),
+				[chatId]: null,
+			},
+			chatUsersLoading: {
+				...(state.chatUsersLoading ?? {}),
+				[chatId]: isLoading,
+			},
 		},
 	});
 }

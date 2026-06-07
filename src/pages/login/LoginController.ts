@@ -1,7 +1,6 @@
 import { loginAPI, userAPI } from "@src/api";
 import { setAuthorized, setUser } from "@src/store";
-import { router } from "@src/router/router";
-import { ROUTES } from "@src/router/routes";
+import { ROUTES, router } from "@src/router";
 import type { FormValues } from "@src/utils/validation";
 
 import { LoginModel } from "./LoginModel";

@@ -3,9 +3,6 @@
 /* pages */
 @import url("../pages/chats/chats.css");
 
-/* temporary file for navigation demo */
-@import url("../components/demo-navigation/demo-navigation.css");
-
 /* layout */
 @import url("../components/layout/SidebarLayout/SidebarLayout.css");
 @import url("../components/layout/DialogLayout/DialogLayout.css");

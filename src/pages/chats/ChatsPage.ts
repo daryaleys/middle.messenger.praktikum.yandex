@@ -2,7 +2,6 @@ import { Block } from "@src/core";
 import {
 	getChatsForView,
 	getChatsError,
-	getSelectedChat,
 	isChatsLoading,
 	selectChat,
 	store,
@@ -10,6 +9,7 @@ import {
 
 import template from "./chats.hbs?raw";
 import { ChatsController } from "./ChatsController";
+import { mapActiveChatToView } from "./mapActiveChatToView";
 import type { ChatsPageProps } from "./types";
 
 export class ChatsPage extends Block<ChatsPageProps> {
@@ -34,7 +34,7 @@ export class ChatsPage extends Block<ChatsPageProps> {
 	protected componentDidMount() {
 		this.unsubscribeStore = store.subscribe(() => {
 			this.setProps({
-				activeChat: this.getActiveChat(),
+				activeChat: mapActiveChatToView(),
 				chats: getChatsForView(),
 				error: getChatsError(),
 				isLoading: isChatsLoading(),
@@ -72,19 +72,6 @@ export class ChatsPage extends Block<ChatsPageProps> {
 		}
 
 		selectChat(chatId);
+		this.controller.loadChatUsers(chatId);
 	};
-
-	private getActiveChat(): ChatsPageProps["activeChat"] {
-		const selectedChat = getSelectedChat();
-
-		if (!selectedChat) {
-			return null;
-		}
-
-		return {
-			title: selectedChat.title,
-			date: "",
-			messages: [],
-		};
-	}
 }

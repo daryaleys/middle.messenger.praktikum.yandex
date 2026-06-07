@@ -1,6 +1,13 @@
-import { getChatsAPI, type Chat as APIChat } from "@src/api";
+import {
+	getChatsAPI,
+	getChatUsersAPI,
+	type Chat as APIChat,
+} from "@src/api";
 import type { Chat } from "@src/components/layout/SidebarLayout/types";
 import {
+	setChatUsers,
+	setChatUsersError,
+	setChatUsersLoading,
 	setChats,
 	setChatsError,
 	setChatsLoading,
@@ -33,6 +40,18 @@ export class ChatsController {
 
 			setChatsError(message);
 			return [];
+		}
+	}
+
+	async loadChatUsers(chatId: number) {
+		setChatUsersLoading(chatId, true);
+
+		try {
+			const users = await getChatUsersAPI.request({ id: chatId });
+
+			setChatUsers(chatId, users);
+		} catch {
+			setChatUsersError(chatId, "Не удалось загрузить участников");
 		}
 	}
 

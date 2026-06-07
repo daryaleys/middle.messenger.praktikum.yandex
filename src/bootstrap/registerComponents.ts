@@ -2,7 +2,6 @@ import { registerComponent } from "@src/core";
 import { AuthForm } from "@src/components/auth-form/AuthForm";
 import { ChatUserForm } from "@src/components/chat-user-form/ChatUserForm";
 import { CreateChatForm } from "@src/components/create-chat-form/CreateChatForm";
-import { DemoNavigation } from "@src/components/demo-navigation/DemoNavigation";
 import { AuthLayout } from "@src/components/layout/AuthLayout/AuthLayout";
 import { DialogLayout } from "@src/components/layout/DialogLayout/DialogLayout";
 import { MessageForm } from "@src/components/message-form/MessageForm";
@@ -29,7 +28,6 @@ export function registerComponents() {
 	registerComponent(ChatMessage);
 	registerComponent(ChatUserForm);
 	registerComponent(CreateChatForm);
-	registerComponent(DemoNavigation);
 	registerComponent(DialogLayout);
 	registerComponent(Dropdown);
 	registerComponent(FormField);

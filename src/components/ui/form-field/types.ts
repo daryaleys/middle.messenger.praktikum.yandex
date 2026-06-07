@@ -1,5 +1,4 @@
 import type {
-	FormValues,
 	ValidationErrors,
 	ValidationRuleName,
 } from "@src/utils/validation";
@@ -9,9 +8,9 @@ export type FormFieldProps = {
 	name: string;
 	type: string;
 	error?: string;
+	value?: string;
 	validationRule?: ValidationRuleName;
 	formErrors?: ValidationErrors;
-	formValues?: FormValues;
 };
 
 export type FormFieldViewProps = FormFieldProps & {

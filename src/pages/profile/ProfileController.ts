@@ -1,5 +1,4 @@
-import { router } from "@src/router/router";
-import { ROUTES } from "@src/router/routes";
+import { ROUTES, router } from "@src/router";
 import { getUser, resetUser, setGuest } from "@src/store";
 
 import { ProfileModel } from "./ProfileModel";

@@ -1,4 +1,4 @@
-import { ROUTES } from "@src/router/routes";
+import { ROUTES } from "@src/router";
 import type { CreateChatFormProps } from "@src/components/create-chat-form/types";
 import type { SidebarLayoutProps } from "./types";
 
@@ -6,6 +6,8 @@ const createChatForm: CreateChatFormProps = {
 	title: "Создать чат",
 	submitText: "Создать",
 };
+
+const CREATE_CHAT_MODAL_ID = "create-chat-modal";
 
 export class SidebarLayoutModel {
 	private readonly props: SidebarLayoutProps;
@@ -17,6 +19,7 @@ export class SidebarLayoutModel {
 	getLayoutData(): SidebarLayoutProps {
 		return {
 			createChatForm,
+			createChatModalId: CREATE_CHAT_MODAL_ID,
 			...this.props,
 			profileHref: this.props.profileHref ?? ROUTES.settings,
 		};

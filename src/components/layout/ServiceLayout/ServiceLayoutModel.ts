@@ -1,4 +1,4 @@
-import { ROUTES } from "@src/router/routes";
+import { ROUTES } from "@src/router";
 import type { ServiceLayoutProps } from "./types";
 
 export class ServiceLayoutModel {

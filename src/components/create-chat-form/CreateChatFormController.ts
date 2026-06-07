@@ -15,6 +15,10 @@ export class CreateChatFormController {
 	}
 
 	async createChat(title: string) {
-		return createChatAPI.request({ title });
+		try {
+			return await createChatAPI.request({ title });
+		} catch {
+			return "Не удалось создать чат";
+		}
 	}
 }

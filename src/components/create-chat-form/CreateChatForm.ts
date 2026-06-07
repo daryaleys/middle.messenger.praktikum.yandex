@@ -52,49 +52,28 @@ export class CreateChatForm extends Block<CreateChatFormProps> {
 			isLoading: true,
 		});
 
-		try {
-			const chat = await this.controller.createChat(title);
+		const result = await this.controller.createChat(title);
 
+		if (typeof result === "string") {
 			this.setProps({
-				error: null,
-				formValues: {},
-				isLoading: false,
-			});
-
-			this.props.onSuccess?.();
-
-			addChat({
-				id: chat.id,
-				title,
-			});
-		} catch (error) {
-			this.setProps({
-				error: this.getErrorMessage(error),
+				error: result,
 				formValues: values,
 				isLoading: false,
 			});
-		}
-	}
-
-	private getErrorMessage(error: unknown) {
-		const fallback = "Не удалось создать чат";
-
-		if (!error || typeof error !== "object") {
-			return fallback;
+			return;
 		}
 
-		const response = "response" in error ? error.response : null;
+		this.setProps({
+			error: null,
+			formValues: {},
+			isLoading: false,
+		});
 
-		if (typeof response !== "string" || response.length === 0) {
-			return fallback;
-		}
+		this.props.onSuccess?.();
 
-		try {
-			const data = JSON.parse(response) as { reason?: string };
-
-			return data.reason ?? fallback;
-		} catch {
-			return fallback;
-		}
+		addChat({
+			id: result.id,
+			title,
+		});
 	}
 }

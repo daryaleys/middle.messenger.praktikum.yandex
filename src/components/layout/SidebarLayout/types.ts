@@ -19,6 +19,7 @@ export type Chat = {
 
 export type SidebarLayoutProps = {
 	chats: Chat[];
+	createChatModalId?: string;
 	createChatForm?: CreateChatFormProps;
 	isCreateChatModalOpen?: boolean;
 	onCreateChatModalClose?: () => void;

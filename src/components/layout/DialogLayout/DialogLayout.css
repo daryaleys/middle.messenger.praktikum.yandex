@@ -1,6 +1,6 @@
 .dialog {
     display: grid;
-    grid-template-rows: 54px minmax(0, 1fr) 54px;
+    grid-template-rows: 64px minmax(0, 1fr) 54px;
     min-height: 100vh;
     padding: 0 20px;
 }
@@ -33,14 +33,35 @@
     background: var(--color-control-background);
 }
 
-.dialog-header__title {
+.dialog-header__content {
     flex: 1;
+    min-width: 0;
+}
+
+.dialog-header__title {
     margin: 0;
     overflow: hidden;
     font-size: 13px;
     font-weight: 600;
+    line-height: 18px;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.dialog-header__users {
+    margin: 1px 0 0;
+    overflow: hidden;
+    color: var(--color-text-secondary);
+    font-size: 11px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dialog-header__user:not(:last-child)::after {
+    content: ", ";
 }
 
 .dialog-header__actions {

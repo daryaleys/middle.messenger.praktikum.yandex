@@ -6,10 +6,18 @@
         name="login"
         type="text"
         validationRule="login"
+        value=(fieldValue formValues "login")
     }}}
+
+    {{#if error}}
+        <p class="chat-user-form__error" role="alert">{{error}}</p>
+    {{/if}}
 
     {{{SubmitButton
         text=submitText
+        loadingText="Сохраняем..."
         className="chat-user-form__submit"
+        disabled=isLoading
+        isLoading=isLoading
     }}}
 </form>

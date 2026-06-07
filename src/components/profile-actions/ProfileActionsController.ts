@@ -1,7 +1,6 @@
 import { resetUser, setGuest } from "@src/store";
 import { logoutAPI } from "@src/api";
-import { router } from "@src/router/router";
-import { ROUTES } from "@src/router/routes";
+import { ROUTES, router } from "@src/router";
 
 import { ProfileActionsModel } from "./ProfileActionsModel";
 import type { ProfileActionsProps } from "./types";
