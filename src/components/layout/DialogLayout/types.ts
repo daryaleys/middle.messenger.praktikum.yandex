@@ -30,5 +30,9 @@ export type DialogLayoutProps = {
 export type DialogLayoutViewModel = DialogLayoutProps & {
 	addUserForm: ChatUserFormProps;
 	chatActionsDropdown: DropdownConfig;
+	isAddUserModalOpen?: boolean;
+	isRemoveUserModalOpen?: boolean;
+	onAddUserModalClose?: () => void;
+	onRemoveUserModalClose?: () => void;
 	removeUserForm: ChatUserFormProps;
 };

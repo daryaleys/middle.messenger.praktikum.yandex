@@ -1,5 +1,4 @@
-import { passwordAPI } from "@src/api/user/password-api";
-import { profileAPI } from "@src/api/user/profile-api";
+import { passwordAPI, profileAPI } from "@src/api";
 import { router } from "@src/router/router";
 import { ROUTES } from "@src/router/routes";
 import { setUser } from "@src/store";

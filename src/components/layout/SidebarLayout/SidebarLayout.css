@@ -121,3 +121,26 @@
     padding: 0;
     list-style: none;
 }
+
+.chat-list__empty {
+    display: flex;
+    justify-content: center;
+    padding: 14px 10px;
+}
+
+.chat-list__empty-button {
+    min-height: 34px;
+    padding: 0 12px;
+    border-radius: 18px;
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+    cursor: pointer;
+}
+
+.chat-list__empty-button:hover {
+    background: var(--color-primary-hover);
+}

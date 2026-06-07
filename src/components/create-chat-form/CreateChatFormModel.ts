@@ -8,6 +8,10 @@ export class CreateChatFormModel {
 	}
 
 	getFormData(): CreateChatFormProps {
-		return this.props;
+		return {
+			...this.props,
+			error: this.props.error ?? null,
+			isLoading: this.props.isLoading ?? false,
+		};
 	}
 }

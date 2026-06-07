@@ -7,6 +7,8 @@ import type {
 
 export type ChatsPageProps = SidebarLayoutProps &
 	DialogLayoutProps & {
+		error?: string | null;
 		formErrors?: ValidationErrors;
 		formValues?: FormValues;
+		isLoading?: boolean;
 	};

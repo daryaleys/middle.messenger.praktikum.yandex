@@ -1,4 +1,4 @@
-import { profileAvatarAPI } from "@src/api/user/profile-avatar-api";
+import { profileAvatarAPI } from "@src/api";
 import { setUser } from "@src/store";
 
 import { ProfileAvatarModel } from "./ProfileAvatarModel";

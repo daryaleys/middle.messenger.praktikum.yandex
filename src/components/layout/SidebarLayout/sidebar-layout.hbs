@@ -6,7 +6,7 @@
         type="button"
         aria-label="Создать чат"
         aria-controls="create-chat-modal"
-        aria-expanded="false"
+        aria-expanded="{{isCreateChatModalOpen}}"
         data-create-chat-trigger
       >
         <svg class="create-chat-button__icon" viewBox="0 0 448 512" aria-hidden="true">
@@ -35,11 +35,13 @@
     {{#Modal
       id="create-chat-modal"
       label="Создать чат"
-      triggerSelector="[data-create-chat-trigger]"
+      isOpen=isCreateChatModalOpen
+      onClose=onCreateChatModalClose
     }}
       {{{CreateChatForm
         title=createChatForm.title
         submitText=createChatForm.submitText
+        onSuccess=onCreateChatSuccess
       }}}
     {{/Modal}}
   </header>
@@ -54,6 +56,18 @@
           unreadCount=unreadCount
           lastMessage=lastMessage
         }}}
+      {{else}}
+        <li class="chat-list__empty">
+          <button
+            class="chat-list__empty-button"
+            type="button"
+            aria-controls="create-chat-modal"
+            aria-expanded="{{isCreateChatModalOpen}}"
+            data-create-chat-trigger
+          >
+            Создайте свой первый чат
+          </button>
+        </li>
       {{/each}}
     </ul>
   </nav>

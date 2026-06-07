@@ -8,7 +8,7 @@ import {
 	setGuest,
 	setUser,
 } from "@src/store";
-import { userAPI } from "@src/api/auth/user-api";
+import { userAPI } from "@src/api";
 import { ChatsPage } from "@src/pages/chats/ChatsPage";
 import { LoginPage } from "@src/pages/login/LoginPage";
 import { NotFoundPage } from "@src/pages/not-found/NotFoundPage";

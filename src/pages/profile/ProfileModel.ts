@@ -1,4 +1,4 @@
-import { API_BASE_URL } from "@src/api/base-url";
+import { API_BASE_URL } from "@src/api";
 
 import type { ProfileData } from "./types";
 

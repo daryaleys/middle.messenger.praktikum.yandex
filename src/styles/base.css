@@ -76,3 +76,13 @@ ol {
     padding: 0;
     list-style: none;
 }
+
+.initial-loader {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    color: var(--color-text-secondary);
+    background: var(--color-background);
+    font-size: 13px;
+    font-weight: 500;
+}

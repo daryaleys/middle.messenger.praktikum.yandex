@@ -6,6 +6,8 @@
       <span class="chat-item__title">{{title}}</span>
       {{#with lastMessage}}
         <span class="chat-item__message">{{text}}</span>
+      {{else}}
+        <span class="chat-item__message">Начните диалог</span>
       {{/with}}
     </span>
 

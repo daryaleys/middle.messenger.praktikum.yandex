@@ -25,7 +25,9 @@
     </header>
 
     <div class="dialog-messages">
-      <time class="dialog-date">{{date}}</time>
+      {{#if date}}
+        <time class="dialog-date">{{date}}</time>
+      {{/if}}
 
       {{#each messages}}
         {{{ChatMessage
@@ -48,7 +50,8 @@
     {{#Modal
       id="add-user-modal"
       label="Добавить пользователя"
-      triggerSelector="[data-dropdown-action='add-user']"
+      isOpen=../isAddUserModalOpen
+      onClose=../onAddUserModalClose
     }}
       {{{ChatUserForm
         title=../addUserForm.title
@@ -60,7 +63,8 @@
     {{#Modal
       id="remove-user-modal"
       label="Удалить пользователя"
-      triggerSelector="[data-dropdown-action='remove-user']"
+      isOpen=../isRemoveUserModalOpen
+      onClose=../onRemoveUserModalClose
     }}
       {{{ChatUserForm
         title=../removeUserForm.title

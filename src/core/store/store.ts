@@ -29,7 +29,7 @@ export class Store {
 	}
 
 	private emit() {
-		this.listeners.forEach((listener) => {
+		Array.from(this.listeners).forEach((listener) => {
 			listener();
 		});
 	}

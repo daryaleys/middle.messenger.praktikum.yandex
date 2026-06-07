@@ -1,4 +1,4 @@
-import type { UserResponse } from "@src/api/auth/user-api";
+import type { UserResponse } from "@src/api";
 
 import { store } from "../store";
 

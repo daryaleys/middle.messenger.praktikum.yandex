@@ -1,5 +1,5 @@
 import { resetUser, setGuest } from "@src/store";
-import { logoutAPI } from "@src/api/auth/logout-api";
+import { logoutAPI } from "@src/api";
 import { router } from "@src/router/router";
 import { ROUTES } from "@src/router/routes";
 

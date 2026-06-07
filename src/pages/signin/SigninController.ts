@@ -1,6 +1,5 @@
 import { setAuthorized, setUser } from "@src/store";
-import { signupAPI } from "@src/api/auth/signup-api";
-import { userAPI } from "@src/api/auth/user-api";
+import { signupAPI, userAPI } from "@src/api";
 import { router } from "@src/router/router";
 import { ROUTES } from "@src/router/routes";
 import type { FormValues } from "@src/utils/validation";

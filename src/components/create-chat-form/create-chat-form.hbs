@@ -6,10 +6,18 @@
         name="title"
         type="text"
         validationRule="chat_title"
+        formValues=formValues
     }}}
+
+    {{#if error}}
+        <p class="create-chat-form__error" role="alert">{{error}}</p>
+    {{/if}}
 
     {{{SubmitButton
         text=submitText
+        loadingText="Создаем..."
         className="create-chat-form__submit"
+        disabled=isLoading
+        isLoading=isLoading
     }}}
 </form>

@@ -12,13 +12,6 @@ export class Modal extends Block<ModalProps> {
 
 	private readonly handleDocumentClick = (event: MouseEvent) => {
 		const target = event.target as HTMLElement;
-		const trigger = target.closest(this.props.triggerSelector);
-
-		if (trigger) {
-			event.preventDefault();
-			this.open();
-			return;
-		}
 
 		if (this.props.isOpen && target.closest("[data-modal-close]")) {
 			this.close();
@@ -41,16 +34,11 @@ export class Modal extends Block<ModalProps> {
 	protected componentDidMount() {
 		document.addEventListener("click", this.handleDocumentClick);
 		document.addEventListener("keydown", this.handleDocumentKeydown);
-		this.syncTriggerState();
 	}
 
 	protected componentWillUnmount() {
 		document.removeEventListener("click", this.handleDocumentClick);
 		document.removeEventListener("keydown", this.handleDocumentKeydown);
-	}
-
-	private open() {
-		this.setOpenState(true);
 	}
 
 	private close() {
@@ -60,6 +48,11 @@ export class Modal extends Block<ModalProps> {
 	}
 
 	private setOpenState(isOpen: boolean) {
+		if (!isOpen && this.props.onClose) {
+			this.props.onClose();
+			return;
+		}
+
 		const element = this.element();
 
 		if (element instanceof HTMLElement) {
@@ -67,16 +60,5 @@ export class Modal extends Block<ModalProps> {
 		}
 
 		this.props.isOpen = isOpen;
-		this.syncTriggerState(isOpen);
-	}
-
-	private syncTriggerState(isOpen = Boolean(this.props.isOpen)) {
-		const trigger = document.querySelector<HTMLButtonElement>(
-			`${this.props.triggerSelector}[aria-controls="${this.props.id}"]`,
-		);
-
-		if (trigger) {
-			trigger.setAttribute("aria-expanded", String(isOpen));
-		}
 	}
 }
