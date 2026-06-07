@@ -11,6 +11,8 @@ export class ProfileEditForm extends Block<Required<ProfileEditFormProps>> {
 
 	protected template = template;
 
+	private readonly controller: ProfileEditFormController;
+
 	constructor(
 		props: ProfileEditFormProps,
 		controller = new ProfileEditFormController(
@@ -18,6 +20,7 @@ export class ProfileEditForm extends Block<Required<ProfileEditFormProps>> {
 		),
 	) {
 		super(controller.getViewModel());
+		this.controller = controller;
 	}
 
 	protected componentDidMount() {
@@ -31,7 +34,24 @@ export class ProfileEditForm extends Block<Required<ProfileEditFormProps>> {
 		}
 	}
 
-	private handleSubmit(values: Record<string, string>) {
-		console.log(values);
+	private async handleSubmit(values: Record<string, string>) {
+		if (this.props.isLoading) {
+			return;
+		}
+
+		this.setProps({
+			formValues: values,
+			isLoading: true,
+			submitError: "",
+		});
+
+		const submitError = await this.controller.update(values);
+
+		if (submitError) {
+			this.setProps({
+				isLoading: false,
+				submitError,
+			});
+		}
 	}
 }

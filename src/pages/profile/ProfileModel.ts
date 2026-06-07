@@ -1,45 +1,71 @@
+import { API_BASE_URL } from "@src/api/base-url";
+
 import type { ProfileData } from "./types";
 
+type ProfileUser = {
+	first_name: string;
+	second_name: string;
+	display_name: string | null;
+	login: string;
+	email: string;
+	phone: string;
+	avatar: string | null;
+};
+
 export class ProfileModel {
+	private readonly user: ProfileUser | null;
+
+	constructor(user: ProfileUser | null = null) {
+		this.user = user;
+	}
+
 	getProfileData(): ProfileData {
+		const user = this.user;
+
 		return {
-			firstName: "Иван",
+			avatar: this.getAvatarUrl(user?.avatar),
+			firstName: user?.first_name ?? "",
 			mainFields: [
 				{
 					label: "Почта",
 					name: "email",
 					type: "email",
-					value: "ivanivanov@mail.ru",
+					value: user?.email ?? "",
+					validationRule: "email",
 				},
 				{
 					label: "Логин",
 					name: "login",
 					type: "text",
-					value: "ivanivanov",
+					value: user?.login ?? "",
+					validationRule: "login",
 				},
 				{
 					label: "Имя",
 					name: "first_name",
 					type: "text",
-					value: "Иван",
+					value: user?.first_name ?? "",
+					validationRule: "first_name",
 				},
 				{
 					label: "Фамилия",
 					name: "second_name",
 					type: "text",
-					value: "Иванов",
+					value: user?.second_name ?? "",
+					validationRule: "second_name",
 				},
 				{
 					label: "Имя в чате",
 					name: "display_name",
 					type: "text",
-					value: "Иван",
+					value: user?.display_name ?? "",
 				},
 				{
 					label: "Телефон",
 					name: "phone",
 					type: "tel",
-					value: "+79099673030",
+					value: user?.phone ?? "",
+					validationRule: "phone",
 				},
 			],
 			passwordFields: [
@@ -63,5 +89,15 @@ export class ProfileModel {
 				},
 			],
 		};
+	}
+
+	private getAvatarUrl(avatar?: string | null) {
+		if (!avatar) {
+			return "";
+		}
+
+		return avatar.startsWith("/")
+			? `${API_BASE_URL}/resources${avatar}`
+			: avatar;
 	}
 }

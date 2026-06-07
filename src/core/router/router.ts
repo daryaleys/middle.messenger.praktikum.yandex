@@ -4,6 +4,7 @@ import Route, { type RouteOptions } from "./route";
 type BlockFactory = () => Block<object>;
 
 type AuthChecker = () => boolean | Promise<boolean>;
+type HistoryAction = "push" | "replace";
 
 type RouterOptions = {
 	rootQuery?: string;
@@ -60,19 +61,18 @@ export class Router {
 
 	start() {
 		window.onpopstate = () => {
-			void this._onRoute(window.location.pathname);
+			this._onRoute(window.location.pathname).catch(() => undefined);
 		};
 
 		document.addEventListener("click", (event) =>
 			this.handleDocumentClick(event),
 		);
 
-		void this._onRoute(window.location.pathname);
+		this._onRoute(window.location.pathname).catch(() => undefined);
 	}
 
 	go(pathname: string) {
-		this.history.pushState({}, "", pathname);
-		void this._onRoute(pathname);
+		this._onRoute(pathname, "push").catch(() => undefined);
 	}
 
 	back() {
@@ -87,7 +87,7 @@ export class Router {
 		return this.routes.find((route) => route.match(pathname));
 	}
 
-	private async _onRoute(pathname: string) {
+	private async _onRoute(pathname: string, historyAction?: HistoryAction) {
 		const route =
 			this.getRoute(pathname) ?? this.getRoute(this._notFoundRoute);
 
@@ -98,17 +98,25 @@ export class Router {
 		const redirectPath = await this.getRedirectPath(route);
 
 		if (redirectPath) {
-			this.history.replaceState({}, "", redirectPath);
-			await this._onRoute(redirectPath);
+			await this._onRoute(redirectPath, historyAction ?? "replace");
 			return;
 		}
 
-		if (this._currentRoute && this._currentRoute !== route) {
-			this._currentRoute.leave();
-		}
-
+		const previousRoute = this._currentRoute;
 		this._currentRoute = route;
 		route.render();
+
+		if (previousRoute && previousRoute !== route) {
+			previousRoute.leave();
+		}
+
+		if (historyAction === "push") {
+			this.history.pushState({}, "", pathname);
+		}
+
+		if (historyAction === "replace") {
+			this.history.replaceState({}, "", pathname);
+		}
 	}
 
 	private async getRedirectPath(route: Route) {

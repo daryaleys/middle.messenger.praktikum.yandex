@@ -1,4 +1,4 @@
-import { setAuthorized } from "@src/store";
+import { setAuthorized, setUser } from "@src/store";
 import { signupAPI } from "@src/api/auth/signup-api";
 import { userAPI } from "@src/api/auth/user-api";
 import { router } from "@src/router/router";
@@ -28,10 +28,11 @@ export class SigninController {
 				password: values.password,
 				phone: values.phone,
 			});
-			await userAPI.request();
+			const user = await userAPI.request();
 			setAuthorized();
+			setUser(user);
 			router.go(ROUTES.messenger);
-		} catch (error) {
+		} catch {
 			return "Не удалось зарегистрироваться. Проверьте данные формы.";
 		}
 	}

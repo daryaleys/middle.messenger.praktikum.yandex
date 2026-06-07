@@ -1,5 +1,5 @@
 import { loginAPI } from "@src/api/auth/login-api";
-import { setAuthorized } from "@src/store";
+import { setAuthorized, setUser } from "@src/store";
 import { userAPI } from "@src/api/auth/user-api";
 import { router } from "@src/router/router";
 import { ROUTES } from "@src/router/routes";
@@ -28,10 +28,11 @@ export class LoginController {
 				login: values.login,
 				password: values.password,
 			});
-			await userAPI.request();
+			const user = await userAPI.request();
 			setAuthorized();
+			setUser(user);
 			router.go(ROUTES.messenger);
-		} catch (error) {
+		} catch {
 			return "Не удалось войти. Проверьте логин и пароль.";
 		}
 	}

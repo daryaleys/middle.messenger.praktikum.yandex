@@ -1,4 +1,4 @@
-import { setGuest } from "@src/store";
+import { resetUser, setGuest } from "@src/store";
 import { logoutAPI } from "@src/api/auth/logout-api";
 import { router } from "@src/router/router";
 import { ROUTES } from "@src/router/routes";
@@ -21,8 +21,9 @@ export class ProfileActionsController {
 		try {
 			await logoutAPI.request();
 			setGuest();
+			resetUser();
 			router.go(ROUTES.login);
-		} catch (error) {
+		} catch {
 			return "Не удалось выйти. Попробуйте еще раз.";
 		}
 	}

@@ -1,18 +1,18 @@
 export class BaseAPI {
-	create(..._args: unknown[]): unknown {
-		throw new Error("Not implemented");
+	create(...args: unknown[]): unknown {
+		throw new Error(`Not implemented${args.length ? "" : ""}`);
 	}
 
-	request(..._args: unknown[]): unknown {
-		throw new Error("Not implemented");
+	request(...args: unknown[]): unknown {
+		throw new Error(`Not implemented${args.length ? "" : ""}`);
 	}
 
-	update(..._args: unknown[]): unknown {
-		throw new Error("Not implemented");
+	update(...args: unknown[]): unknown {
+		throw new Error(`Not implemented${args.length ? "" : ""}`);
 	}
 
-	delete(..._args: unknown[]): unknown {
-		throw new Error("Not implemented");
+	delete(...args: unknown[]): unknown {
+		throw new Error(`Not implemented${args.length ? "" : ""}`);
 	}
 }
 

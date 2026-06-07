@@ -2,8 +2,11 @@ import { Router } from "@src/core";
 import {
 	AUTH_STATUS,
 	getAuthStatus,
+	getUser,
+	resetUser,
 	setAuthorized,
 	setGuest,
+	setUser,
 } from "@src/store";
 import { userAPI } from "@src/api/auth/user-api";
 import { ChatsPage } from "@src/pages/chats/ChatsPage";
@@ -17,16 +20,34 @@ import { ROUTES } from "./routes";
 async function authGuard() {
 	const authStatus = getAuthStatus();
 
-	if (authStatus !== AUTH_STATUS.unchecked) {
-		return authStatus === AUTH_STATUS.authorized;
+	if (authStatus === AUTH_STATUS.authorized) {
+		if (getUser()) {
+			return true;
+		}
+
+		try {
+			const user = await userAPI.request();
+			setUser(user);
+			return true;
+		} catch {
+			setGuest();
+			resetUser();
+			return false;
+		}
+	}
+
+	if (authStatus === AUTH_STATUS.guest) {
+		return false;
 	}
 
 	try {
-		await userAPI.request();
+		const user = await userAPI.request();
 		setAuthorized();
+		setUser(user);
 		return true;
 	} catch {
 		setGuest();
+		resetUser();
 		return false;
 	}
 }

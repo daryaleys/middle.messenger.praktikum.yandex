@@ -21,16 +21,18 @@ export function getAuthStatus(): AuthStatus {
 	return authState?.status ?? AUTH_STATUS.unchecked;
 }
 
-function setAuthStatus(status: AuthStatus) {
+export function setAuthorized() {
 	store.setState({
-		auth: { status },
+		auth: {
+			status: AUTH_STATUS.authorized,
+		},
 	});
 }
 
-export function setAuthorized() {
-	setAuthStatus(AUTH_STATUS.authorized);
-}
-
 export function setGuest() {
-	setAuthStatus(AUTH_STATUS.guest);
+	store.setState({
+		auth: {
+			status: AUTH_STATUS.guest,
+		},
+	});
 }

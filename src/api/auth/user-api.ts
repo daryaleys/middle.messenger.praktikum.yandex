@@ -2,7 +2,7 @@ import { BaseAPI } from "@src/core";
 
 import { authAPIInstance } from "./auth-instance";
 
-type UserResponse = {
+export type UserResponse = {
 	id: number;
 	first_name: string;
 	second_name: string;

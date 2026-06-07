@@ -59,6 +59,14 @@ export abstract class Block<Props extends object = object> {
 		this.render();
 	}
 
+	protected getOwnProps(): Props {
+		const props = { ...this.props };
+		delete props.__children;
+		delete props.__refs;
+
+		return props as Props;
+	}
+
 	protected componentDidMount() {}
 
 	private mountComponent() {

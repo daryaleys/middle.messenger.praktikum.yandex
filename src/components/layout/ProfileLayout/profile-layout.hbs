@@ -9,14 +9,14 @@
 
     <section class="profile" aria-labelledby="profile-title">
         <div class="profile__content">
-            {{{ProfileAvatar}}}
+            {{{ProfileAvatar avatar=profileData.avatar}}}
 
             <h1 class="profile__title" id="profile-title">{{profileData.firstName}}</h1>
 
             {{#if isDataEditMode}}
-                {{{ProfileEditForm fields=profileData.mainFields}}}
+                {{{ProfileEditForm fields=profileData.mainFields mode=dataEditFormMode}}}
             {{else if isPasswordEditMode}}
-                {{{ProfileEditForm fields=profileData.passwordFields}}}
+                {{{ProfileEditForm fields=profileData.passwordFields mode=passwordEditFormMode}}}
             {{else}}
                 {{{ProfileDetails profileData=profileData}}}
                 {{{ProfileActions}}}
