@@ -18,6 +18,7 @@ type RequestOptions = {
 	data?: RequestData;
 	responseType?: XMLHttpRequestResponseType;
 	timeout?: number;
+	withCredentials?: boolean;
 };
 
 type RequestOptionsWithoutMethod = Omit<RequestOptions, "method">;
@@ -43,6 +44,12 @@ function isPlainData(data: RequestData): data is PlainData {
 }
 
 export class HTTPTransport {
+	private readonly baseUrl: string;
+
+	constructor(baseUrl = "") {
+		this.baseUrl = baseUrl;
+	}
+
 	get<T = unknown>(url: string, options: RequestOptionsWithoutMethod = {}) {
 		return this.request<T>(
 			url,
@@ -83,7 +90,13 @@ export class HTTPTransport {
 		options: RequestOptions = {},
 		timeout = 5000,
 	): Promise<T> {
-		const { headers = {}, method, data, responseType } = options;
+		const {
+			headers = {},
+			method,
+			data,
+			responseType,
+			withCredentials = true,
+		} = options;
 
 		return new Promise<T>((resolve, reject: (reason: HTTPError) => void) => {
 			if (!method) {
@@ -101,7 +114,8 @@ export class HTTPTransport {
 					? `${url}${queryStringify(data)}`
 					: url;
 
-			xhr.open(method, requestUrl);
+			xhr.open(method, `${this.baseUrl}${requestUrl}`);
+			xhr.withCredentials = withCredentials;
 
 			if (responseType) {
 				xhr.responseType = responseType;
