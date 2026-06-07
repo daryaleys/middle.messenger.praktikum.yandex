@@ -1,6 +1,6 @@
 import Handlebars from "handlebars";
 import type { HelperOptions } from "handlebars";
-import type { BlockComponent } from "@src/core/Block";
+import type { BlockComponent } from "@src/core/component/Block";
 
 let uniqueId = 0;
 

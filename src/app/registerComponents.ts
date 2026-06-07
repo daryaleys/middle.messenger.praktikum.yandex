@@ -1,4 +1,4 @@
-import { registerComponent } from "@src/core/registerComponent";
+import { registerComponent } from "@src/core";
 import { AuthForm } from "@src/components/auth-form/AuthForm";
 import { DemoNavigation } from "@src/components/demo-navigation/DemoNavigation";
 import { AuthLayout } from "@src/components/layout/AuthLayout/AuthLayout";

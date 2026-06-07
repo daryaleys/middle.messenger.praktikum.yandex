@@ -22,7 +22,7 @@ export type BlockComponent<Props extends object = object> = {
 	new (props: Props): Block<Props>;
 };
 
-export default abstract class Block<Props extends object = object> {
+export abstract class Block<Props extends object = object> {
 	protected abstract template: string;
 
 	protected props: Props & BlockOwnProps;
@@ -137,3 +137,5 @@ export default abstract class Block<Props extends object = object> {
 		return templateElement.content.firstElementChild;
 	}
 }
+
+export default Block;

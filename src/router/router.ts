@@ -1,4 +1,4 @@
-import Router from "@src/core/Router";
+import { Router } from "@src/core";
 import { ChatsPage } from "@src/pages/chats/ChatsPage";
 import { LoginPage } from "@src/pages/login/LoginPage";
 import { NotFoundPage } from "@src/pages/not-found/NotFoundPage";

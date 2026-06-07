@@ -1,9 +1,9 @@
-import type Block from "./Block";
+import type Block from "../component/Block";
 import Route from "./Route";
 
 type BlockFactory = () => Block<object>;
 
-class Router {
+export class Router {
 	private static __instance: Router | null = null;
 
 	private routes: Route[] = [];

@@ -1,4 +1,4 @@
-import type Block from "./Block";
+import type Block from "../component/Block";
 
 type BlockFactory = () => Block<object>;
 
@@ -6,7 +6,7 @@ type RouteProps = {
 	rootQuery: string;
 };
 
-class Route {
+export class Route {
 	private _pathname: string;
 	private _blockFactory: BlockFactory;
 	private _block: Block<object> | null = null;

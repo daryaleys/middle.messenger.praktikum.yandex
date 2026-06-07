@@ -1,4 +1,4 @@
-import Block from "@src/core/Block";
+import { Block } from "@src/core";
 
 import template from "./dialog-layout.hbs?raw";
 import { DialogLayoutController } from "./DialogLayoutController";

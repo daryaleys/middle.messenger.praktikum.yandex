@@ -1,4 +1,4 @@
-import Block from "@src/core/Block";
+import { Block } from "@src/core";
 
 import template from "./auth-layout.hbs?raw";
 import { AuthLayoutController } from "./AuthLayoutController";

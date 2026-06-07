@@ -1,4 +1,4 @@
-import Block from "@src/core/Block";
+import { Block } from "@src/core";
 
 import template from "./chat-message.hbs?raw";
 import { ChatMessageController } from "./ChatMessageController";
