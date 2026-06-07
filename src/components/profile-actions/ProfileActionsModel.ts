@@ -2,15 +2,15 @@ import type { ProfileActionsProps } from "./types";
 
 const defaultActions: Required<ProfileActionsProps>["actions"] = [
 	{
-		href: "/profile/edit",
+		href: "/settings/edit",
 		label: "Изменить данные",
 	},
 	{
-		href: "/profile/password",
+		href: "/settings/password",
 		label: "Изменить пароль",
 	},
 	{
-		href: "/login",
+		href: "/",
 		label: "Выйти",
 		isDanger: true,
 	},

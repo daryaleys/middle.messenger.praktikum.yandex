@@ -6,7 +6,7 @@ export class SigninModel {
 			signInPageData: {
 				cardModifier: "auth-card--signup",
 				fieldsModifier: "",
-				linkHref: "/login",
+				linkHref: "/",
 				linkText: "Войти",
 				submitText: "Зарегистрироваться",
 				title: "Регистрация",

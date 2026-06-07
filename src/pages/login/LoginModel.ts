@@ -6,7 +6,7 @@ export class LoginModel {
 			loginPageData: {
 				cardModifier: "",
 				fieldsModifier: "auth-form__fields--login",
-				linkHref: "/signin",
+				linkHref: "/sign-up",
 				linkText: "Нет аккаунта?",
 				submitText: "Авторизоваться",
 				title: "Вход",

@@ -9,7 +9,7 @@ export class ProfileAvatarModel {
 
 	getAvatarData(): Required<ProfileAvatarProps> {
 		return {
-			action: this.props.action ?? "/profile",
+			action: this.props.action ?? "/settings",
 			inputId: this.props.inputId ?? "profile-avatar",
 			text: this.props.text ?? "Поменять аватар",
 		};
