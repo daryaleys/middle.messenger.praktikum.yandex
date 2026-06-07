@@ -1,6 +1,6 @@
 import Handlebars from "handlebars";
 import type { HelperOptions } from "handlebars";
-import type { BlockComponent } from "@src/core/component/Block";
+import type { BlockComponent } from "./block";
 
 let uniqueId = 0;
 
@@ -22,7 +22,9 @@ export function registerComponent<Props extends object>(
 			(data.root.__children = data.root.__children || []).push({
 				component,
 				embed(node: DocumentFragment) {
-					const placeholder = node.querySelector(`[${dataAttribute}]`);
+					const placeholder = node.querySelector(
+						`[${dataAttribute}]`,
+					);
 
 					if (!placeholder) {
 						throw new Error(

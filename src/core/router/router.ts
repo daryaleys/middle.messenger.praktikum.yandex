@@ -1,5 +1,5 @@
-import type Block from "../component/Block";
-import Route from "./Route";
+import type Block from "../block/block";
+import Route from "./route";
 
 type BlockFactory = () => Block<object>;
 

@@ -1,4 +1,4 @@
-import type Block from "../component/Block";
+import type Block from "../block/block";
 
 type BlockFactory = () => Block<object>;
 
@@ -51,7 +51,9 @@ export class Route {
 		const root = document.querySelector(this._props.rootQuery);
 
 		if (!root) {
-			throw new Error(`Root element "${this._props.rootQuery}" not found`);
+			throw new Error(
+				`Root element "${this._props.rootQuery}" not found`,
+			);
 		}
 
 		const element = this._block.element();

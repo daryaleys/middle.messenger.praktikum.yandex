@@ -42,7 +42,7 @@ function isPlainData(data: RequestData): data is PlainData {
 	);
 }
 
-class HTTPTransport {
+export class HTTPTransport {
 	get<T = unknown>(url: string, options: RequestOptionsWithoutMethod = {}) {
 		return this.request<T>(
 			url,
