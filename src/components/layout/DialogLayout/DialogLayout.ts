@@ -3,11 +3,7 @@ import { Block } from "@src/core";
 import template from "./dialog-layout.hbs?raw";
 import { DialogLayoutController } from "./DialogLayoutController";
 import { DialogLayoutModel } from "./DialogLayoutModel";
-import {
-	CHAT_USER_ACTIONS,
-	type DialogLayoutProps,
-	type DialogLayoutViewModel,
-} from "./types";
+import type { DialogLayoutProps, DialogLayoutViewModel } from "./types";
 
 export class DialogLayout extends Block<DialogLayoutViewModel> {
 	static componentName = "DialogLayout";
@@ -21,39 +17,32 @@ export class DialogLayout extends Block<DialogLayoutViewModel> {
 		super(controller.getViewModel());
 		this.props = {
 			...this.props,
+			isUpdateChatAvatarModalOpen:
+				this.props.isUpdateChatAvatarModalOpen ?? false,
 			isAddUserModalOpen: this.props.isAddUserModalOpen ?? false,
 			isRemoveUserModalOpen:
 				this.props.isRemoveUserModalOpen ?? false,
+			onUpdateChatAvatarModalClose:
+				this.handleUpdateChatAvatarModalClose,
+			onUpdateChatAvatarModalOpen:
+				this.handleUpdateChatAvatarModalOpen,
 			onAddUserModalClose: this.handleAddUserModalClose,
+			onAddUserModalOpen: this.handleAddUserModalOpen,
 			onRemoveUserModalClose: this.handleRemoveUserModalClose,
-		};
-		this.events = {
-			click: this.handleClick,
+			onRemoveUserModalOpen: this.handleRemoveUserModalOpen,
 		};
 	}
 
-	private handleClick = (event: Event) => {
-		const target = event.target;
+	private handleUpdateChatAvatarModalOpen = () => {
+		this.setProps({
+			isUpdateChatAvatarModalOpen: true,
+		});
+	};
 
-		if (!(target instanceof Element)) {
-			return;
-		}
-
-		const action = target.closest<HTMLElement>("[data-dropdown-action]");
-		const actionName = action?.dataset.dropdownAction;
-
-		if (actionName === CHAT_USER_ACTIONS.addUser) {
-			this.setProps({
-				isAddUserModalOpen: true,
-			});
-			return;
-		}
-
-		if (actionName === CHAT_USER_ACTIONS.removeUser) {
-			this.setProps({
-				isRemoveUserModalOpen: true,
-			});
-		}
+	private handleUpdateChatAvatarModalClose = () => {
+		this.setProps({
+			isUpdateChatAvatarModalOpen: false,
+		});
 	};
 
 	private handleAddUserModalClose = () => {
@@ -62,9 +51,21 @@ export class DialogLayout extends Block<DialogLayoutViewModel> {
 		});
 	};
 
+	private handleAddUserModalOpen = () => {
+		this.setProps({
+			isAddUserModalOpen: true,
+		});
+	};
+
 	private handleRemoveUserModalClose = () => {
 		this.setProps({
 			isRemoveUserModalOpen: false,
+		});
+	};
+
+	private handleRemoveUserModalOpen = () => {
+		this.setProps({
+			isRemoveUserModalOpen: true,
 		});
 	};
 }

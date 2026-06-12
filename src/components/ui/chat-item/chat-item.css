@@ -25,10 +25,17 @@
 }
 
 .chat-item__avatar {
+    overflow: hidden;
     width: 47px;
     height: 47px;
     border-radius: 50%;
     background: var(--color-control-background);
+}
+
+.chat-item__avatar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .chat-item__content {

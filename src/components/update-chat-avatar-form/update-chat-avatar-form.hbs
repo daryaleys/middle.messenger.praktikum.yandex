@@ -1,0 +1,29 @@
+<form class="update-chat-avatar-form" action="#" method="post" enctype="multipart/form-data">
+    <h2 class="update-chat-avatar-form__title">{{title}}</h2>
+
+    <label class="update-chat-avatar-form__avatar" for="{{inputId}}">
+        {{{Input
+            className="update-chat-avatar-form__input"
+            id=inputId
+            type="file"
+            name="avatar"
+            accept="image/jpeg,image/jpg,image/png,image/gif,image/webp"
+            disabled=isLoading
+            ref="avatarInput"
+        }}}
+        {{#if avatarUrl}}
+            <img class="update-chat-avatar-form__image" src="{{avatarUrl}}" alt="" />
+        {{else}}
+            <svg class="update-chat-avatar-form__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M9 4.5 7.6 6H5a3 3 0 0 0-3 3v7.5a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V9a3 3 0 0 0-3-3h-2.6L15 4.5H9zm3 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 1.8a2.2 2.2 0 1 0 0 4.4 2.2 2.2 0 0 0 0-4.4z" />
+            </svg>
+        {{/if}}
+        <span class="update-chat-avatar-form__text">
+            {{#if isLoading}}Загружаем...{{else}}Выбрать файл{{/if}}
+        </span>
+    </label>
+
+    {{#if error}}
+        <p class="update-chat-avatar-form__error" role="alert">{{error}}</p>
+    {{/if}}
+</form>

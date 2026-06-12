@@ -30,6 +30,7 @@ export function mapActiveChatToView(): ChatsPageProps["activeChat"] {
 	return {
 		id: selectedChat.id,
 		title: selectedChat.title,
+		avatarUrl: selectedChat.avatarUrl,
 		date: "",
 		usersError: getChatUsersError(selectedChat.id),
 		isUsersLoading: isChatUsersLoading(selectedChat.id),

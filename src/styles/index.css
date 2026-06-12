@@ -6,6 +6,7 @@
 /* layout */
 @import url("../components/layout/SidebarLayout/SidebarLayout.css");
 @import url("../components/layout/DialogLayout/DialogLayout.css");
+@import url("../components/layout/DialogLayout/components/DialogHeader/dialog-header.css");
 @import url("../components/layout/AuthLayout/AuthLayout.css");
 @import url("../components/layout/ProfileLayout/ProfileLayout.css");
 @import url("../components/layout/ServiceLayout/ServiceLayout.css");
@@ -19,6 +20,7 @@
 @import url("../components/profile-actions/profile-actions.css");
 @import url("../components/profile-edit-form/profile-edit-form.css");
 @import url("../components/remove-user-from-chat-form/remove-user-from-chat-form.css");
+@import url("../components/update-chat-avatar-form/update-chat-avatar-form.css");
 
 /* ui */
 @import url("../components/ui/chat-item/chat-item.css");

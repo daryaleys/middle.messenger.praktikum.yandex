@@ -1,4 +1,5 @@
 import {
+	API_BASE_URL,
 	getChatsAPI,
 	getChatUsersAPI,
 	type Chat as APIChat,
@@ -59,7 +60,7 @@ export class ChatsController {
 		return {
 			id: chat.id,
 			title: chat.title,
-			avatarUrl: chat.avatar ?? "",
+			avatarUrl: this.getAvatarUrl(chat.avatar),
 			unreadCount: chat.unread_count,
 			lastMessage: chat.last_message
 				? {
@@ -82,5 +83,15 @@ export class ChatsController {
 			hour: "2-digit",
 			minute: "2-digit",
 		}).format(date);
+	}
+
+	private getAvatarUrl(avatar?: string | null) {
+		if (!avatar) {
+			return "";
+		}
+
+		return avatar.startsWith("/")
+			? `${API_BASE_URL}/resources${avatar}`
+			: avatar;
 	}
 }

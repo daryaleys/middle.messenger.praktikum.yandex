@@ -6,6 +6,7 @@ export type ChatItemLastMessage = {
 export type ChatItemProps = {
 	id: number;
 	title: string;
+	avatarUrl?: string;
 	isActive?: boolean;
 	lastMessage?: ChatItemLastMessage;
 	unreadCount?: number;

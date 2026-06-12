@@ -153,3 +153,16 @@ export function setChatUsersLoading(chatId: number, isLoading: boolean) {
 export function addChat(chat: Chat) {
 	setChats([chat, ...getChats()]);
 }
+
+export function updateChat(chat: Chat) {
+	setChats(
+		getChats().map((item) =>
+			item.id === chat.id
+				? {
+						...item,
+						...chat,
+					}
+				: item,
+		),
+	);
+}

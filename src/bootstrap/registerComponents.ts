@@ -4,6 +4,7 @@ import { AuthForm } from "@src/components/auth-form/AuthForm";
 import { CreateChatForm } from "@src/components/create-chat-form/CreateChatForm";
 import { AuthLayout } from "@src/components/layout/AuthLayout/AuthLayout";
 import { DialogLayout } from "@src/components/layout/DialogLayout/DialogLayout";
+import { DialogHeader } from "@src/components/layout/DialogLayout/components/DialogHeader/DialogHeader";
 import { MessageForm } from "@src/components/message-form/MessageForm";
 import { ProfileLayout } from "@src/components/layout/ProfileLayout/ProfileLayout";
 import { RemoveUserFromChatForm } from "@src/components/remove-user-from-chat-form/RemoveUserFromChatForm";
@@ -22,6 +23,7 @@ import { Modal } from "@src/components/ui/modal/Modal";
 import { ProfileAvatar } from "@src/components/ui/profile-avatar/ProfileAvatar";
 import { ProfileFormField } from "@src/components/ui/profile-form-field/ProfileFormField";
 import { SubmitButton } from "@src/components/ui/submit-button/SubmitButton";
+import { UpdateChatAvatarForm } from "@src/components/update-chat-avatar-form/UpdateChatAvatarForm";
 
 export function registerComponents() {
 	registerComponent(AddUserToChatForm);
@@ -31,6 +33,7 @@ export function registerComponents() {
 	registerComponent(ChatMessage);
 	registerComponent(CreateChatForm);
 	registerComponent(DeleteButton);
+	registerComponent(DialogHeader);
 	registerComponent(DialogLayout);
 	registerComponent(Dropdown);
 	registerComponent(FormField);
@@ -47,4 +50,5 @@ export function registerComponents() {
 	registerComponent(ServiceLayout);
 	registerComponent(SidebarLayout);
 	registerComponent(SubmitButton);
+	registerComponent(UpdateChatAvatarForm);
 }
