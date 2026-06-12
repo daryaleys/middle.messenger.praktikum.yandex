@@ -33,8 +33,8 @@ export type GetChatsRequest = {
 };
 
 export class GetChatsAPI extends BaseAPI {
-	request(data: GetChatsRequest = {}) {
-		return chatsAPIInstance.get<Chat[]>("", { data });
+	request(data: GetChatsRequest = {}): Promise<Chat[]> {
+		return chatsAPIInstance.get("", { data });
 	}
 }
 

@@ -8,8 +8,8 @@ export type DeleteChatUsersRequest = {
 };
 
 export class DeleteChatUsersAPI extends BaseAPI {
-	request(data: DeleteChatUsersRequest) {
-		return chatsAPIInstance.delete<void>("/users", { data });
+	request(data: DeleteChatUsersRequest): Promise<void> {
+		return chatsAPIInstance.delete("/users", { data });
 	}
 }
 

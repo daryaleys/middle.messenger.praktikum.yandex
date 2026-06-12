@@ -8,8 +8,8 @@ export type AddChatUsersRequest = {
 };
 
 export class AddChatUsersAPI extends BaseAPI {
-	request(data: AddChatUsersRequest) {
-		return chatsAPIInstance.put<void>("/users", { data });
+	request(data: AddChatUsersRequest): Promise<void> {
+		return chatsAPIInstance.put("/users", { data });
 	}
 }
 

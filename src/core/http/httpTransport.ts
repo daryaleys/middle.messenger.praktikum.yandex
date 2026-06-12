@@ -22,6 +22,10 @@ type RequestOptions = {
 };
 
 type RequestOptionsWithoutMethod = Omit<RequestOptions, "method">;
+type HTTPMethod = <T = unknown>(
+	url: string,
+	options?: RequestOptionsWithoutMethod,
+) => Promise<T>;
 
 type HTTPError = {
 	status?: number;
@@ -50,40 +54,17 @@ export class HTTPTransport {
 		this.baseUrl = baseUrl;
 	}
 
-	get<T = unknown>(url: string, options: RequestOptionsWithoutMethod = {}) {
-		return this.request<T>(
-			url,
-			{ ...options, method: METHODS.GET },
-			options.timeout,
-		);
-	}
+	get: HTTPMethod = (url, options = {}) =>
+		this.request(url, { ...options, method: METHODS.GET }, options.timeout);
 
-	post<T = unknown>(url: string, options: RequestOptionsWithoutMethod = {}) {
-		return this.request<T>(
-			url,
-			{ ...options, method: METHODS.POST },
-			options.timeout,
-		);
-	}
+	post: HTTPMethod = (url, options = {}) =>
+		this.request(url, { ...options, method: METHODS.POST }, options.timeout);
 
-	put<T = unknown>(url: string, options: RequestOptionsWithoutMethod = {}) {
-		return this.request<T>(
-			url,
-			{ ...options, method: METHODS.PUT },
-			options.timeout,
-		);
-	}
+	put: HTTPMethod = (url, options = {}) =>
+		this.request(url, { ...options, method: METHODS.PUT }, options.timeout);
 
-	delete<T = unknown>(
-		url: string,
-		options: RequestOptionsWithoutMethod = {},
-	) {
-		return this.request<T>(
-			url,
-			{ ...options, method: METHODS.DELETE },
-			options.timeout,
-		);
-	}
+	delete: HTTPMethod = (url, options = {}) =>
+		this.request(url, { ...options, method: METHODS.DELETE }, options.timeout);
 
 	request<T = unknown>(
 		url: string,

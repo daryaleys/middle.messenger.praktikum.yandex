@@ -23,8 +23,8 @@ type ProfileResponse = {
 };
 
 export class ProfileAPI extends BaseAPI {
-	request(user: ProfileRequest) {
-		return userAPIInstance.put<ProfileResponse>("/profile", { data: user });
+	request(user: ProfileRequest): Promise<ProfileResponse> {
+		return userAPIInstance.put("/profile", { data: user });
 	}
 }
 

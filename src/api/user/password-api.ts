@@ -8,8 +8,8 @@ type PasswordRequest = {
 };
 
 export class PasswordAPI extends BaseAPI {
-	request(password: PasswordRequest) {
-		return userAPIInstance.put<void>("/password", { data: password });
+	request(password: PasswordRequest): Promise<void> {
+		return userAPIInstance.put("/password", { data: password });
 	}
 }
 

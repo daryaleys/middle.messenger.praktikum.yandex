@@ -8,8 +8,8 @@ type SigninRequest = {
 };
 
 export class LoginAPI extends BaseAPI {
-	request(user: SigninRequest) {
-		return authAPIInstance.post<void>("/signin", { data: user });
+	request(user: SigninRequest): Promise<void> {
+		return authAPIInstance.post("/signin", { data: user });
 	}
 }
 

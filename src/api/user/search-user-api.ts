@@ -18,8 +18,8 @@ export type SearchUserResponse = {
 };
 
 export class SearchUserAPI extends BaseAPI {
-	request(data: SearchUserRequest) {
-		return userAPIInstance.post<SearchUserResponse[]>("/search", {
+	request(data: SearchUserRequest): Promise<SearchUserResponse[]> {
+		return userAPIInstance.post("/search", {
 			data,
 		});
 	}

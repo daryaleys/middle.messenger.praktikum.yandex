@@ -11,8 +11,8 @@ export type CreateChatResponse = {
 };
 
 export class CreateChatAPI extends BaseAPI {
-	request(data: CreateChatRequest) {
-		return chatsAPIInstance.post<CreateChatResponse>("", { data });
+	request(data: CreateChatRequest): Promise<CreateChatResponse> {
+		return chatsAPIInstance.post("", { data });
 	}
 }
 

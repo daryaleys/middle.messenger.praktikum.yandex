@@ -21,8 +21,8 @@ export type GetChatUsersRequest = {
 };
 
 export class GetChatUsersAPI extends BaseAPI {
-	request({ id, ...data }: GetChatUsersRequest) {
-		return chatsAPIInstance.get<ChatUser[]>(`/${id}/users`, { data });
+	request({ id, ...data }: GetChatUsersRequest): Promise<ChatUser[]> {
+		return chatsAPIInstance.get(`/${id}/users`, { data });
 	}
 }
 

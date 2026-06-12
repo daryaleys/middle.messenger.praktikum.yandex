@@ -14,8 +14,8 @@ export type UserResponse = {
 };
 
 export class UserAPI extends BaseAPI {
-	request() {
-		return authAPIInstance.get<UserResponse>("/user");
+	request(): Promise<UserResponse> {
+		return authAPIInstance.get("/user");
 	}
 }
 

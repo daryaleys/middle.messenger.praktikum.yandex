@@ -16,10 +16,12 @@ type SignupResponse = {
 };
 
 export class SignupAPI extends BaseAPI {
-	request(user: SignupRequest) {
-		return authAPIInstance
-			.post<SignupResponse>("/signup", { data: user })
-			.then(({ id }) => id);
+	async request(user: SignupRequest): Promise<number> {
+		const response: SignupResponse = await authAPIInstance.post("/signup", {
+			data: user,
+		});
+
+		return response.id;
 	}
 }
 

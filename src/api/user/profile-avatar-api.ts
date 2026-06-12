@@ -18,11 +18,11 @@ type ProfileAvatarResponse = {
 };
 
 export class ProfileAvatarAPI extends BaseAPI {
-	request(user: ProfileAvatarRequest) {
+	request(user: ProfileAvatarRequest): Promise<ProfileAvatarResponse> {
 		const formData = new FormData();
 		formData.append("avatar", user.avatar);
 
-		return userAPIInstance.put<ProfileAvatarResponse>("/profile/avatar", {
+		return userAPIInstance.put("/profile/avatar", {
 			data: formData,
 		});
 	}
