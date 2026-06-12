@@ -32,6 +32,10 @@
       <span class="search-form__placeholder" aria-hidden="true">Поиск</span>
     </form>
 
+    {{#if deleteChatError}}
+      <p class="sidebar-error" role="alert">{{deleteChatError}}</p>
+    {{/if}}
+
     {{#Modal
       id=createChatModalId
       label="Создать чат"
@@ -54,6 +58,7 @@
           title=title
           avatarUrl=avatarUrl
           isActive=isActive
+          isDeleting=(isEqual id ../deletingChatId)
           unreadCount=unreadCount
           lastMessage=lastMessage
         }}}

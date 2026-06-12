@@ -1,5 +1,6 @@
 import {
 	API_BASE_URL,
+	deleteChatAPI,
 	getChatsAPI,
 	getChatUsersAPI,
 	type Chat as APIChat,
@@ -12,6 +13,7 @@ import {
 	setChats,
 	setChatsError,
 	setChatsLoading,
+	removeChat,
 } from "@src/store";
 
 import { ChatsModel } from "./ChatsModel";
@@ -53,6 +55,15 @@ export class ChatsController {
 			setChatUsers(chatId, users);
 		} catch {
 			setChatUsersError(chatId, "Не удалось загрузить участников");
+		}
+	}
+
+	async deleteChat(chatId: number) {
+		try {
+			await deleteChatAPI.request({ chatId });
+			removeChat(chatId);
+		} catch {
+			return "Не удалось удалить чат. Удалять чат может только администратор.";
 		}
 	}
 

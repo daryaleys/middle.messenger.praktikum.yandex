@@ -21,6 +21,8 @@ export class ChatsPage extends Block<ChatsPageProps> {
 
 	private unsubscribeStore: (() => void) | null = null;
 
+	private deletingChatId: number | null = null;
+
 	constructor(controller = new ChatsController()) {
 		const viewModel = controller.getViewModel();
 
@@ -36,6 +38,7 @@ export class ChatsPage extends Block<ChatsPageProps> {
 			this.setProps({
 				activeChat: mapActiveChatToView(),
 				chats: getChatsForView(),
+				deletingChatId: this.deletingChatId,
 				error: getChatsError(),
 				isLoading: isChatsLoading(),
 			});
@@ -60,7 +63,7 @@ export class ChatsPage extends Block<ChatsPageProps> {
 	private handleClick = (event: Event) => {
 		const target = event.target;
 
-		if (!(target instanceof HTMLElement)) {
+		if (!(target instanceof Element)) {
 			return;
 		}
 
@@ -71,7 +74,49 @@ export class ChatsPage extends Block<ChatsPageProps> {
 			return;
 		}
 
+		const deleteButton = target.closest<HTMLElement>(
+			"[data-delete-button-id]",
+		);
+
+		if (deleteButton) {
+			event.preventDefault();
+			this.handleDeleteChat(chatId);
+			return;
+		}
+
+		if (this.deletingChatId === chatId) {
+			return;
+		}
+
 		selectChat(chatId);
 		this.controller.loadChatUsers(chatId);
 	};
+
+	private async handleDeleteChat(chatId: number) {
+		if (this.deletingChatId === chatId) {
+			return;
+		}
+
+		this.deletingChatId = chatId;
+		this.setProps({
+			deleteChatError: null,
+			deletingChatId: chatId,
+		});
+
+		const error = await this.controller.deleteChat(chatId);
+
+		this.deletingChatId = null;
+
+		if (error) {
+			this.setProps({
+				deleteChatError: error,
+				deletingChatId: null,
+			});
+			return;
+		}
+
+		this.setProps({
+			deletingChatId: null,
+		});
+	}
 }

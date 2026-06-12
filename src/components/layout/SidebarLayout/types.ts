@@ -21,6 +21,8 @@ export type SidebarLayoutProps = {
 	chats: Chat[];
 	createChatModalId?: string;
 	createChatForm?: CreateChatFormProps;
+	deleteChatError?: string | null;
+	deletingChatId?: number | null;
 	isCreateChatModalOpen?: boolean;
 	onCreateChatModalClose?: () => void;
 	onCreateChatSuccess?: () => void;

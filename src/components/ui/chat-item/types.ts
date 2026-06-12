@@ -8,6 +8,7 @@ export type ChatItemProps = {
 	title: string;
 	avatarUrl?: string;
 	isActive?: boolean;
+	isDeleting?: boolean;
 	lastMessage?: ChatItemLastMessage;
 	unreadCount?: number;
 };

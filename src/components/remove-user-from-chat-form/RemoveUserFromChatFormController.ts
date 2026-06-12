@@ -1,5 +1,10 @@
 import { deleteChatUsersAPI } from "@src/api";
-import { getChatUsers, setChatUsers } from "@src/store";
+import {
+	getChatUsers,
+	getUser,
+	removeChat,
+	setChatUsers,
+} from "@src/store";
 
 import type { RemoveUserFromChatFormProps } from "./types";
 
@@ -24,6 +29,12 @@ export class RemoveUserFromChatFormController {
 				chatId,
 				users: [userId],
 			});
+
+			if (getUser()?.id === userId) {
+				removeChat(chatId);
+				return;
+			}
+
 			setChatUsers(
 				chatId,
 				getChatUsers(chatId).filter((user) => user.id !== userId),

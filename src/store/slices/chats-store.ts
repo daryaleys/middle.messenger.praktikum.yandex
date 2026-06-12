@@ -154,6 +154,14 @@ export function addChat(chat: Chat) {
 	setChats([chat, ...getChats()]);
 }
 
+export function removeChat(chatId: number) {
+	setChats(getChats().filter((chat) => chat.id !== chatId));
+
+	if (getSelectedChatId() === chatId) {
+		selectChat(null);
+	}
+}
+
 export function updateChat(chat: Chat) {
 	setChats(
 		getChats().map((item) =>

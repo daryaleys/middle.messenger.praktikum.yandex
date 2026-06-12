@@ -111,6 +111,14 @@
     color: var(--color-text-secondary);
 }
 
+.sidebar-error {
+    margin: 10px 0 0;
+    color: var(--color-error);
+    font-size: 11px;
+    line-height: 1.3;
+    text-align: center;
+}
+
 .chat-navigation {
     overflow-y: auto;
     border-top: 1px solid var(--color-border);

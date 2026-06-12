@@ -9,7 +9,11 @@
                 <p class="chats-state__text">{{error}}</p>
             </section>
         {{else}}
-            {{{SidebarLayout chats=chats}}}
+            {{{SidebarLayout
+                chats=chats
+                deleteChatError=deleteChatError
+                deletingChatId=deletingChatId
+            }}}
             {{{DialogLayout activeChat=activeChat formErrors=formErrors formValues=formValues}}}
         {{/if}}
     {{/if}}

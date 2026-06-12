@@ -1,5 +1,8 @@
-<li class="chat-item {{#if isActive}}chat-item--active{{/if}}" data-id="{{id}}">
-  <button class="chat-item__button" type="button">
+<li
+  class="chat-item {{#if isActive}}chat-item--active{{/if}} {{#if isDeleting}}chat-item--deleting{{/if}}"
+  data-id="{{id}}"
+>
+  <button class="chat-item__button" type="button" {{#if isDeleting}}disabled{{/if}}>
     <span class="chat-item__avatar" aria-hidden="true">
       {{#if avatarUrl}}
         <img class="chat-item__avatar-image" src="{{avatarUrl}}" alt="" />
@@ -24,4 +27,10 @@
       {{/if}}
     </span>
   </button>
+  {{{DeleteButton
+    id=id
+    label="Удалить чат"
+    className="chat-item__delete"
+    disabled=isDeleting
+  }}}
 </li>

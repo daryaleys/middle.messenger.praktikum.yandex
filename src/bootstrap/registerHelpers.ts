@@ -1,4 +1,5 @@
 import Handlebars from "handlebars";
+import { isEqual } from "@src/utils/object";
 
 export function registerHelpers() {
 	// Возвращает текст ошибки поля по его name из общего объекта ошибок формы
@@ -20,5 +21,8 @@ export function registerHelpers() {
 
 			return values?.[name] ?? fallback;
 		},
+	);
+	Handlebars.registerHelper("isEqual", (lhs: unknown, rhs: unknown) =>
+		isEqual(lhs, rhs),
 	);
 }
