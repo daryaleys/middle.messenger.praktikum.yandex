@@ -4,24 +4,23 @@ import {
 	type FormValues,
 } from "@src/utils/validation";
 
-import template from "./chat-user-form.hbs?raw";
-import { ChatUserFormController } from "./ChatUserFormController";
-import { ChatUserFormModel } from "./ChatUserFormModel";
-import {
-	CHAT_USER_FORM_ACTIONS,
-	type ChatUserFormProps,
-} from "./types";
+import template from "./add-user-to-chat-form.hbs?raw";
+import { AddUserToChatFormController } from "./AddUserToChatFormController";
+import { AddUserToChatFormModel } from "./AddUserToChatFormModel";
+import type { AddUserToChatFormProps } from "./types";
 
-export class ChatUserForm extends Block<ChatUserFormProps> {
-	static componentName = "ChatUserForm";
+export class AddUserToChatForm extends Block<AddUserToChatFormProps> {
+	static componentName = "AddUserToChatForm";
 
 	protected template = template;
 
-	private readonly controller: ChatUserFormController;
+	private readonly controller: AddUserToChatFormController;
 
 	constructor(
-		props: ChatUserFormProps,
-		controller = new ChatUserFormController(new ChatUserFormModel(props)),
+		props: AddUserToChatFormProps,
+		controller = new AddUserToChatFormController(
+			new AddUserToChatFormModel(props),
+		),
 	) {
 		super(controller.getViewModel());
 		this.controller = controller;
@@ -55,10 +54,10 @@ export class ChatUserForm extends Block<ChatUserFormProps> {
 			isLoading: true,
 		});
 
-		const submitError =
-			this.props.action === CHAT_USER_FORM_ACTIONS.addUser
-				? await this.handleAddUser(login)
-				: await this.handleRemoveUser(login);
+		const submitError = await this.controller.handleAddUser(
+			this.props.chatId,
+			login,
+		);
 
 		if (submitError) {
 			this.setProps({
@@ -75,13 +74,5 @@ export class ChatUserForm extends Block<ChatUserFormProps> {
 			isLoading: false,
 		});
 		this.props.onSuccess?.();
-	}
-
-	private handleAddUser(login: string) {
-		return this.controller.handleAddUser(this.props.chatId, login);
-	}
-
-	private handleRemoveUser(login: string) {
-		return this.controller.handleRemoveUser(this.props.chatId, login);
 	}
 }

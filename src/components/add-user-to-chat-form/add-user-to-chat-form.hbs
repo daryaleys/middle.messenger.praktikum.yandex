@@ -1,5 +1,5 @@
-<form class="chat-user-form" action="#" method="post" novalidate>
-    <h2 class="chat-user-form__title">{{title}}</h2>
+<form class="add-user-to-chat-form" action="#" method="post" novalidate>
+    <h2 class="add-user-to-chat-form__title">{{title}}</h2>
 
     {{{FormField
         label="Логин"
@@ -10,13 +10,13 @@
     }}}
 
     {{#if error}}
-        <p class="chat-user-form__error" role="alert">{{error}}</p>
+        <p class="add-user-to-chat-form__error" role="alert">{{error}}</p>
     {{/if}}
 
     {{{SubmitButton
         text=submitText
         loadingText="Сохраняем..."
-        className="chat-user-form__submit"
+        className="add-user-to-chat-form__submit"
         disabled=isLoading
         isLoading=isLoading
     }}}

@@ -11,17 +11,19 @@
 @import url("../components/layout/ServiceLayout/ServiceLayout.css");
 
 /* components */
+@import url("../components/add-user-to-chat-form/add-user-to-chat-form.css");
 @import url("../components/auth-form/auth-form.css");
-@import url("../components/chat-user-form/chat-user-form.css");
 @import url("../components/create-chat-form/create-chat-form.css");
 @import url("../components/message-form/message-form.css");
 @import url("../components/profile-details/profile-details.css");
 @import url("../components/profile-actions/profile-actions.css");
 @import url("../components/profile-edit-form/profile-edit-form.css");
+@import url("../components/remove-user-from-chat-form/remove-user-from-chat-form.css");
 
 /* ui */
 @import url("../components/ui/chat-item/chat-item.css");
 @import url("../components/ui/chat-message/chat-message.css");
+@import url("../components/ui/delete-button/delete-button.css");
 @import url("../components/ui/dropdown/dropdown.css");
 @import url("../components/ui/form-field/form-field.css");
 @import url("../components/ui/modal/modal.css");

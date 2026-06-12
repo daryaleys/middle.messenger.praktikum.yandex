@@ -1,0 +1,84 @@
+.remove-user-from-chat-form {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+	padding: 40px 30px 30px;
+}
+
+.remove-user-from-chat-form__title {
+	margin: 0 0 6px;
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 1.35;
+	text-align: center;
+}
+
+.remove-user-from-chat-form__error {
+	margin: 0;
+	color: var(--color-error);
+	font-size: 11px;
+	line-height: 1.25;
+	text-align: center;
+}
+
+.remove-user-from-chat-form__empty {
+	margin: 0;
+	color: var(--color-text-secondary);
+	font-size: 13px;
+	line-height: 1.35;
+	text-align: center;
+}
+
+.remove-user-from-chat-form__user-list {
+	display: flex;
+	max-height: 300px;
+	flex-direction: column;
+	gap: 2px;
+	margin: 0;
+	padding: 0;
+	overflow-y: auto;
+	list-style: none;
+}
+
+.remove-user-from-chat-form__user {
+	display: grid;
+	grid-template-columns: 36px minmax(0, 1fr) 36px;
+	align-items: center;
+	gap: 10px;
+	min-height: 48px;
+	padding: 6px 0;
+}
+
+.remove-user-from-chat-form__avatar {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background: var(--color-control-background);
+}
+
+.remove-user-from-chat-form__user-content {
+	display: flex;
+	min-width: 0;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.remove-user-from-chat-form__user-name,
+.remove-user-from-chat-form__user-role {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.remove-user-from-chat-form__user-name {
+	color: var(--color-text-primary);
+	font-size: 13px;
+	font-weight: 600;
+	line-height: 1.25;
+}
+
+.remove-user-from-chat-form__user-role {
+	color: var(--color-text-secondary);
+	font-size: 11px;
+	line-height: 1.25;
+}

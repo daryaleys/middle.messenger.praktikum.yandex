@@ -1,10 +1,13 @@
 import { Block } from "@src/core";
-import { CHAT_USER_FORM_ACTIONS } from "@src/components/chat-user-form/types";
 
 import template from "./dialog-layout.hbs?raw";
 import { DialogLayoutController } from "./DialogLayoutController";
 import { DialogLayoutModel } from "./DialogLayoutModel";
-import type { DialogLayoutProps, DialogLayoutViewModel } from "./types";
+import {
+	CHAT_USER_ACTIONS,
+	type DialogLayoutProps,
+	type DialogLayoutViewModel,
+} from "./types";
 
 export class DialogLayout extends Block<DialogLayoutViewModel> {
 	static componentName = "DialogLayout";
@@ -39,14 +42,14 @@ export class DialogLayout extends Block<DialogLayoutViewModel> {
 		const action = target.closest<HTMLElement>("[data-dropdown-action]");
 		const actionName = action?.dataset.dropdownAction;
 
-		if (actionName === CHAT_USER_FORM_ACTIONS.addUser) {
+		if (actionName === CHAT_USER_ACTIONS.addUser) {
 			this.setProps({
 				isAddUserModalOpen: true,
 			});
 			return;
 		}
 
-		if (actionName === CHAT_USER_FORM_ACTIONS.removeUser) {
+		if (actionName === CHAT_USER_ACTIONS.removeUser) {
 			this.setProps({
 				isRemoveUserModalOpen: true,
 			});

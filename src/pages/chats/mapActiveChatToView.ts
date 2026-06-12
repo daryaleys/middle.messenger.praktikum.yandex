@@ -14,6 +14,10 @@ function getUserDisplayName(user: ChatUser) {
 	return user.display_name || fullName || user.login;
 }
 
+function getUserRoleLabel(user: ChatUser) {
+	return user.role === "admin" ? "Администратор" : "Участник";
+}
+
 export function mapActiveChatToView(): ChatsPageProps["activeChat"] {
 	const selectedChat = getSelectedChat();
 
@@ -34,6 +38,7 @@ export function mapActiveChatToView(): ChatsPageProps["activeChat"] {
 			id: user.id,
 			name: getUserDisplayName(user),
 			role: user.role,
+			roleLabel: getUserRoleLabel(user),
 		})),
 	};
 }

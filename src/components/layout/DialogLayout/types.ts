@@ -1,6 +1,12 @@
 import type { FormValues, ValidationErrors } from "@src/utils/validation";
-import type { ChatUserFormConfig } from "@src/components/chat-user-form/types";
+import type { AddUserToChatFormConfig } from "@src/components/add-user-to-chat-form/types";
+import type { RemoveUserFromChatFormConfig } from "@src/components/remove-user-from-chat-form/types";
 import type { DropdownConfig } from "@src/components/ui/dropdown/types";
+
+export const CHAT_USER_ACTIONS = {
+	addUser: "add-user",
+	removeUser: "remove-user",
+} as const;
 
 export type DialogMessage = {
 	id: number;
@@ -16,6 +22,7 @@ export type DialogUser = {
 	id: number;
 	name: string;
 	role: string;
+	roleLabel: string;
 };
 
 export type DialogData = {
@@ -36,9 +43,9 @@ export type DialogLayoutProps = {
 
 export type DialogLayoutViewModel = DialogLayoutProps & {
 	chatActionsDropdown: DropdownConfig;
-	addUserForm: ChatUserFormConfig;
+	addUserForm: AddUserToChatFormConfig;
 	addUserModalId: string;
-	removeUserForm: ChatUserFormConfig;
+	removeUserForm: RemoveUserFromChatFormConfig;
 	removeUserModalId: string;
 	isAddUserModalOpen?: boolean;
 	isRemoveUserModalOpen?: boolean;

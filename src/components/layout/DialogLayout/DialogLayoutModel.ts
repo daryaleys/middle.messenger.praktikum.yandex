@@ -1,5 +1,8 @@
-import { CHAT_USER_FORM_ACTIONS } from "@src/components/chat-user-form/types";
-import type { DialogLayoutProps, DialogLayoutViewModel } from "./types";
+import {
+	CHAT_USER_ACTIONS,
+	type DialogLayoutProps,
+	type DialogLayoutViewModel,
+} from "./types";
 import type { DropdownConfig } from "@src/components/ui/dropdown/types";
 
 const icons = {
@@ -14,12 +17,12 @@ const chatActionsDropdown: DropdownConfig = {
 	position: "top-right",
 	items: [
 		{
-			id: CHAT_USER_FORM_ACTIONS.addUser,
+			id: CHAT_USER_ACTIONS.addUser,
 			label: "Добавить пользователя",
 			icon: icons.plusCircle,
 		},
 		{
-			id: CHAT_USER_FORM_ACTIONS.removeUser,
+			id: CHAT_USER_ACTIONS.removeUser,
 			label: "Удалить пользователя",
 			icon: icons.xmarkCircle,
 		},
@@ -30,15 +33,12 @@ const ADD_USER_MODAL_ID = "add-user-modal";
 const REMOVE_USER_MODAL_ID = "remove-user-modal";
 
 const addUserForm = {
-	action: CHAT_USER_FORM_ACTIONS.addUser,
 	title: "Добавить пользователя",
 	submitText: "Добавить",
 } as const;
 
 const removeUserForm = {
-	action: CHAT_USER_FORM_ACTIONS.removeUser,
 	title: "Удалить пользователя",
-	submitText: "Удалить",
 } as const;
 
 export class DialogLayoutModel {

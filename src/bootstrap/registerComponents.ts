@@ -1,11 +1,12 @@
 import { registerComponent } from "@src/core";
+import { AddUserToChatForm } from "@src/components/add-user-to-chat-form/AddUserToChatForm";
 import { AuthForm } from "@src/components/auth-form/AuthForm";
-import { ChatUserForm } from "@src/components/chat-user-form/ChatUserForm";
 import { CreateChatForm } from "@src/components/create-chat-form/CreateChatForm";
 import { AuthLayout } from "@src/components/layout/AuthLayout/AuthLayout";
 import { DialogLayout } from "@src/components/layout/DialogLayout/DialogLayout";
 import { MessageForm } from "@src/components/message-form/MessageForm";
 import { ProfileLayout } from "@src/components/layout/ProfileLayout/ProfileLayout";
+import { RemoveUserFromChatForm } from "@src/components/remove-user-from-chat-form/RemoveUserFromChatForm";
 import { ServiceLayout } from "@src/components/layout/ServiceLayout/ServiceLayout";
 import { SidebarLayout } from "@src/components/layout/SidebarLayout/SidebarLayout";
 import { ProfileActions } from "@src/components/profile-actions/ProfileActions";
@@ -13,6 +14,7 @@ import { ProfileDetails } from "@src/components/profile-details/ProfileDetails";
 import { ProfileEditForm } from "@src/components/profile-edit-form/ProfileEditForm";
 import { ChatItem } from "@src/components/ui/chat-item/ChatItem";
 import { ChatMessage } from "@src/components/ui/chat-message/ChatMessage";
+import { DeleteButton } from "@src/components/ui/delete-button/DeleteButton";
 import { Dropdown } from "@src/components/ui/dropdown/Dropdown";
 import { FormField } from "@src/components/ui/form-field/FormField";
 import { Input } from "@src/components/ui/input/Input";
@@ -22,12 +24,13 @@ import { ProfileFormField } from "@src/components/ui/profile-form-field/ProfileF
 import { SubmitButton } from "@src/components/ui/submit-button/SubmitButton";
 
 export function registerComponents() {
+	registerComponent(AddUserToChatForm);
 	registerComponent(AuthForm);
 	registerComponent(AuthLayout);
 	registerComponent(ChatItem);
 	registerComponent(ChatMessage);
-	registerComponent(ChatUserForm);
 	registerComponent(CreateChatForm);
+	registerComponent(DeleteButton);
 	registerComponent(DialogLayout);
 	registerComponent(Dropdown);
 	registerComponent(FormField);
@@ -40,6 +43,7 @@ export function registerComponents() {
 	registerComponent(ProfileEditForm);
 	registerComponent(ProfileFormField);
 	registerComponent(ProfileLayout);
+	registerComponent(RemoveUserFromChatForm);
 	registerComponent(ServiceLayout);
 	registerComponent(SidebarLayout);
 	registerComponent(SubmitButton);

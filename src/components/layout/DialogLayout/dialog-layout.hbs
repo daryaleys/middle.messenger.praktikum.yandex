@@ -72,10 +72,9 @@
       isOpen=../isAddUserModalOpen
       onClose=../onAddUserModalClose
     }}
-      {{{ChatUserForm
+      {{{AddUserToChatForm
         title=../addUserForm.title
         submitText=../addUserForm.submitText
-        action=../addUserForm.action
         chatId=id
         onSuccess=../onAddUserModalClose
       }}}
@@ -87,11 +86,12 @@
       isOpen=../isRemoveUserModalOpen
       onClose=../onRemoveUserModalClose
     }}
-      {{{ChatUserForm
+      {{{RemoveUserFromChatForm
         title=../removeUserForm.title
-        submitText=../removeUserForm.submitText
-        action=../removeUserForm.action
         chatId=id
+        users=users
+        usersError=usersError
+        isUsersLoading=isUsersLoading
         onSuccess=../onRemoveUserModalClose
       }}}
     {{/Modal}}
