@@ -51,6 +51,11 @@ button {
     border: 0;
 }
 
+button:not(:disabled),
+a[href] {
+    cursor: pointer;
+}
+
 img,
 picture,
 svg,
@@ -70,4 +75,14 @@ ol {
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+.initial-loader {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    color: var(--color-text-secondary);
+    background: var(--color-background);
+    font-size: 13px;
+    font-weight: 500;
 }

@@ -16,6 +16,10 @@ export const validationRules: Record<ValidationRuleName, ValidationRule> = {
 		message:
 			"Минимум 3 символа, разрешены латиница, цифры, дефис или подчёркивание",
 	},
+	chat_title: {
+		pattern: /^(?!\s*$).{1,50}$/,
+		message: "Название чата не может быть пустым",
+	},
 	email: {
 		pattern: /^[A-Za-z0-9._%+-]+@[A-Za-z]+\.[A-Za-z.]+$/,
 		message: "Некорректный email",

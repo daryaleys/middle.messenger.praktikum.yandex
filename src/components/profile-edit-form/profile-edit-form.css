@@ -7,6 +7,14 @@
     margin: 60px auto 0;
 }
 
+.profile-form__submit-error {
+    margin: 20px 0 0;
+    color: var(--color-danger);
+    font-size: 12px;
+    line-height: 15px;
+    text-align: center;
+}
+
 @media (max-width: 720px) {
     .profile-form {
         margin-bottom: 40px;

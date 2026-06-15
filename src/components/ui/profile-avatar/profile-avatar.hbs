@@ -1,4 +1,4 @@
-<form class="profile__avatar-form" action="{{#if action}}{{action}}{{else}}/profile{{/if}}" method="post" enctype="multipart/form-data">
+<form class="profile__avatar-form" action="{{#if action}}{{action}}{{else}}/settings{{/if}}" method="post" enctype="multipart/form-data">
     <label class="profile__avatar" for="{{#if inputId}}{{inputId}}{{else}}profile-avatar{{/if}}">
         {{{Input
             className="profile__avatar-input"
@@ -6,10 +6,21 @@
             type="file"
             name="avatar"
             accept="image/*"
+            disabled=isLoading
+            ref="avatarInput"
         }}}
-        <svg class="profile__avatar-icon" viewBox="0 0 40 40" aria-hidden="true">
-            <path d="M20 21.8c5 0 9-4 9-9s-4-9-9-9-9 4-9 9 4 9 9 9zm0 4c-6 0-18 3-18 9v1.5h36v-1.5c0-6-12-9-18-9z" />
-        </svg>
-        <span class="profile__avatar-text">{{#if text}}{{text}}{{else}}Поменять аватар{{/if}}</span>
+        {{#if avatar}}
+            <img class="profile__avatar-image" src="{{avatar}}" alt="" />
+        {{else}}
+            <svg class="profile__avatar-icon" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M20 21.8c5 0 9-4 9-9s-4-9-9-9-9 4-9 9 4 9 9 9zm0 4c-6 0-18 3-18 9v1.5h36v-1.5c0-6-12-9-18-9z" />
+            </svg>
+        {{/if}}
+        <span class="profile__avatar-text">
+            {{#if isLoading}}Загружаем...{{else}}{{#if text}}{{text}}{{else}}Поменять аватар{{/if}}{{/if}}
+        </span>
     </label>
+    {{#if statusMessage}}
+        <p class="profile__avatar-status">{{statusMessage}}</p>
+    {{/if}}
 </form>

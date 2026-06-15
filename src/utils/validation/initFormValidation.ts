@@ -6,9 +6,45 @@ import {
 } from "./fieldValidation";
 import type { FormValidationOptions, ValidationErrors } from "./types";
 
+const VALIDATION_FIELD_SELECTOR = "[data-validation-field]";
+const VALIDATION_ERROR_SELECTOR = "[data-validation-error]";
+
+function getValidationField(input: HTMLInputElement): HTMLElement | null {
+	return input.closest<HTMLElement>(VALIDATION_FIELD_SELECTOR);
+}
+
+function getErrorElement(field: HTMLElement): HTMLElement | null {
+	return field.querySelector<HTMLElement>(VALIDATION_ERROR_SELECTOR);
+}
+
+function renderInputError(input: HTMLInputElement, errorMessage: string) {
+	const field = getValidationField(input);
+	const errorElement = field ? getErrorElement(field) : null;
+	const errorId = errorElement?.id;
+
+	if (!field || !errorElement || !errorId) {
+		return;
+	}
+
+	if (!errorMessage) {
+		field.dataset.validationState = "valid";
+		input.removeAttribute("aria-invalid");
+		input.removeAttribute("aria-describedby");
+		errorElement.hidden = true;
+		errorElement.textContent = "";
+		return;
+	}
+
+	field.dataset.validationState = "invalid";
+	input.setAttribute("aria-invalid", "true");
+	input.setAttribute("aria-describedby", errorId);
+	errorElement.hidden = false;
+	errorElement.textContent = errorMessage;
+}
+
 export function initFormValidation(
 	form: HTMLFormElement,
-	{ onValidate, onSubmit }: FormValidationOptions,
+	{ onSubmit }: FormValidationOptions,
 ) {
 	let formErrors: ValidationErrors = {};
 
@@ -16,14 +52,6 @@ export function initFormValidation(
 		"blur",
 		(event) => {
 			if (!(event.target instanceof HTMLInputElement)) {
-				return;
-			}
-
-			// Если с блюра фокус уходит на кнопку сабмита, не выполняем валидацию, так как она будет выполнена при сабмите
-			if (
-				event.relatedTarget instanceof HTMLButtonElement &&
-				event.relatedTarget.type === "submit"
-			) {
 				return;
 			}
 
@@ -38,10 +66,7 @@ export function initFormValidation(
 				delete formErrors[errorName];
 			}
 
-			onValidate({
-				formErrors,
-				formValues: collectFormData(form),
-			});
+			renderInputError(event.target, errorMessage);
 		},
 		true,
 	);
@@ -57,6 +82,7 @@ export function initFormValidation(
 
 		formErrors = inputs.reduce<ValidationErrors>((errors, input) => {
 			const errorMessage = validateInputValue(input, form);
+			renderInputError(input, errorMessage);
 
 			if (errorMessage) {
 				errors[getErrorName(input)] = errorMessage;
@@ -65,14 +91,8 @@ export function initFormValidation(
 			return errors;
 		}, {});
 
-		const formValues = collectFormData(form);
-
-		onValidate({
-			formErrors,
-			formValues,
-		});
-
 		if (Object.keys(formErrors).length === 0) {
+			const formValues = collectFormData(form);
 			const filledFormValues = getFilledFormData(formValues);
 			onSubmit(filledFormValues);
 		}

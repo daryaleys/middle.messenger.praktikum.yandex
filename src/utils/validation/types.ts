@@ -2,6 +2,7 @@ export type ValidationRuleName =
 	| "first_name"
 	| "second_name"
 	| "login"
+	| "chat_title"
 	| "email"
 	| "password"
 	| "password_repeat"
@@ -22,12 +23,6 @@ export type ValidationRule = {
 export type ValidationErrors = Partial<Record<ValidationRuleName | string, string>>;
 export type FormValues = Record<string, string>;
 
-export type FormValidationState = {
-	formErrors: ValidationErrors;
-	formValues: FormValues;
-};
-
 export type FormValidationOptions = {
-	onValidate(state: FormValidationState): void;
 	onSubmit(values: FormValues): void;
 };

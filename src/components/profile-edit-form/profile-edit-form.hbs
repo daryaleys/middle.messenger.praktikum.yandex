@@ -11,5 +11,15 @@
         }}}
     {{/each}}
 
-    {{{SubmitButton text=submitText className="profile-form__submit"}}}
+    {{#if submitError}}
+        <p class="profile-form__submit-error">{{submitError}}</p>
+    {{/if}}
+
+    {{{SubmitButton
+        text=submitText
+        className="profile-form__submit"
+        disabled=isLoading
+        isLoading=isLoading
+        loadingText="Сохраняем..."
+    }}}
 </form>

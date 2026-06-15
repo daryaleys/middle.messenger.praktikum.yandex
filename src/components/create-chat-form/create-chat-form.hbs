@@ -1,0 +1,23 @@
+<form class="create-chat-form" action="#" method="post" novalidate>
+    <h2 class="create-chat-form__title">{{title}}</h2>
+
+    {{{FormField
+        label="Название чата"
+        name="title"
+        type="text"
+        validationRule="chat_title"
+        value=(fieldValue formValues "title")
+    }}}
+
+    {{#if error}}
+        <p class="create-chat-form__error" role="alert">{{error}}</p>
+    {{/if}}
+
+    {{{SubmitButton
+        text=submitText
+        loadingText="Создаем..."
+        className="create-chat-form__submit"
+        disabled=isLoading
+        isLoading=isLoading
+    }}}
+</form>

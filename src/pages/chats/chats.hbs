@@ -1,4 +1,20 @@
 <main class="chats">
-    {{{SidebarLayout chats=chats}}}
-    {{{DialogLayout activeChat=activeChat formErrors=formErrors formValues=formValues}}}
+    {{#if isLoading}}
+        <section class="chats-state" aria-live="polite">
+            <p class="chats-state__text">Загрузка...</p>
+        </section>
+    {{else}}
+        {{#if error}}
+            <section class="chats-state" role="alert">
+                <p class="chats-state__text">{{error}}</p>
+            </section>
+        {{else}}
+            {{{SidebarLayout
+                chats=chats
+                deleteChatError=deleteChatError
+                deletingChatId=deletingChatId
+            }}}
+            {{{DialogLayout activeChat=activeChat formErrors=formErrors formValues=formValues}}}
+        {{/if}}
+    {{/if}}
 </main>

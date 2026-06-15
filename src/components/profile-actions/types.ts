@@ -6,4 +6,6 @@ export type ProfileAction = {
 
 export type ProfileActionsProps = {
 	actions?: ProfileAction[];
+	errorMessage?: string;
+	isLoading?: boolean;
 };

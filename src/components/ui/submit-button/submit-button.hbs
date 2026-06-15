@@ -1,1 +1,6 @@
-<button class="submit-button {{className}}" type="submit">{{text}}</button>
+<button
+    class="submit-button {{className}}"
+    type="submit"
+    {{#if disabled}}disabled{{/if}}
+    {{#if isLoading}}aria-busy="true"{{/if}}
+>{{#if isLoading}}{{loadingText}}{{else}}{{text}}{{/if}}</button>

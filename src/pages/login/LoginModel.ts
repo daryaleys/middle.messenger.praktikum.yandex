@@ -1,3 +1,4 @@
+import { ROUTES } from "@src/router";
 import type { LoginPageProps } from "./types";
 
 export class LoginModel {
@@ -6,7 +7,7 @@ export class LoginModel {
 			loginPageData: {
 				cardModifier: "",
 				fieldsModifier: "auth-form__fields--login",
-				linkHref: "/signin",
+				linkHref: ROUTES.signUp,
 				linkText: "Нет аккаунта?",
 				submitText: "Авторизоваться",
 				title: "Вход",

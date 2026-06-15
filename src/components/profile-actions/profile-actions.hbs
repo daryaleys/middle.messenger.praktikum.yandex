@@ -1,21 +1,21 @@
 <nav class="profile__actions" aria-label="Действия профиля">
     <ul class="profile__action-list">
-        {{#if actions}}
-            {{#each actions}}
-                <li class="profile__action-item">
-                    <a class="profile__action {{#if isDanger}}profile__action--danger{{/if}}" href="{{href}}">{{label}}</a>
-                </li>
-            {{/each}}
-        {{else}}
+        {{#each actions}}
             <li class="profile__action-item">
-                <a class="profile__action" href="/profile/edit">Изменить данные</a>
+                {{#if isDanger}}
+                    <button
+                        class="profile__action profile__action--danger"
+                        type="button"
+                        ref="logoutButton"
+                        {{#if ../isLoading}}disabled aria-busy="true"{{/if}}
+                    >{{#if ../isLoading}}Выходим...{{else}}{{label}}{{/if}}</button>
+                {{else}}
+                    <a class="profile__action" href="{{href}}">{{label}}</a>
+                {{/if}}
             </li>
-            <li class="profile__action-item">
-                <a class="profile__action" href="/profile/password">Изменить пароль</a>
-            </li>
-            <li class="profile__action-item">
-                <a class="profile__action profile__action--danger" href="/login">Выйти</a>
-            </li>
-        {{/if}}
+        {{/each}}
     </ul>
+    {{#if errorMessage}}
+        <p class="profile__actions-error">{{errorMessage}}</p>
+    {{/if}}
 </nav>

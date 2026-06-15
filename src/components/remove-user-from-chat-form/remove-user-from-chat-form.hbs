@@ -1,0 +1,37 @@
+<section class="remove-user-from-chat-form" aria-label="{{title}}">
+    <h2 class="remove-user-from-chat-form__title">{{title}}</h2>
+
+    {{#if usersError}}
+        <p class="remove-user-from-chat-form__error" role="alert">{{usersError}}</p>
+    {{else}}
+        {{#if isUsersLoading}}
+            <p class="remove-user-from-chat-form__empty">Участники загружаются...</p>
+        {{else}}
+            {{#if users.length}}
+                <ul class="remove-user-from-chat-form__user-list">
+                    {{#each users}}
+                        <li class="remove-user-from-chat-form__user">
+                            <span class="remove-user-from-chat-form__avatar" aria-hidden="true"></span>
+                            <span class="remove-user-from-chat-form__user-content">
+                                <span class="remove-user-from-chat-form__user-name">{{name}}</span>
+                                <span class="remove-user-from-chat-form__user-role">{{roleLabel}}</span>
+                            </span>
+                            {{{DeleteButton
+                                id=id
+                                label="Удалить пользователя из чата"
+                                className="remove-user-from-chat-form__remove"
+                                disabled=../isLoading
+                            }}}
+                        </li>
+                    {{/each}}
+                </ul>
+            {{else}}
+                <p class="remove-user-from-chat-form__empty">В чате нет участников</p>
+            {{/if}}
+        {{/if}}
+    {{/if}}
+
+    {{#if error}}
+        <p class="remove-user-from-chat-form__error" role="alert">{{error}}</p>
+    {{/if}}
+</section>

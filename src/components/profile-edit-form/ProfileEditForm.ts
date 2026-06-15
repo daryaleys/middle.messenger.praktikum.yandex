@@ -1,8 +1,5 @@
-import Block from "@src/core/Block";
-import {
-	initFormValidation,
-	type FormValidationState,
-} from "@src/utils/validation";
+import { Block } from "@src/core";
+import { initFormValidation } from "@src/utils/validation";
 
 import template from "./profile-edit-form.hbs?raw";
 import { ProfileEditFormController } from "./ProfileEditFormController";
@@ -14,6 +11,8 @@ export class ProfileEditForm extends Block<Required<ProfileEditFormProps>> {
 
 	protected template = template;
 
+	private readonly controller: ProfileEditFormController;
+
 	constructor(
 		props: ProfileEditFormProps,
 		controller = new ProfileEditFormController(
@@ -21,6 +20,7 @@ export class ProfileEditForm extends Block<Required<ProfileEditFormProps>> {
 		),
 	) {
 		super(controller.getViewModel());
+		this.controller = controller;
 	}
 
 	protected componentDidMount() {
@@ -29,20 +29,29 @@ export class ProfileEditForm extends Block<Required<ProfileEditFormProps>> {
 
 		if (form) {
 			initFormValidation(form, {
-				onValidate: (state) => this.updateFormState(state),
 				onSubmit: (values) => this.handleSubmit(values),
 			});
 		}
 	}
 
-	private updateFormState({ formErrors, formValues }: FormValidationState) {
-		this.setProps({
-			formErrors,
-			formValues,
-		});
-	}
+	private async handleSubmit(values: Record<string, string>) {
+		if (this.props.isLoading) {
+			return;
+		}
 
-	private handleSubmit(values: Record<string, string>) {
-		console.log(values);
+		this.setProps({
+			formValues: values,
+			isLoading: true,
+			submitError: "",
+		});
+
+		const submitError = await this.controller.update(values);
+
+		if (submitError) {
+			this.setProps({
+				isLoading: false,
+				submitError,
+			});
+		}
 	}
 }

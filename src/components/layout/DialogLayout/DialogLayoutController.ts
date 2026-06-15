@@ -1,5 +1,5 @@
 import { DialogLayoutModel } from "./DialogLayoutModel";
-import type { DialogLayoutProps } from "./types";
+import type { DialogLayoutViewModel } from "./types";
 
 export class DialogLayoutController {
 	private readonly model: DialogLayoutModel;
@@ -8,7 +8,7 @@ export class DialogLayoutController {
 		this.model = model;
 	}
 
-	getViewModel(): DialogLayoutProps {
+	getViewModel(): DialogLayoutViewModel {
 		return this.model.getLayoutData();
 	}
 }

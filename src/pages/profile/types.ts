@@ -11,6 +11,7 @@ export type ProfileField = {
 };
 
 export type ProfileData = {
+	avatar: string;
 	firstName: string;
 	mainFields: ProfileField[];
 	passwordFields: ProfileField[];

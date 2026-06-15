@@ -1,4 +1,4 @@
-import Block from "@src/core/Block";
+import { Block } from "@src/core";
 
 import template from "./server-error.hbs?raw";
 import { ServerErrorController } from "./ServerErrorController";

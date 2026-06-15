@@ -1,0 +1,23 @@
+<form class="add-user-to-chat-form" action="#" method="post" novalidate>
+    <h2 class="add-user-to-chat-form__title">{{title}}</h2>
+
+    {{{FormField
+        label="Логин"
+        name="login"
+        type="text"
+        validationRule="login"
+        value=(fieldValue formValues "login")
+    }}}
+
+    {{#if error}}
+        <p class="add-user-to-chat-form__error" role="alert">{{error}}</p>
+    {{/if}}
+
+    {{{SubmitButton
+        text=submitText
+        loadingText="Сохраняем..."
+        className="add-user-to-chat-form__submit"
+        disabled=isLoading
+        isLoading=isLoading
+    }}}
+</form>

@@ -1,0 +1,58 @@
+<header class="dialog-header">
+    <button
+        class="dialog-header__avatar"
+        type="button"
+        aria-label="Обновить аватар чата"
+        aria-controls="{{updateAvatarModalId}}"
+        aria-expanded="{{isUpdateAvatarModalOpen}}"
+        data-update-chat-avatar-trigger
+    >
+        {{#if avatarUrl}}
+            <img class="dialog-header__avatar-image" src="{{avatarUrl}}" alt="" />
+        {{/if}}
+        <span class="dialog-header__avatar-overlay" aria-hidden="true">
+            <svg class="dialog-header__avatar-icon" viewBox="0 0 24 24">
+                <path d="M9 4.5 7.6 6H5a3 3 0 0 0-3 3v7.5a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3V9a3 3 0 0 0-3-3h-2.6L15 4.5H9zm3 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8zm0 1.8a2.2 2.2 0 1 0 0 4.4 2.2 2.2 0 0 0 0-4.4z" />
+            </svg>
+        </span>
+    </button>
+    <div class="dialog-header__content">
+        <h1 class="dialog-header__title">{{title}}</h1>
+        <p class="dialog-header__users">
+            {{#if usersError}}
+                {{usersError}}
+            {{else}}
+                {{#if isUsersLoading}}
+                    Участники загружаются...
+                {{else}}
+                    {{#if users.length}}
+                        {{#each users}}
+                            <span class="dialog-header__user">{{name}}</span>
+                        {{/each}}
+                    {{else}}
+                        Нет участников
+                    {{/if}}
+                {{/if}}
+            {{/if}}
+        </p>
+    </div>
+    <div class="dialog-header__actions">
+        <button
+            class="dialog-header__menu"
+            type="button"
+            aria-label="Открыть меню диалога"
+            aria-expanded="false"
+            aria-controls="{{chatActionsDropdown.id}}"
+            data-chat-actions-trigger
+        >
+            <svg class="dialog-header__menu-icon" viewBox="0 0 128 512" aria-hidden="true">
+                <path d="M64 360a56 56 0 1 0 0 112 56 56 0 1 0 0-112zm0-160a56 56 0 1 0 0 112 56 56 0 1 0 0-112zM120 96A56 56 0 1 0 8 96a56 56 0 1 0 112 0z" />
+            </svg>
+        </button>
+
+        {{{Dropdown
+            config=chatActionsDropdown
+            triggerSelector="[data-chat-actions-trigger]"
+        }}}
+    </div>
+</header>
