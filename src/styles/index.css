@@ -16,6 +16,7 @@
 @import url("../components/auth-form/auth-form.css");
 @import url("../components/create-chat-form/create-chat-form.css");
 @import url("../components/message-form/message-form.css");
+@import url("../components/profile-avatar/profile-avatar.css");
 @import url("../components/profile-details/profile-details.css");
 @import url("../components/profile-actions/profile-actions.css");
 @import url("../components/profile-edit-form/profile-edit-form.css");
@@ -28,7 +29,6 @@
 @import url("../components/ui/delete-button/delete-button.css");
 @import url("../components/ui/dropdown/dropdown.css");
 @import url("../components/ui/form-field/form-field.css");
+@import url("../components/ui/inline-form-field/inline-form-field.css");
 @import url("../components/ui/modal/modal.css");
-@import url("../components/ui/profile-avatar/profile-avatar.css");
-@import url("../components/ui/profile-form-field/profile-form-field.css");
 @import url("../components/ui/submit-button/submit-button.css");

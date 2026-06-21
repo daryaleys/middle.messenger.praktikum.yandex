@@ -1,11 +1,11 @@
 <div
-    class="profile-form__field"
+    class="inline-form-field"
     data-validation-field
     data-validation-state="{{#if isInvalid}}invalid{{else}}valid{{/if}}"
 >
-    <label class="profile-form__label" for="{{inputId}}">{{label}}</label>
+    <label class="inline-form-field__label" for="{{inputId}}">{{label}}</label>
     {{{Input
-        className="profile-form__input"
+        className="inline-form-field__input"
         id=inputId
         type=type
         name=name
@@ -15,7 +15,7 @@
         describedBy=errorId
     }}}
     <span
-        class="profile-form__error"
+        class="inline-form-field__error"
         id="{{errorId}}"
         data-validation-error
         {{#unless errorMessage}}hidden{{/unless}}

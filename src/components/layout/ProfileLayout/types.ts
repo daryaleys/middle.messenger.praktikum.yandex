@@ -1,12 +1,12 @@
 import type { ProfileDetailsProps } from "@src/components/profile-details/types";
 import type { ProfileEditFormMode } from "@src/components/profile-edit-form/types";
-import type { ProfileFormFieldProps } from "@src/components/ui/profile-form-field/types";
+import type { InlineFormFieldProps } from "@src/components/ui/inline-form-field/types";
 
 export type ProfileLayoutProps = {
 	profileData: ProfileDetailsProps["profileData"] & {
 		avatar: string;
 		firstName: string;
-		passwordFields: ProfileFormFieldProps[];
+		passwordFields: InlineFormFieldProps[];
 	};
 	backHref?: string;
 	dataEditFormMode?: ProfileEditFormMode;

@@ -1,17 +1,17 @@
 import type {
-	ProfileFormFieldProps,
-	ProfileFormFieldViewProps,
+	InlineFormFieldProps,
+	InlineFormFieldViewProps,
 } from "./types";
 
-export class ProfileFormFieldModel {
-	private readonly props: ProfileFormFieldProps;
+export class InlineFormFieldModel {
+	private readonly props: InlineFormFieldProps;
 
-	constructor(props: ProfileFormFieldProps) {
+	constructor(props: InlineFormFieldProps) {
 		this.props = props;
 	}
 
-	getFieldData(): ProfileFormFieldViewProps {
-		const inputId = `profile-${this.props.name}`;
+	getFieldData(): InlineFormFieldViewProps {
+		const inputId = `inline-field-${this.props.name}`;
 		const errorMessage =
 			this.props.error ?? this.props.formErrors?.[this.props.name] ?? "";
 
