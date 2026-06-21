@@ -1,3 +1,5 @@
+import { API_BASE_URL } from "@src/api";
+import { sanitizeResourceUrl } from "@src/utils/security";
 import type { ChatMessageProps } from "./types";
 
 export class ChatMessageModel {
@@ -8,6 +10,9 @@ export class ChatMessageModel {
 	}
 
 	getMessageData(): ChatMessageProps {
-		return this.props;
+		return {
+			...this.props,
+			imageUrl: sanitizeResourceUrl(this.props.imageUrl, API_BASE_URL),
+		};
 	}
 }

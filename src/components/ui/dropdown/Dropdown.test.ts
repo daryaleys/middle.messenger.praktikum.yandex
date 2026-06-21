@@ -16,7 +16,7 @@ function createDropdown(isOpen = false) {
 		isOpen,
 		items: [
 			{
-				icon: "<span></span>",
+				iconName: "file",
 				id: "archive",
 				label: "Archive",
 			},
@@ -48,6 +48,21 @@ describe("Dropdown", () => {
 
 		expect(dropdown).toBeTruthy();
 		expect(getMenu()?.hidden).toBe(true);
+	});
+
+	it("ignores raw icon markup from config", () => {
+		const dropdown = new Dropdown({
+			id: "actions",
+			items: [
+				{
+					icon: '<img src="x" onerror="alert(1)">',
+					id: "archive",
+					label: "Archive",
+				},
+			],
+		}).element();
+
+		expect(dropdown?.querySelector("img")).toBeNull();
 	});
 
 	it("opens and closes by trigger click", () => {

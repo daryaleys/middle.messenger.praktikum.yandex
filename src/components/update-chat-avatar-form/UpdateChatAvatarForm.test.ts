@@ -1,4 +1,5 @@
 import { beforeAll, describe, expect, it, vi } from "vitest";
+import { API_BASE_URL } from "@src/api";
 import { registerComponent } from "@src/core";
 import { Input } from "@src/components/ui/input/Input";
 import { UpdateChatAvatarForm } from "./UpdateChatAvatarForm";
@@ -19,7 +20,9 @@ describe("UpdateChatAvatarForm", () => {
 		const image = form?.querySelector<HTMLImageElement>("img");
 		const input = form?.querySelector<HTMLInputElement>("input");
 
-		expect(image?.getAttribute("src")).toBe("/avatar.png");
+		expect(image?.getAttribute("src")).toBe(
+			`${API_BASE_URL}/resources/avatar.png`,
+		);
 		expect(input?.getAttribute("id")).toBe("chat-avatar-12");
 	});
 

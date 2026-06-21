@@ -1,4 +1,5 @@
 import { beforeAll, describe, expect, it } from "vitest";
+import { API_BASE_URL } from "@src/api";
 import { registerComponent } from "@src/core";
 import { DeleteButton } from "@src/components/ui/delete-button/DeleteButton";
 import { ChatItem } from "./ChatItem";
@@ -29,6 +30,8 @@ describe("ChatItem", () => {
 
 		const image = item?.querySelector("img") as HTMLImageElement | null;
 
-		expect(image?.getAttribute("src")).toBe("/avatar.png");
+		expect(image?.getAttribute("src")).toBe(
+			`${API_BASE_URL}/resources/avatar.png`,
+		);
 	});
 });

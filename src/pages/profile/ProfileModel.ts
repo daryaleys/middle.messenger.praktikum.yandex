@@ -1,4 +1,5 @@
 import { API_BASE_URL } from "@src/api";
+import { sanitizeResourceUrl } from "@src/utils/security";
 
 import type { ProfileData } from "./types";
 
@@ -92,12 +93,6 @@ export class ProfileModel {
 	}
 
 	private getAvatarUrl(avatar?: string | null) {
-		if (!avatar) {
-			return "";
-		}
-
-		return avatar.startsWith("/")
-			? `${API_BASE_URL}/resources${avatar}`
-			: avatar;
+		return sanitizeResourceUrl(avatar, API_BASE_URL);
 	}
 }

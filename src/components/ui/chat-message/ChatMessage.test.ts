@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { API_BASE_URL } from "@src/api";
 import { ChatMessage } from "./ChatMessage";
 
 describe("ChatMessage", () => {
@@ -23,6 +24,8 @@ describe("ChatMessage", () => {
 
 		const image = message?.querySelector("img") as HTMLImageElement | null;
 
-		expect(image?.getAttribute("src")).toBe("/photo.png");
+		expect(image?.getAttribute("src")).toBe(
+			`${API_BASE_URL}/resources/photo.png`,
+		);
 	});
 });

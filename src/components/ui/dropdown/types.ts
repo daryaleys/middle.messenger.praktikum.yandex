@@ -1,7 +1,16 @@
+export type DropdownIconName =
+	| "camera"
+	| "file"
+	| "image"
+	| "location"
+	| "plusCircle"
+	| "xmarkCircle";
+
 export type DropdownItem = {
 	id: string;
 	label: string;
-	icon: string;
+	icon?: string;
+	iconName?: DropdownIconName;
 };
 
 export type DropdownPosition = "top-right" | "bottom-left";

@@ -1,4 +1,5 @@
 import { beforeAll, describe, expect, it } from "vitest";
+import { API_BASE_URL } from "@src/api";
 import { registerComponent } from "@src/core";
 import { Input } from "@src/components/ui/input/Input";
 import { ProfileAvatar } from "./ProfileAvatar";
@@ -15,7 +16,9 @@ describe("ProfileAvatar", () => {
 
 		const image = avatar?.querySelector("img") as HTMLImageElement | null;
 
-		expect(image?.getAttribute("src")).toBe("/avatar.png");
+		expect(image?.getAttribute("src")).toBe(
+			`${API_BASE_URL}/resources/avatar.png`,
+		);
 	});
 
 	it("disables avatar input while loading", () => {
