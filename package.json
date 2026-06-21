@@ -11,10 +11,12 @@
 		"dev": "dotenv -- vite",
 		"build": "tsc --noEmit && vite build",
 		"preview": "vite preview",
+		"prepare": "husky",
 		"lint:js": "eslint .",
 		"lint:css": "stylelint **/*.css",
 		"lint": "npm run lint:css && npm run lint:js",
-		"test": "vitest run"
+		"test": "vitest run",
+		"pre-commit": "npm run test && npm run lint"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
@@ -23,6 +25,7 @@
 		"dotenv-cli": "^11.0.0",
 		"eslint": "^10.3.0",
 		"globals": "^17.6.0",
+		"husky": "^9.1.7",
 		"jiti": "^2.7.0",
 		"jsdom": "^29.1.1",
 		"postcss": "^8.5.12",
