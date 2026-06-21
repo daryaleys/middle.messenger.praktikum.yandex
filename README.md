@@ -74,7 +74,7 @@ npm run lint
 
 ## API
 
-Приложение использует API Практикума: `https://ya-praktikum.tech/api/v2`.
+Приложение использует API Практикума: `https://ya-praktikum.tech/api/v2/swagger/#/`.
 
 Подключены запросы:
 

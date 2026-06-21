@@ -9,7 +9,7 @@
 	"scripts": {
 		"start": "dotenv -- vite",
 		"dev": "dotenv -- vite",
-		"build": "tsc --noEmit && vite build",
+		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "husky",
 		"lint:js": "eslint .",
@@ -34,6 +34,7 @@
 		"typescript": "~6.0.2",
 		"typescript-eslint": "^8.59.2",
 		"vite": "^8.0.9",
+		"vite-plugin-checker": "^0.14.4",
 		"vitest": "^4.1.9"
 	},
 	"dependencies": {
