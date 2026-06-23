@@ -8,4 +8,6 @@ export type MessageFormProps = {
 	attachmentDropdown?: DropdownConfig;
 	formErrors?: ValidationErrors;
 	formValues?: FormValues;
+	onFileSubmit?: (file: File) => void;
+	onSubmit?: (message: string) => void;
 };

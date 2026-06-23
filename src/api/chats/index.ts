@@ -4,5 +4,7 @@ export * from "./chats-instance";
 export * from "./create-chat-api";
 export * from "./delete-chat-api";
 export * from "./delete-chat-users-api";
+export * from "./get-chat-new-messages-count-api";
+export * from "./get-chat-token-api";
 export * from "./get-chat-users-api";
 export * from "./get-chats-api";

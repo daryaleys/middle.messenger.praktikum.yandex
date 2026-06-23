@@ -24,7 +24,10 @@
           id=id
           author=author
           time=time
+          timestamp=timestamp
           isOwn=isOwn
+          deliveryStatus=deliveryStatus
+          deliveryStatusLabel=deliveryStatusLabel
           text=text
           imageUrl=imageUrl
           imageAlt=imageAlt
@@ -32,9 +35,15 @@
       {{/each}}
     </div>
 
+    {{#if connectionError}}
+      <p class="dialog-error" role="alert">{{connectionError}}</p>
+    {{/if}}
+
     {{{MessageForm
       formErrors=../formErrors
       formValues=../formValues
+      onFileSubmit=../onFileSubmit
+      onSubmit=../onMessageSubmit
     }}}
 
     {{#Modal

@@ -1,4 +1,6 @@
 import {
+	getChatConnectionError,
+	getChatMessages,
 	getChatUsers,
 	getChatUsersError,
 	getSelectedChat,
@@ -32,9 +34,10 @@ export function mapActiveChatToView(): ChatsPageProps["activeChat"] {
 		title: selectedChat.title,
 		avatarUrl: selectedChat.avatarUrl,
 		date: "",
+		connectionError: getChatConnectionError(selectedChat.id),
 		usersError: getChatUsersError(selectedChat.id),
 		isUsersLoading: isChatUsersLoading(selectedChat.id),
-		messages: [],
+		messages: getChatMessages(selectedChat.id),
 		users: users.map((user) => ({
 			id: user.id,
 			name: getUserDisplayName(user),

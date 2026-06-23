@@ -99,9 +99,6 @@ describe("Dropdown", () => {
 	});
 
 	it("closes when action is clicked", () => {
-		const consoleSpy = vi
-			.spyOn(console, "log")
-			.mockImplementation(() => undefined);
 		createTrigger("actions");
 		const dropdown = createDropdown(true);
 		const action = dropdown?.querySelector("[data-dropdown-action]");
@@ -109,6 +106,5 @@ describe("Dropdown", () => {
 		action?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
 
 		expect(getMenu()?.hidden).toBe(true);
-		expect(consoleSpy).toHaveBeenCalledOnce();
 	});
 });

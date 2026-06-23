@@ -7,11 +7,23 @@ import type { UserResponse } from "@src/api";
 const mocks = vi.hoisted(() => {
 	function createPageClass(pageName: string) {
 		return class {
+			private elementInstance: HTMLElement | null = null;
+
 			element() {
+				if (this.elementInstance) {
+					return this.elementInstance;
+				}
+
 				const element = document.createElement("main");
 				element.dataset.page = pageName;
+				this.elementInstance = element;
 
 				return element;
+			}
+
+			destroy() {
+				this.elementInstance?.remove();
+				this.elementInstance = null;
 			}
 		};
 	}

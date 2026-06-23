@@ -12,6 +12,7 @@ function createBlock(pageName: string): Block<object> {
 
 	return {
 		element: () => element,
+		destroy: () => element.remove(),
 	} as unknown as Block<object>;
 }
 

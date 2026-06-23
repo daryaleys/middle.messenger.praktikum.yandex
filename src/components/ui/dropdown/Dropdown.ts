@@ -62,7 +62,6 @@ export class Dropdown extends Block<DropdownProps> {
 		const action = target.closest<HTMLButtonElement>("[data-dropdown-action]");
 
 		if (action) {
-			console.log(`Dropdown action: ${action.dataset.dropdownAction}`);
 			this.closeDropdown();
 		}
 	}

@@ -8,7 +8,10 @@ export type DialogMessage = {
 	id: number;
 	author: string;
 	time: string;
+	timestamp: number;
 	isOwn: boolean;
+	deliveryStatus?: "sending" | "sent" | "failed";
+	deliveryStatusLabel?: string;
 	text?: string;
 	imageUrl?: string;
 	imageAlt?: string;
@@ -28,6 +31,7 @@ export type DialogData = {
 	date: string;
 	messages: DialogMessage[];
 	users?: DialogUser[];
+	connectionError?: string | null;
 	usersError?: string | null;
 	isUsersLoading?: boolean;
 };
@@ -36,6 +40,8 @@ export type DialogLayoutProps = {
 	activeChat: DialogData | null;
 	formErrors?: ValidationErrors;
 	formValues?: FormValues;
+	onFileSubmit?: (file: File) => void;
+	onMessageSubmit?: (message: string) => void;
 };
 
 export type DialogLayoutViewModel = DialogLayoutProps & {

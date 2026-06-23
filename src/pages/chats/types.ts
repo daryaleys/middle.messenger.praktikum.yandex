@@ -13,4 +13,6 @@ export type ChatsPageProps = SidebarLayoutProps &
 		formErrors?: ValidationErrors;
 		formValues?: FormValues;
 		isLoading?: boolean;
+		onFileSubmit?: (file: File) => void;
+		onMessageSubmit?: (message: string) => void;
 	};

@@ -1,4 +1,4 @@
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it, vi } from "vitest";
 import { registerComponent } from "@src/core";
 import { registerHelpers } from "@src/bootstrap/registerHelpers";
 import { Dropdown } from "@src/components/ui/dropdown/Dropdown";
@@ -32,5 +32,26 @@ describe("MessageForm", () => {
 		expect(
 			form?.querySelector("[data-validation-error]")?.hasAttribute("hidden"),
 		).toBe(false);
+	});
+
+	it("calls onSubmit with typed message", () => {
+		const onSubmit = vi.fn();
+		const form = new MessageForm({ onSubmit }).element();
+		const input = form?.querySelector<HTMLInputElement>(
+			"input[name='message']",
+		);
+
+		if (input) {
+			input.value = "Hello";
+		}
+
+		form?.dispatchEvent(
+			new Event("submit", {
+				bubbles: true,
+				cancelable: true,
+			}),
+		);
+
+		expect(onSubmit).toHaveBeenCalledWith("Hello");
 	});
 });

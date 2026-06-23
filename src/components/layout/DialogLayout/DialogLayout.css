@@ -1,6 +1,6 @@
 .dialog {
     display: grid;
-    grid-template-rows: 64px minmax(0, 1fr) 54px;
+    grid-template-rows: 64px minmax(0, 1fr) auto auto;
     min-height: 100vh;
     padding: 0 20px;
 }
@@ -33,6 +33,14 @@
     color: var(--color-text-secondary);
     font-size: 12px;
     font-weight: 500;
+}
+
+.dialog-error {
+    align-self: end;
+    margin: 0 0 8px;
+    color: var(--color-error);
+    font-size: 12px;
+    line-height: 1.3;
 }
 
 @media (max-width: 720px) {

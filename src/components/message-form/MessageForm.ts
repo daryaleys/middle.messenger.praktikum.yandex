@@ -16,6 +16,10 @@ export class MessageForm extends Block<MessageFormProps> {
 		controller = new MessageFormController(new MessageFormModel(props)),
 	) {
 		super(controller.getViewModel());
+		this.events = {
+			change: this.handleChange,
+			click: this.handleClick,
+		};
 	}
 
 	protected componentDidMount() {
@@ -30,6 +34,52 @@ export class MessageForm extends Block<MessageFormProps> {
 	}
 
 	private handleSubmit(values: Record<string, string>) {
-		console.log(values);
+		const message = values.message?.trim();
+
+		if (!message) {
+			return;
+		}
+
+		this.props.onSubmit?.(message);
+
+		const element = this.element();
+		const form = element instanceof HTMLFormElement ? element : null;
+		form?.reset();
 	}
+
+	private handleClick = (event: Event) => {
+		const target = event.target;
+
+		if (!(target instanceof Element)) {
+			return;
+		}
+
+		const action = target.closest<HTMLElement>("[data-dropdown-action]");
+		const actionId = action?.dataset.dropdownAction;
+
+		if (actionId !== "attach-media" && actionId !== "attach-file") {
+			return;
+		}
+
+		if (this.refs.fileInput instanceof HTMLInputElement) {
+			this.refs.fileInput.click();
+		}
+	};
+
+	private handleChange = (event: Event) => {
+		const target = event.target;
+
+		if (!(target instanceof HTMLInputElement) || target.type !== "file") {
+			return;
+		}
+
+		const file = target.files?.[0];
+
+		if (!file) {
+			return;
+		}
+
+		this.props.onFileSubmit?.(file);
+		target.value = "";
+	};
 }

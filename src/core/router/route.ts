@@ -32,7 +32,7 @@ export class Route {
 
 	leave() {
 		if (this._block) {
-			this._block.element()?.remove();
+			this._block.destroy();
 			this._block = null;
 		}
 	}
