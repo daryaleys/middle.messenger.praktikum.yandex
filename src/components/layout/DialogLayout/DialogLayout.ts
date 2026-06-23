@@ -20,12 +20,9 @@ export class DialogLayout extends Block<DialogLayoutViewModel> {
 			isUpdateChatAvatarModalOpen:
 				this.props.isUpdateChatAvatarModalOpen ?? false,
 			isAddUserModalOpen: this.props.isAddUserModalOpen ?? false,
-			isRemoveUserModalOpen:
-				this.props.isRemoveUserModalOpen ?? false,
-			onUpdateChatAvatarModalClose:
-				this.handleUpdateChatAvatarModalClose,
-			onUpdateChatAvatarModalOpen:
-				this.handleUpdateChatAvatarModalOpen,
+			isRemoveUserModalOpen: this.props.isRemoveUserModalOpen ?? false,
+			onUpdateChatAvatarModalClose: this.handleUpdateChatAvatarModalClose,
+			onUpdateChatAvatarModalOpen: this.handleUpdateChatAvatarModalOpen,
 			onAddUserModalClose: this.handleAddUserModalClose,
 			onAddUserModalOpen: this.handleAddUserModalOpen,
 			onRemoveUserModalClose: this.handleRemoveUserModalClose,
