@@ -9,11 +9,18 @@
 	"scripts": {
 		"start": "dotenv -- vite",
 		"dev": "dotenv -- vite",
-		"build": "tsc --noEmit && vite build",
+		"build": "vite build",
 		"preview": "vite preview",
+		"prepare": "husky",
 		"lint:js": "eslint .",
 		"lint:css": "stylelint **/*.css",
-		"lint": "npm run lint:css && npm run lint:js"
+		"lint": "npm run lint:css && npm run lint:js",
+		"test": "vitest run",
+		"pre-commit": "npm run test && lint-staged"
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx}": "eslint",
+		"*.css": "stylelint"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
@@ -22,13 +29,19 @@
 		"dotenv-cli": "^11.0.0",
 		"eslint": "^10.3.0",
 		"globals": "^17.6.0",
+		"husky": "^9.1.7",
+		"jest": "npm:empty-npm-package@^1.0.0",
 		"jiti": "^2.7.0",
+		"jsdom": "^29.1.1",
+		"lint-staged": "^16.4.0",
 		"postcss": "^8.5.12",
 		"stylelint": "^17.11.0",
 		"stylelint-config-standard": "^40.0.0",
 		"typescript": "~6.0.2",
 		"typescript-eslint": "^8.59.2",
-		"vite": "^8.0.9"
+		"vite": "^8.0.9",
+		"vite-plugin-checker": "^0.14.4",
+		"vitest": "^4.1.9"
 	},
 	"dependencies": {
 		"handlebars": "^4.7.9"

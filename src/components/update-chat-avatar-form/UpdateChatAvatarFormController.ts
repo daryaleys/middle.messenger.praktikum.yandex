@@ -1,6 +1,7 @@
 import { API_BASE_URL, chatAvatarAPI, type Chat as APIChat } from "@src/api";
 import type { Chat } from "@src/components/layout/SidebarLayout/types";
 import { updateChat } from "@src/store";
+import { sanitizeResourceUrl } from "@src/utils/security";
 
 import type { UpdateChatAvatarFormProps } from "./types";
 
@@ -46,13 +47,7 @@ export class UpdateChatAvatarFormController {
 	}
 
 	private getAvatarUrl(avatar?: string | null) {
-		if (!avatar) {
-			return "";
-		}
-
-		return avatar.startsWith("/")
-			? `${API_BASE_URL}/resources${avatar}`
-			: avatar;
+		return sanitizeResourceUrl(avatar, API_BASE_URL);
 	}
 
 	private formatMessageTime(value: string) {

@@ -9,7 +9,7 @@ export const AUTH_STATUS = {
 	guest: "guest",
 } as const;
 
-type AuthStatus = (typeof AUTH_STATUS)[keyof typeof AUTH_STATUS];
+export type AuthStatus = (typeof AUTH_STATUS)[keyof typeof AUTH_STATUS];
 
 type AuthState = {
 	status?: AuthStatus;

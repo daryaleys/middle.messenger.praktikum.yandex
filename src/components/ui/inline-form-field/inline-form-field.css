@@ -1,4 +1,4 @@
-.profile-form__field {
+.inline-form-field {
 	position: relative;
 	display: flex;
 	justify-content: space-between;
@@ -8,17 +8,17 @@
 	border-bottom: 1px solid var(--color-border);
 }
 
-.profile-form__field:last-of-type {
+.inline-form-field:last-of-type {
 	border-bottom: 0;
 }
 
-.profile-form__label {
+.inline-form-field__label {
 	flex: 0 0 auto;
 	color: var(--color-text-primary);
 	font-weight: 500;
 }
 
-.profile-form__input {
+.inline-form-field__input {
 	width: 100%;
 	min-width: 0;
 	padding: 0;
@@ -30,15 +30,15 @@
 	text-align: right;
 }
 
-.profile-form__input:focus {
+.inline-form-field__input:focus {
 	color: var(--color-text-primary);
 }
 
-.profile-form__field[data-validation-state="invalid"] .profile-form__input {
+.inline-form-field[data-validation-state="invalid"] .inline-form-field__input {
 	color: var(--color-error);
 }
 
-.profile-form__error {
+.inline-form-field__error {
 	color: var(--color-error);
 	font-size: 8px;
 	line-height: 1.2;
@@ -49,7 +49,7 @@
 }
 
 @media (max-width: 720px) {
-	.profile-form__field {
+	.inline-form-field {
 		gap: 16px;
 	}
 }

@@ -1,8 +1,7 @@
 .message {
-    position: relative;
     width: fit-content;
     max-width: min(402px, 72%);
-    padding: 11px 11px 20px;
+    padding: 11px;
     border-radius: 0 12px 12px;
     background: var(--color-message-background);
     color: var(--color-text-primary);
@@ -13,6 +12,14 @@
     min-width: 89px;
     border-radius: 12px 12px 0;
     background: var(--color-primary-soft);
+}
+
+.message--sending {
+    opacity: 0.72;
+}
+
+.message--failed {
+    outline: 1px solid var(--color-error);
 }
 
 .message__text {
@@ -26,15 +33,33 @@
     border-radius: 12px;
 }
 
-.message__time {
-    position: absolute;
-    right: 11px;
-    bottom: 6px;
+.message__meta {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 4px;
     color: var(--color-text-secondary);
     font-size: 9px;
     line-height: 9px;
 }
 
+.message__time {
+    color: var(--color-text-secondary);
+}
+
+.message__status {
+    white-space: nowrap;
+}
+
 .message--own .message__time {
     color: var(--color-primary);
+}
+
+.message--own .message__status {
+    color: var(--color-primary);
+}
+
+.message--failed .message__status {
+    color: var(--color-error);
 }

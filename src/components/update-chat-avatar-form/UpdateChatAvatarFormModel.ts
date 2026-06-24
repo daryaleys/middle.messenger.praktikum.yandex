@@ -1,3 +1,5 @@
+import { API_BASE_URL } from "@src/api";
+import { sanitizeResourceUrl } from "@src/utils/security";
 import type { UpdateChatAvatarFormProps } from "./types";
 
 export class UpdateChatAvatarFormModel {
@@ -10,7 +12,7 @@ export class UpdateChatAvatarFormModel {
 	getFormData(): Required<UpdateChatAvatarFormProps> {
 		return {
 			...this.props,
-			avatarUrl: this.props.avatarUrl ?? "",
+			avatarUrl: sanitizeResourceUrl(this.props.avatarUrl, API_BASE_URL),
 			error: this.props.error ?? null,
 			inputId:
 				this.props.inputId ?? `chat-avatar-${this.props.chatId}`,

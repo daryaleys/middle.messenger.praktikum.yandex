@@ -4,7 +4,7 @@ import type {
 	ValidationRuleName,
 } from "@src/utils/validation";
 
-export type ProfileFormFieldProps = {
+export type InlineFormFieldProps = {
 	label: string;
 	name: string;
 	type: string;
@@ -15,7 +15,7 @@ export type ProfileFormFieldProps = {
 	formValues?: FormValues;
 };
 
-export type ProfileFormFieldViewProps = ProfileFormFieldProps & {
+export type InlineFormFieldViewProps = InlineFormFieldProps & {
 	errorId: string;
 	errorMessage: string;
 	inputId: string;

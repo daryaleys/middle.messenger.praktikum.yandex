@@ -1,3 +1,5 @@
+import { API_BASE_URL } from "@src/api";
+import { sanitizeResourceUrl } from "@src/utils/security";
 import type { ChatItemProps } from "./types";
 
 export class ChatItemModel {
@@ -8,6 +10,9 @@ export class ChatItemModel {
 	}
 
 	getItemData(): ChatItemProps {
-		return this.props;
+		return {
+			...this.props,
+			avatarUrl: sanitizeResourceUrl(this.props.avatarUrl, API_BASE_URL),
+		};
 	}
 }

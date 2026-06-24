@@ -3,7 +3,6 @@ import {
 	getChatsForView,
 	getChatsError,
 	isChatsLoading,
-	selectChat,
 	store,
 } from "@src/store";
 
@@ -28,6 +27,11 @@ export class ChatsPage extends Block<ChatsPageProps> {
 
 		super(viewModel);
 		this.controller = controller;
+		this.props = {
+			...this.props,
+			onFileSubmit: this.handleFileSubmit,
+			onMessageSubmit: this.handleMessageSubmit,
+		};
 		this.events = {
 			click: this.handleClick,
 		};
@@ -41,6 +45,8 @@ export class ChatsPage extends Block<ChatsPageProps> {
 				deletingChatId: this.deletingChatId,
 				error: getChatsError(),
 				isLoading: isChatsLoading(),
+				onFileSubmit: this.handleFileSubmit,
+				onMessageSubmit: this.handleMessageSubmit,
 			});
 		});
 
@@ -54,6 +60,10 @@ export class ChatsPage extends Block<ChatsPageProps> {
 
 	protected componentWillUnmount() {
 		this.unsubscribeStore?.();
+	}
+
+	protected componentWillDestroy() {
+		this.controller.closeChat();
 	}
 
 	private async loadChats() {
@@ -88,8 +98,15 @@ export class ChatsPage extends Block<ChatsPageProps> {
 			return;
 		}
 
-		selectChat(chatId);
-		this.controller.loadChatUsers(chatId);
+		this.controller.openChat(chatId);
+	};
+
+	private handleMessageSubmit = (message: string) => {
+		this.controller.sendMessage(message);
+	};
+
+	private handleFileSubmit = (file: File) => {
+		this.controller.sendFile(file);
 	};
 
 	private async handleDeleteChat(chatId: number) {

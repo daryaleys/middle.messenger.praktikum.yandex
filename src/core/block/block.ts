@@ -78,6 +78,15 @@ export abstract class Block<Props extends object = object> {
 
 	protected componentWillUnmount() {}
 
+	protected componentWillDestroy() {}
+
+	public destroy() {
+		this.componentWillDestroy();
+		this.unmountComponent();
+		this.domElement?.remove();
+		this.domElement = null;
+	}
+
 	private unmountComponent() {
 		if (this.domElement) {
 			this.children

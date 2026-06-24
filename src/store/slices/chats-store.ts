@@ -1,4 +1,5 @@
 import type { Chat } from "@src/components/layout/SidebarLayout/types";
+import type { DialogMessage } from "@src/components/layout/DialogLayout/types";
 import type { ChatUser } from "@src/api";
 
 import { store } from "../store";
@@ -8,8 +9,10 @@ type ChatsState = {
 	chatUsersError?: Record<number, string | null>;
 	chatUsersLoading?: Record<number, boolean>;
 	chats?: Chat[];
+	connectionError?: Record<number, string | null>;
 	error?: string | null;
 	isLoading?: boolean;
+	messages?: Record<number, DialogMessage[]>;
 	selectedChatId?: number | null;
 };
 
@@ -42,6 +45,14 @@ export function getSelectedChat(): Chat | null {
 
 export function getChatUsers(chatId: number): ChatUser[] {
 	return getChatsState().chatUsers?.[chatId] ?? [];
+}
+
+export function getChatMessages(chatId: number): DialogMessage[] {
+	return getChatsState().messages?.[chatId] ?? [];
+}
+
+export function getChatConnectionError(chatId: number): string | null {
+	return getChatsState().connectionError?.[chatId] ?? null;
 }
 
 export function getChatUsersError(chatId: number): string | null {
@@ -148,6 +159,102 @@ export function setChatUsersLoading(chatId: number, isLoading: boolean) {
 			},
 		},
 	});
+}
+
+export function setChatMessages(
+	chatId: number,
+	messages: DialogMessage[],
+) {
+	const state = getChatsState();
+
+	store.setState({
+		chats: {
+			messages: {
+				...(state.messages ?? {}),
+				[chatId]: messages,
+			},
+		},
+	});
+}
+
+export function setChatConnectionError(
+	chatId: number,
+	error: string | null,
+) {
+	const state = getChatsState();
+
+	store.setState({
+		chats: {
+			connectionError: {
+				...(state.connectionError ?? {}),
+				[chatId]: error,
+			},
+		},
+	});
+}
+
+export function addChatMessages(
+	chatId: number,
+	messages: DialogMessage[],
+) {
+	const messagesById = new Map<number, DialogMessage>();
+
+	[...getChatMessages(chatId), ...messages].forEach((message) => {
+		messagesById.set(message.id, message);
+	});
+
+	setChatMessages(
+		chatId,
+		Array.from(messagesById.values()).sort(
+			(firstMessage, secondMessage) =>
+				firstMessage.timestamp - secondMessage.timestamp,
+		),
+	);
+}
+
+export function addPendingChatMessage(
+	chatId: number,
+	message: DialogMessage,
+) {
+	addChatMessages(chatId, [message]);
+}
+
+export function markChatMessageFailed(chatId: number, messageId: number) {
+	setChatMessages(
+		chatId,
+		getChatMessages(chatId).map((message) =>
+			message.id === messageId
+				? {
+						...message,
+						deliveryStatus: "failed",
+						deliveryStatusLabel: "Не отправлено",
+					}
+				: message,
+		),
+	);
+}
+
+export function removeFirstPendingChatMessage(
+	chatId: number,
+	content: string,
+) {
+	let hasRemovedMessage = false;
+
+	setChatMessages(
+		chatId,
+		getChatMessages(chatId).filter((message) => {
+			if (
+				hasRemovedMessage ||
+				message.deliveryStatus !== "sending" ||
+				message.text !== content
+			) {
+				return true;
+			}
+
+			hasRemovedMessage = true;
+			return false;
+		}),
+	);
 }
 
 export function addChat(chat: Chat) {
