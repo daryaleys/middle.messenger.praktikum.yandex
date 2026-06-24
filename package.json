@@ -16,7 +16,11 @@
 		"lint:css": "stylelint **/*.css",
 		"lint": "npm run lint:css && npm run lint:js",
 		"test": "vitest run",
-		"pre-commit": "npm run test && npm run lint"
+		"pre-commit": "npm run test && lint-staged"
+	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx}": "eslint",
+		"*.css": "stylelint"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
@@ -26,9 +30,10 @@
 		"eslint": "^10.3.0",
 		"globals": "^17.6.0",
 		"husky": "^9.1.7",
-		"jest": "^29.7.0",
+		"jest": "npm:empty-npm-package@^1.0.0",
 		"jiti": "^2.7.0",
 		"jsdom": "^29.1.1",
+		"lint-staged": "^16.4.0",
 		"postcss": "^8.5.12",
 		"stylelint": "^17.11.0",
 		"stylelint-config-standard": "^40.0.0",
